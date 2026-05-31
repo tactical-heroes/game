@@ -11,6 +11,11 @@
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
 .utmp/
+
+# Local version control tool files
+/.plastic/
+/ignore.conf
+
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
@@ -42,6 +47,11 @@
 # Visual Studio cache directory
 .vs/
 
+# IDE local settings
+.idea/
+.idea_modules/
+.vscode/
+
 # Gradle cache directory
 .gradle/
 
@@ -62,6 +72,13 @@ ExportedObj/
 *.mdb
 *.opendb
 *.VC.db
+*.VC.VC.opendb
+*.rsuser
+*.sln.docstates
+*.sln.DotSettings.user
+*.ncb
+*.aps
+*.ipch
 
 # Unity3D generated meta files
 *.pidb.meta
