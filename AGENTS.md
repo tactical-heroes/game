@@ -1,7 +1,10 @@
 ## Project Overview
 
-This repository contains a Unity 6 game built as one application composed from
-feature-first local Unity packages.
+This repository contains a Unity 6 cross-platform turn-based strategy game with
+multiplayer, inspired by classic Heroes of Might and Magic V-style gameplay.
+Target platforms: Windows, Linux, Android, iOS, and macOS.
+
+The application is composed from feature-first local Unity packages.
 
 Business logic, UI, infrastructure, and application orchestration are isolated
 inside feature packages.
@@ -38,24 +41,6 @@ Read when relevant:
 | Local storage, SQLite, or secrets                    | docs/unity/storage.md                         |
 | Unity scenes, scene entry points, scene scope        | docs/unity/scenes.md                          |
 | UI Toolkit screen, View, ViewModel, UXML, USS        | docs/unity/ui-toolkit.md                      |
-
----
-
-## Architecture Rules
-
-`docs/architecture/dependency-rules.md` is the source of truth for dependency
-direction and forbidden references.
-
-1. UI Toolkit belongs to Presentation.
-2. ViewModels belong to Presentation.
-3. UseCases belong to Application.
-4. Business rules belong to Domain.
-5. Infrastructure implements Application ports.
-6. Features communicate through Contracts.
-7. New functionality should be implemented inside a feature package.
-8. Shared functionality moves to Foundation only after real cross-feature reuse.
-9. Do not introduce global singleton services without approval.
-10. Do not bypass Bootstrap when creating new runtime flows.
 
 ---
 

@@ -3,18 +3,15 @@
 ## Purpose
 
 UI Toolkit is the default UI technology for new screens. MVVM is the default
-screen pattern.
-
-Views stay thin. ViewModels own presentation logic. Business rules stay in
-Application or Domain. See `docs/architecture/navigation.md` for navigation.
+screen pattern. Views stay thin. ViewModels own presentation logic. Business
+rules stay in Application or Domain. See `docs/architecture/navigation.md`.
 
 ## Ownership
 
 UI Toolkit and ViewModels belong to Presentation. Presentation may contain
 Screens, Views, ViewModels, screen state, screen factories, UXML, USS, and
-reusable UI components.
-
-Presentation must not contain business rules or infrastructure adapters.
+reusable UI components. Presentation must not contain business rules or
+infrastructure adapters.
 
 ## Flow
 
@@ -40,8 +37,6 @@ Presentation/Screens/Inventory/
   InventoryScreenState.cs
   InventoryScreenFactory.cs
 ```
-
-Small screens may use fewer files when behavior is simple.
 
 ## Screen vs Scene
 
@@ -91,18 +86,25 @@ disposed when the screen closes.
 
 UXML defines structure: static layout, named elements, and reusable templates.
 USS defines visual style: layout, typography, spacing, colors, and state
-classes.
+classes. Do not put business decisions in UXML or encode feature logic through
+fragile style class combinations.
 
-Do not put business decisions in UXML or encode feature logic through fragile
-style class combinations.
+## Responsive Layout
+
+Screens must support Windows, Linux, macOS, Android, and iOS. Use flexible
+containers, USS variables, min/max sizes, and size or platform modifiers
+instead of one-resolution absolute layouts. Fixed pixel positions are allowed
+only for intentionally fixed-format elements.
+
+Handle safe areas, touch targets, keyboard/mouse, and gamepad focus. Verify
+compact phone, tablet, and desktop aspect ratios before finishing a screen.
 
 ## Components And Design System
 
 Reusable UI belongs under feature-local `Components` until at least two
-features need it.
-
-Move primitives such as buttons, tabs, inputs, list views, loading states, and
-empty states to a shared design system only when ownership and API are stable.
+features need it. Move primitives such as buttons, tabs, inputs, list views,
+loading states, and empty states to a shared design system only when ownership
+and API are stable.
 
 ## Naming
 
@@ -145,3 +147,4 @@ Before adding UI or a ViewModel, verify:
 3. View is thin and ViewModel owns presentation logic.
 4. State is explicit and testable.
 5. Navigation goes through Router and ScreenHost.
+6. Layout works on target platforms, aspect ratios, safe areas, and inputs.
