@@ -4,7 +4,7 @@
 
 UI Toolkit is the default UI technology for new screens. MVVM is the default
 screen pattern. Views stay thin. ViewModels own presentation logic. Business
-rules stay in Application or Domain. See `Documentation/architecture/navigation.md`.
+rules stay in Application or Domain. See `docs/architecture/navigation.md`.
 
 ## Ownership
 
@@ -41,7 +41,7 @@ Presentation/Screens/Inventory/
 ## Screen vs Scene
 
 A Screen is a routed UI page. A View is the UI Toolkit implementation.
-Screens are not Unity scenes. Use `Documentation/unity/scenes.md` when authored Unity
+Screens are not Unity scenes. Use `docs/unity/scenes.md` when authored Unity
 content, cameras, lighting, physics, or scene-local systems are required.
 
 ## View
@@ -108,7 +108,7 @@ and API are stable.
 
 ## Naming
 
-Use names from `Documentation/conventions/naming.md`.
+Use names from `docs/conventions/naming.md`.
 
 Typical files: `InventoryScreen.cs`, `InventoryView.uxml`,
 `InventoryView.uss`, `InventoryViewModel.cs`, `InventoryScreenState.cs`.
