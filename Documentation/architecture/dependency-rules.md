@@ -90,7 +90,7 @@ Every package should have asmdefs. Large features should split assemblies by
 layer. Small features may use one runtime asmdef while still following the
 logical dependency rules.
 
-See `docs/conventions/asmdef.md`.
+See `Documentation/conventions/asmdef.md`.
 
 ## Review Checklist
 

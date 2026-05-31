@@ -5,7 +5,7 @@
 Scenes are Unity-authored runtime environments. They are not the default unit
 for UI pages.
 
-Navigation rules live in `docs/architecture/navigation.md`.
+Navigation rules live in `Documentation/architecture/navigation.md`.
 
 ## Core Rule
 

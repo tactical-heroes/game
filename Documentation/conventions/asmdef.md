@@ -6,7 +6,7 @@ Assembly Definitions make architecture boundaries visible and enforceable.
 Use asmdefs to control compile dependencies, editor/runtime separation, and
 feature isolation.
 
-Dependency rules are defined in `docs/architecture/dependency-rules.md`.
+Dependency rules are defined in `Documentation/architecture/dependency-rules.md`.
 
 ## Core Principle
 
@@ -118,7 +118,7 @@ namespace Company.Game.Features.Inventory.Application
 }
 ```
 
-See `docs/conventions/naming.md` for the full naming table.
+See `Documentation/conventions/naming.md` for the full naming table.
 
 ## When To Split
 

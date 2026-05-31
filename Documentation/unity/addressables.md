@@ -89,7 +89,7 @@ navigation-owned abstraction.
 
 ViewModels request navigation. They do not load scenes directly.
 
-See `docs/architecture/navigation.md` and `docs/unity/scenes.md`.
+See `Documentation/architecture/navigation.md` and `Documentation/unity/scenes.md`.
 
 ## Ownership And Release
 

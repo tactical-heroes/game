@@ -5,8 +5,8 @@
 Navigation defines how the application opens screens, modals, overlays, and
 scene-backed flows.
 
-UI Toolkit screen implementation lives in `docs/unity/ui-toolkit.md`.
-Scene rules live in `docs/unity/scenes.md`.
+UI Toolkit screen implementation lives in `Documentation/unity/ui-toolkit.md`.
+Scene rules live in `Documentation/unity/scenes.md`.
 
 ## Core Concepts
 

@@ -59,7 +59,7 @@ scope installers.
 
 See:
 
-* `docs/conventions/dependency-injection.md`
+* `Documentation/conventions/dependency-injection.md`
 
 ## UI And Scenes
 
@@ -78,9 +78,9 @@ Profile, Shop, modal windows, and similar UI pages.
 
 See:
 
-* `docs/architecture/navigation.md`
-* `docs/unity/scenes.md`
-* `docs/unity/ui-toolkit.md`
+* `Documentation/architecture/navigation.md`
+* `Documentation/unity/scenes.md`
+* `Documentation/unity/ui-toolkit.md`
 
 ## Development Routes
 
