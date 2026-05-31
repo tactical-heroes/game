@@ -1,0 +1,56 @@
+/* Mirrors Figma local text styles under Typography. */
+.typography-display-main-title {
+    font-size: 46px;
+    -unity-font-definition: url("../Fonts/Cinzel-Bold.ttf");
+    -unity-font-style: normal;
+    letter-spacing: 1.84px;
+}
+
+.typography-controls-large-button-label {
+    font-size: 28px;
+    -unity-font-definition: url("../Fonts/CormorantGaramond-SemiBold.otf");
+    -unity-font-style: normal;
+    letter-spacing: 2.52px;
+}
+
+.typography-controls-input-label {
+    font-size: 12px;
+    -unity-font-definition: url("../Fonts/Cinzel-Regular.ttf");
+    -unity-font-style: normal;
+    letter-spacing: 0.72px;
+}
+
+.typography-controls-input-value {
+    font-size: 21px;
+    -unity-font-definition: url("../Fonts/CormorantGaramond-SemiBold.otf");
+    -unity-font-style: normal;
+    letter-spacing: 0.21px;
+}
+
+.typography-body-small {
+    font-size: 12px;
+    -unity-font-definition: url("../Fonts/Inter-Medium.ttf");
+    -unity-font-style: normal;
+    letter-spacing: 0;
+}
+
+.typography-documentation-state-label {
+    font-size: 13px;
+    -unity-font-definition: url("../Fonts/Inter-Medium.ttf");
+    -unity-font-style: normal;
+    letter-spacing: 0;
+}
+
+.typography-documentation-section-title {
+    font-size: 36px;
+    -unity-font-definition: url("../Fonts/CinzelDecorative-Bold.ttf");
+    -unity-font-style: normal;
+    letter-spacing: 1.08px;
+}
+
+.typography-documentation-section-subtitle {
+    font-size: 15px;
+    -unity-font-definition: url("../Fonts/CormorantGaramond-Medium.otf");
+    -unity-font-style: normal;
+    letter-spacing: 0.3px;
+}

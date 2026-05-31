@@ -1,0 +1,16 @@
+{
+  "name": "Panixida.TacticalHeroes.Feature.MainMenu",
+  "rootNamespace": "Panixida.TacticalHeroes.Features.MainMenu",
+  "references": [
+    "Panixida.TacticalHeroes.Foundation.Presentation"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

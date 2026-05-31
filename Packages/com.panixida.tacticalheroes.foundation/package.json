@@ -1,0 +1,7 @@
+{
+  "name": "com.panixida.tacticalheroes.foundation",
+  "displayName": "Tactical Heroes Foundation",
+  "version": "0.1.0",
+  "unity": "6000.0",
+  "description": "Shared primitives and reusable presentation assets for Tactical Heroes."
+}

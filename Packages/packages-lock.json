@@ -30,15 +30,15 @@
       "dependencies": {},
       "url": "https://package.openupm.com"
     },
-    "com.github-glitchenzo.nugetforunity": {
-      "version": "4.5.0",
+    "com.gilzoide.sqlite-net": {
+      "version": "1.3.2",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
       "url": "https://package.openupm.com"
     },
-    "com.gilzoide.sqlite-net": {
-      "version": "1.3.2",
+    "com.github-glitchenzo.nugetforunity": {
+      "version": "4.5.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
@@ -50,6 +50,28 @@
       "source": "registry",
       "dependencies": {},
       "url": "https://package.openupm.com"
+    },
+    "com.panixida.tacticalheroes.feature.main-menu": {
+      "version": "file:com.panixida.tacticalheroes.feature.main-menu",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.panixida.tacticalheroes.foundation": "0.1.0"
+      }
+    },
+    "com.panixida.tacticalheroes.feature.settings": {
+      "version": "file:com.panixida.tacticalheroes.feature.settings",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.panixida.tacticalheroes.foundation": "0.1.0"
+      }
+    },
+    "com.panixida.tacticalheroes.foundation": {
+      "version": "file:com.panixida.tacticalheroes.foundation",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",

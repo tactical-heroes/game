@@ -1,0 +1,14 @@
+{
+  "name": "Panixida.TacticalHeroes.Foundation.Presentation",
+  "rootNamespace": "Panixida.TacticalHeroes.Foundation.Presentation",
+  "references": [],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

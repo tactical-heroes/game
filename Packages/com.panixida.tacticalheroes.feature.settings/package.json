@@ -1,0 +1,10 @@
+{
+  "name": "com.panixida.tacticalheroes.feature.settings",
+  "displayName": "Tactical Heroes Feature Settings",
+  "version": "0.1.0",
+  "unity": "6000.0",
+  "description": "Settings screen feature for Tactical Heroes.",
+  "dependencies": {
+    "com.panixida.tacticalheroes.foundation": "0.1.0"
+  }
+}

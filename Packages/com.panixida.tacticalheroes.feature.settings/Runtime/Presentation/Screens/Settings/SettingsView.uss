@@ -1,0 +1,655 @@
+.screen {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 1;
+    translate: 0 0;
+    transition-property: opacity, translate;
+    transition-duration: 260ms;
+    transition-timing-function: ease-in-out;
+}
+
+.screen-hidden {
+    opacity: 0;
+    translate: 0 18px;
+}
+
+.settings-root {
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+    background-color: #050403;
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/menu_background.png");
+    -unity-background-scale-mode: stretch-to-fill;
+}
+
+.settings-dark-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.18);
+}
+
+.settings-logo {
+    position: absolute;
+    left: 910px;
+    top: 12px;
+    width: 100px;
+    height: 100px;
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/menu_logo_emblem.png");
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.settings-title-shadow {
+    position: absolute;
+    left: 698px;
+    top: 108px;
+    width: 524px;
+    height: 70px;
+    color: rgba(18, 7, 3, 0.90);
+    -unity-text-align: middle-center;
+}
+
+.settings-title {
+    position: absolute;
+    left: 695px;
+    top: 102px;
+    width: 530px;
+    height: 70px;
+    color: #facc47;
+    -unity-text-outline-width: 1px;
+    -unity-text-outline-color: rgba(255, 242, 173, 0.38);
+    -unity-text-align: middle-center;
+    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.78);
+}
+
+.settings-title-separator {
+    position: absolute;
+    left: 713px;
+    top: 157px;
+    width: 494px;
+    height: 50px;
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/menu_title_separator.png");
+    -unity-background-scale-mode: stretch-to-fill;
+}
+
+.settings-subtitle {
+    position: absolute;
+    left: 713px;
+    top: 195px;
+    width: 494px;
+    height: 30px;
+    color: #dbc28f;
+    font-size: 20px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/CormorantGaramond-Medium.otf");
+    -unity-text-align: middle-center;
+    letter-spacing: 0.6px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.58);
+}
+
+.settings-navigation {
+    position: absolute;
+    left: 76px;
+    top: 230px;
+    width: 330px;
+    height: 716px;
+}
+
+.settings-panels {
+    position: absolute;
+    left: 434px;
+    top: 230px;
+    width: 1410px;
+    height: 716px;
+}
+
+.settings-card {
+    position: absolute;
+    width: 690px;
+}
+
+.settings-card-large {
+    height: 372px;
+}
+
+.settings-card-small {
+    height: 320px;
+}
+
+.settings-card-display {
+    left: 0;
+    top: 0;
+}
+
+.settings-card-quality {
+    left: 720px;
+    top: 0;
+}
+
+.settings-card-audio {
+    left: 0;
+    top: 396px;
+}
+
+.settings-card-gameplay {
+    left: 720px;
+    top: 396px;
+}
+
+.settings-navigation .th-panel-background,
+.settings-card .th-panel-background {
+    background-color: rgba(8, 6, 4, 0.58);
+}
+
+.settings-navigation .th-panel-shadow,
+.settings-card .th-panel-shadow {
+    background-color: rgba(0, 0, 0, 0.14);
+}
+
+.settings-navigation .th-panel-border,
+.settings-card .th-panel-border {
+    border-left-color: rgba(127, 82, 32, 0.62);
+    border-right-color: rgba(127, 82, 32, 0.62);
+    border-top-color: rgba(127, 82, 32, 0.62);
+    border-bottom-color: rgba(127, 82, 32, 0.62);
+}
+
+.settings-navigation .th-panel-corner,
+.settings-card .th-panel-corner {
+    width: 50px;
+    height: 50px;
+    opacity: 0.78;
+}
+
+.settings-navigation-button {
+    position: absolute;
+    left: 22px;
+    top: 30px;
+    width: 286px;
+    height: 50px;
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/menu_button_base.png");
+    -unity-background-scale-mode: stretch-to-fill;
+    background-color: rgba(0, 0, 0, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.settings-navigation-button-label {
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 286px;
+    height: 34px;
+    color: #dbc79e;
+    font-size: 20px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/CormorantGaramond-SemiBold.otf");
+    -unity-text-align: middle-center;
+    letter-spacing: 1.6px;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.70);
+}
+
+.settings-button-tint {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.06);
+}
+
+.settings-card-title {
+    position: absolute;
+    left: 95px;
+    top: 14px;
+    width: 500px;
+    height: 42px;
+    color: #ffd45c;
+    font-size: 24px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/Cinzel-Bold.ttf");
+    -unity-text-align: middle-center;
+    letter-spacing: 1.44px;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.72);
+}
+
+.settings-title-rule {
+    position: absolute;
+    top: 36px;
+    width: 110px;
+    height: 1px;
+    background-color: rgba(199, 125, 41, 0.70);
+}
+
+.settings-title-rule-left {
+    left: 65px;
+}
+
+.settings-title-rule-right {
+    left: 515px;
+}
+
+.settings-title-jewel {
+    position: absolute;
+    left: 340px;
+    top: 31px;
+    width: 14px;
+    height: 14px;
+    background-color: rgba(199, 125, 41, 0.76);
+    rotate: 45deg;
+}
+
+.settings-row {
+    position: absolute;
+    left: 38px;
+    width: 612px;
+    height: 40px;
+}
+
+.row-1 {
+    top: 81px;
+}
+
+.row-2 {
+    top: 133px;
+}
+
+.row-3 {
+    top: 185px;
+}
+
+.row-4 {
+    top: 238px;
+}
+
+.quality-row-1 {
+    top: 97px;
+}
+
+.quality-row-2 {
+    top: 159px;
+}
+
+.quality-row-3 {
+    top: 221px;
+}
+
+.audio-row-1 {
+    top: 98px;
+}
+
+.audio-row-2 {
+    top: 160px;
+}
+
+.gameplay-row-1 {
+    top: 103px;
+}
+
+.gameplay-row-2 {
+    top: 167px;
+}
+
+.settings-row-divider {
+    position: absolute;
+    left: 26px;
+    width: 638px;
+    height: 1px;
+    background-color: rgba(140, 89, 38, 0.30);
+}
+
+.divider-1 {
+    top: 128px;
+}
+
+.divider-2 {
+    top: 180px;
+}
+
+.divider-3 {
+    top: 232px;
+}
+
+.quality-divider-1,
+.audio-divider-1 {
+    top: 150px;
+}
+
+.quality-divider-2 {
+    top: 212px;
+}
+
+.gameplay-divider-1 {
+    top: 156px;
+}
+
+.settings-row-icon {
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 28px;
+    height: 28px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgba(232, 143, 33, 0.78);
+    border-right-color: rgba(232, 143, 33, 0.78);
+    border-top-color: rgba(232, 143, 33, 0.78);
+    border-bottom-color: rgba(232, 143, 33, 0.78);
+    background-color: rgba(232, 143, 33, 0.08);
+    rotate: 45deg;
+}
+
+.icon-display-mode,
+.icon-textures,
+.icon-effects-volume,
+.icon-damage {
+    border-radius: 14px;
+}
+
+.icon-brightness,
+.icon-effects,
+.icon-music {
+    width: 22px;
+    height: 22px;
+    left: 3px;
+    top: 9px;
+}
+
+.settings-row-label {
+    position: absolute;
+    left: 40px;
+    top: 3px;
+    width: 260px;
+    height: 34px;
+    color: #dbc28f;
+    font-size: 21px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/CormorantGaramond-Medium.otf");
+    -unity-text-align: middle-left;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.72);
+}
+
+.settings-dropdown {
+    position: absolute;
+    left: 360px;
+    top: 0;
+    width: 252px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.42);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgba(199, 125, 41, 0.58);
+    border-right-color: rgba(199, 125, 41, 0.58);
+    border-top-color: rgba(199, 125, 41, 0.58);
+    border-bottom-color: rgba(199, 125, 41, 0.58);
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.settings-dropdown:hover {
+    border-left-color: rgba(255, 212, 92, 0.78);
+    border-right-color: rgba(255, 212, 92, 0.78);
+    border-top-color: rgba(255, 212, 92, 0.78);
+    border-bottom-color: rgba(255, 212, 92, 0.78);
+}
+
+.settings-dropdown-value {
+    position: absolute;
+    left: 16px;
+    top: 4px;
+    width: 194px;
+    height: 32px;
+    color: #dbc28f;
+    font-size: 21px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/CormorantGaramond-Medium.otf");
+    -unity-text-align: middle-left;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.72);
+}
+
+.settings-dropdown-arrow {
+    position: absolute;
+    right: 15px;
+    top: 13px;
+    width: 12px;
+    height: 12px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-right-color: #e88f21;
+    border-bottom-color: #e88f21;
+    rotate: 45deg;
+}
+
+.settings-slider {
+    position: absolute;
+    left: 222px;
+    top: 0;
+    width: 390px;
+    height: 40px;
+}
+
+.settings-slider-track {
+    position: absolute;
+    left: 0;
+    top: 15px;
+    width: 300px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: rgba(9, 7, 5, 0.82);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgba(140, 87, 23, 0.90);
+    border-right-color: rgba(140, 87, 23, 0.90);
+    border-top-color: rgba(140, 87, 23, 0.90);
+    border-bottom-color: rgba(140, 87, 23, 0.90);
+}
+
+.settings-slider-fill {
+    position: absolute;
+    left: 1px;
+    top: 16px;
+    height: 8px;
+    border-radius: 4px;
+    background-color: #e88f21;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgba(255, 196, 59, 0.85);
+    border-right-color: rgba(255, 196, 59, 0.85);
+    border-top-color: rgba(255, 196, 59, 0.85);
+    border-bottom-color: rgba(255, 196, 59, 0.85);
+}
+
+.fill-72 {
+    width: 215px;
+}
+
+.fill-75 {
+    width: 224px;
+}
+
+.fill-85 {
+    width: 253px;
+}
+
+.settings-value-box {
+    position: absolute;
+    left: 318px;
+    top: 0;
+    width: 72px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.50);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgba(199, 125, 41, 0.58);
+    border-right-color: rgba(199, 125, 41, 0.58);
+    border-top-color: rgba(199, 125, 41, 0.58);
+    border-bottom-color: rgba(199, 125, 41, 0.58);
+}
+
+.settings-value-text {
+    width: 72px;
+    height: 40px;
+    color: #ffd45c;
+    font-size: 17px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/Inter-Medium.ttf");
+    -unity-text-align: middle-center;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.72);
+}
+
+.settings-toggle {
+    position: absolute;
+    left: 497px;
+    top: 2px;
+    width: 112px;
+    height: 36px;
+    border-radius: 18px;
+    background-color: rgba(11, 8, 6, 0.90);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgba(184, 110, 28, 0.95);
+    border-right-color: rgba(184, 110, 28, 0.95);
+    border-top-color: rgba(184, 110, 28, 0.95);
+    border-bottom-color: rgba(184, 110, 28, 0.95);
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.settings-toggle-label {
+    position: absolute;
+    left: 12px;
+    top: 0;
+    width: 52px;
+    height: 36px;
+    color: #f7b840;
+    font-size: 14px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/Inter-Medium.ttf");
+    -unity-text-align: middle-center;
+}
+
+.settings-toggle-knob {
+    position: absolute;
+    left: 81px;
+    top: 5px;
+    width: 26px;
+    height: 26px;
+    border-radius: 13px;
+    background-color: #f7b840;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: #ffd45c;
+    border-right-color: #ffd45c;
+    border-top-color: #ffd45c;
+    border-bottom-color: #ffd45c;
+}
+
+.settings-footer-actions {
+    position: absolute;
+    left: 76px;
+    top: 960px;
+    width: 1768px;
+    height: 90px;
+}
+
+.settings-action-button {
+    position: absolute;
+    top: 12px;
+    width: 390px;
+    height: 67px;
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/menu_button_base.png");
+    -unity-background-scale-mode: stretch-to-fill;
+    background-color: rgba(0, 0, 0, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+#settings-back-button {
+    left: 0;
+}
+
+#settings-restore-defaults-button {
+    left: 459px;
+}
+
+#settings-apply-button {
+    left: 919px;
+}
+
+#settings-cancel-button {
+    left: 1378px;
+}
+
+.settings-button-glow {
+    display: none;
+    position: absolute;
+    left: 18px;
+    top: 7px;
+    width: 354px;
+    height: 53px;
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/menu_button_selected_glow.png");
+    -unity-background-scale-mode: stretch-to-fill;
+}
+
+.settings-action-button-label {
+    position: absolute;
+    left: 0;
+    top: 13px;
+    width: 390px;
+    height: 42px;
+    color: #dbc79e;
+    font-size: 26px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/CormorantGaramond-SemiBold.otf");
+    -unity-text-align: middle-center;
+    letter-spacing: 2.08px;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.70);
+}
+
+.settings-action-button-label-long {
+    font-size: 23px;
+    letter-spacing: 1.38px;
+}
+
+.settings-action-button:hover .settings-button-tint,
+.settings-action-button.selected .settings-button-tint {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.settings-action-button:hover .settings-button-glow,
+.settings-action-button.selected .settings-button-glow {
+    display: flex;
+}
+
+.settings-action-button:hover .settings-action-button-label,
+.settings-action-button.selected .settings-action-button-label {
+    color: #ffe5a8;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.82);
+}
