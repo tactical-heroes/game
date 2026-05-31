@@ -35,6 +35,7 @@ Read when relevant:
 | Naming a new type, route, assembly, package, or test | docs/conventions/naming.md                    |
 | Tests or test layout                                 | docs/conventions/testing.md                   |
 | Addressables or asset loading                        | docs/unity/addressables.md                    |
+| Local storage, SQLite, or secrets                    | docs/unity/storage.md                         |
 | Unity scenes, scene entry points, scene scope        | docs/unity/scenes.md                          |
 | UI Toolkit screen, View, ViewModel, UXML, USS        | docs/unity/ui-toolkit.md                      |
 
@@ -67,6 +68,7 @@ direction and forbidden references.
 | Feature or package      | docs/conventions/project-structure.md    |
 | Event                   | docs/conventions/events.md               |
 | Scene                   | docs/unity/scenes.md                     |
+| Storage                 | docs/unity/storage.md                    |
 | Dependency registration | docs/conventions/dependency-injection.md |
 | asmdef                  | docs/conventions/asmdef.md               |
 | Test                    | docs/conventions/testing.md              |

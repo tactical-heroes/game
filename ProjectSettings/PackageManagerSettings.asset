@@ -35,6 +35,7 @@ MonoBehaviour:
     m_Url: https://package.openupm.com
     m_Scopes:
     - com.cysharp
+    - com.gilzoide
     - com.github-glitchenzo
     - com.kyrylokuzyk
     - jp.hadashikick
