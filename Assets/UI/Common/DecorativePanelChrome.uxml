@@ -1,0 +1,35 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <ui:VisualElement class="th-panel-shadow" />
+    <ui:VisualElement class="th-panel-background" />
+    <ui:VisualElement class="th-panel-border" />
+    <ui:VisualElement class="th-panel-inner-border" />
+
+    <ui:VisualElement class="th-panel-corner th-panel-corner-top-left">
+        <ui:VisualElement class="th-panel-corner-line th-panel-corner-line-horizontal th-panel-corner-line-outer" />
+        <ui:VisualElement class="th-panel-corner-line th-panel-corner-line-vertical th-panel-corner-line-outer" />
+        <ui:VisualElement class="th-panel-corner-line th-panel-corner-line-horizontal th-panel-corner-line-inner" />
+        <ui:VisualElement class="th-panel-corner-line th-panel-corner-line-vertical th-panel-corner-line-inner" />
+        <ui:VisualElement class="th-panel-corner-diamond" />
+    </ui:VisualElement>
+    <ui:VisualElement class="th-panel-corner th-panel-corner-top-right">
+        <ui:VisualElement class="th-panel-corner-line th-panel-corner-line-horizontal th-panel-corner-line-outer" />
+        <ui:VisualElement class="th-panel-corner-line th-panel-corner-line-vertical th-panel-corner-line-outer" />
+        <ui:VisualElement class="th-panel-corner-line th-panel-corner-line-horizontal th-panel-corner-line-inner" />
+        <ui:VisualElement class="th-panel-corner-line th-panel-corner-line-vertical th-panel-corner-line-inner" />
+        <ui:VisualElement class="th-panel-corner-diamond" />
+    </ui:VisualElement>
+    <ui:VisualElement class="th-panel-corner th-panel-corner-bottom-right">
+        <ui:VisualElement class="th-panel-corner-line th-panel-corner-line-horizontal th-panel-corner-line-outer" />
+        <ui:VisualElement class="th-panel-corner-line th-panel-corner-line-vertical th-panel-corner-line-outer" />
+        <ui:VisualElement class="th-panel-corner-line th-panel-corner-line-horizontal th-panel-corner-line-inner" />
+        <ui:VisualElement class="th-panel-corner-line th-panel-corner-line-vertical th-panel-corner-line-inner" />
+        <ui:VisualElement class="th-panel-corner-diamond" />
+    </ui:VisualElement>
+    <ui:VisualElement class="th-panel-corner th-panel-corner-bottom-left">
+        <ui:VisualElement class="th-panel-corner-line th-panel-corner-line-horizontal th-panel-corner-line-outer" />
+        <ui:VisualElement class="th-panel-corner-line th-panel-corner-line-vertical th-panel-corner-line-outer" />
+        <ui:VisualElement class="th-panel-corner-line th-panel-corner-line-horizontal th-panel-corner-line-inner" />
+        <ui:VisualElement class="th-panel-corner-line th-panel-corner-line-vertical th-panel-corner-line-inner" />
+        <ui:VisualElement class="th-panel-corner-diamond" />
+    </ui:VisualElement>
+</ui:UXML>
