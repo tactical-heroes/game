@@ -1,109 +1,104 @@
-Да, 250 строк для такого reference-файла многовато. Вот версия **до 150 строк**, но без потери ключевых правил.
+# Bootstrap
 
-# Architecture Reference: Bootstrap Layer
+## Purpose
 
-## 1. Purpose & Responsibility
+Bootstrap creates the application. Features provide functionality. Scenes
+provide runtime content. Screens provide UI.
 
-* **Core Rule**: Bootstrap creates the application. Features provide functionality. Scenes provide content. Screens provide UI.
-* **Dependency Rule**: Bootstrap knows which features exist, but not how they work. Features must not depend on Bootstrap.
-* **Ownership**: Only Bootstrap creates the application runtime. No other layer may initialize or recreate it.
-* **Responsibilities**: Create application lifetime, configure DI through VContainer, register modules, initialize infrastructure, configure routing, resolve startup route, open the initial screen/scene, and maintain application-wide runtime state.
-* **Forbidden**: Business logic, gameplay logic, feature-specific UI behavior, and domain rules must not be placed in Bootstrap.
+Bootstrap may know which feature installers exist, but feature packages must
+not depend on Bootstrap.
 
-## 2. Startup Flow & Bootstrap Scene
+## Responsibilities
 
-* **Flow**: Unity Startup → `00_Bootstrap.unity` → `AppBootstrapper` → `AppCompositionRoot / AppLifetimeScope` → Dependency Registration → Feature Installation → Infrastructure Initialization → Startup Route Resolution → Initial Screen/Scene.
-* **Scene Path**: `Assets/Scenes/Bootstrap/00_Bootstrap.unity`.
-* **Build Settings**: `00_Bootstrap.unity` must be the first scene.
-* **Scene Role**: Infrastructure only. Not gameplay, not main menu, not feature scene.
-* **Allowed Objects**: Only application-wide objects may exist here.
+Bootstrap owns:
 
-Recommended hierarchy:
+* Production startup path.
+* Application lifetime scope.
+* Root dependency registration through VContainer.
+* Feature installer registration.
+* Infrastructure initialization required before first route.
+* Startup route resolution.
+* Opening the first screen or scene.
+* Application-wide runtime services.
 
-```text id="ml9l6w"
-[Bootstrap]
-├── AppLifetimeScope
-├── AppBootstrapper
-├── ScreenHost
-├── Router
-├── EventSystem
-├── AudioRoot
-├── LocalizationRoot
-└── AnalyticsRoot
+Bootstrap must not contain:
+
+* Business rules.
+* Gameplay logic.
+* Feature-specific UI behavior.
+* Domain decisions.
+* Scene-local orchestration.
+
+## Startup Flow
+
+```text
+Unity Startup
+-> Assets/Scenes/Bootstrap/00_Bootstrap.unity
+-> AppBootstrapper
+-> AppLifetimeScope
+-> Dependency Registration
+-> Feature Installation
+-> Infrastructure Initialization
+-> Startup Route Resolution
+-> Initial Screen or Scene
 ```
 
-## 3. DI, Composition Root & Lifetimes
+`00_Bootstrap.unity` must be the first production scene in Build Settings.
+It is infrastructure only: not gameplay, not main menu, not a feature scene.
 
-* **Composition Root**: `AppLifetimeScope`.
-* **DI Stack**: VContainer → `AppLifetimeScope` → Feature Installers.
-* **Wiring Rule**: Concrete implementations are wired only in Composition Root or feature installers.
-* **Bootstrap Scope**: Bootstrap may know feature installers, but not feature internals.
-* **App-Wide Registration**: Foundation services, infrastructure adapters, navigation, messaging, analytics, localization, feature installers.
-* **Feature Registration**: Feature-specific DI must be delegated to feature installers.
+## Lifetime Scopes
 
-### Application Scope
+Use the smallest lifetime that matches ownership:
 
-* Created during startup.
-* Lives until application shutdown.
-* Contains: Router, Messaging, Audio, Localization, Analytics, Authentication, Session, Global Services.
+* Application scope: routers, messaging, global config, application services.
+* Scene scope: scene-local services, factories, controllers, object pools.
+* Screen scope: ViewModel, screen state, commands, screen-local subscriptions.
 
-### Scene Scope
+Concrete implementations are wired only in Bootstrap, feature installers, or
+scope installers.
 
-* Optional.
-* Used for scene-local dependencies.
-* Examples: Battle, WorldMap, Tutorial.
-* Contains: Scene Services, Scene Factories, Scene Controllers.
-* Destroyed when the scene unloads.
+See:
 
-### Screen Scope
+* `docs/conventions/dependency-injection.md`
 
-* Optional.
-* Used for complex UI screens.
-* Examples: Inventory, Shop, Profile, Settings.
-* Contains: Screen ViewModel, Screen State, Screen Commands.
-* Destroyed when the screen closes.
+## UI And Scenes
 
-## 4. UI & Scene Strategy
+Bootstrap owns the global `ScreenHost` or resolves the service that owns it.
+UI Toolkit screens are not Unity scenes.
 
-* **Router**: Application-wide service. Opens screens/scenes, passes payloads, maintains navigation stack.
-* **ScreenHost**: Global Bootstrap scene object. Creates/destroys screens, manages screen stack and modal windows.
-* **UI Toolkit Rule**: UI Toolkit screens are not Unity scenes.
-* **Preferred Flow**: Bootstrap → ScreenHost → Routed Screen.
-* **Routed Screens**: Inventory, Shop, Profile, Settings.
-* **Unity Scenes**: Use only for large runtime contexts.
-* **Good Scene Candidates**: Main Menu, World Map, Battle, Tutorial.
-* **Bad Scene Candidates**: Inventory, Settings, Profile, Shop.
+Preferred UI flow:
 
-### Scene Entry Points
+```text
+Bootstrap -> Router -> ScreenHost -> Screen Factory -> Screen
+```
 
-* Examples: `BattleSceneEntryPoint`, `WorldMapSceneEntryPoint`, `TutorialSceneEntryPoint`.
-* May initialize scene-local dependencies and references.
-* Must not recreate the application or application-wide services.
+Create Unity scenes for runtime environments such as Battle, World Map,
+Tutorial, or a scene-backed Main Menu. Use screens for Inventory, Settings,
+Profile, Shop, modal windows, and similar UI pages.
 
-## 5. Startup Routes & Preview Scenes
+See:
 
-* **Startup Routes Location**: `Assets/Settings/StartupRoutes/`.
-* **Purpose**: Deterministic production startup, fast development iteration, direct screen/scene opening.
-* **Production Route**: Bootstrap → Main Menu.
-* **Development Route**: Bootstrap → target screen/scene, for example Inventory, Battle, or Shop.
+* `docs/architecture/navigation.md`
+* `docs/unity/scenes.md`
+* `docs/unity/ui-toolkit.md`
 
-### Preview Scenes
+## Development Routes
 
-* **Location**: `Assets/Scenes/Preview/`.
-* **Examples**: `InventoryPreview`, `ShopPreview`, `ProfilePreview`.
-* **Purpose**: UI development, designer workflow, fast testing.
-* **Rules**: Preview scenes may use fake services, but must not replace Bootstrap in production runtime.
+Development may support direct route startup for fast iteration:
 
-## 6. Code & Review Constraints
+```text
+Bootstrap -> target screen or scene
+```
 
-* **Avoid for runtime dependency resolution**: `FindObjectOfType`, global singletons, static managers, manual service location.
-* **Prefer**: Dependency Injection, Lifetime Scopes, Constructor Injection.
-* **Bootstrap Checklist**:
+Preview scenes may use fake services, but they must not replace Bootstrap in
+production runtime.
 
-  1. Is it application-wide?
-  2. Does it live until shutdown?
-  3. Does it participate in startup?
-  4. Does it belong to Composition Root?
-  5. Is it shared by multiple features?
+## Review Checklist
 
-If not, move it to feature, scene, or screen scope.
+Before adding code to Bootstrap, verify:
+
+1. It is required to create or wire the application.
+2. It is not feature business logic.
+3. It cannot live in a feature installer, scene entry point, or screen scope.
+4. It does not introduce a global singleton without approval.
+5. It preserves the single production startup path.

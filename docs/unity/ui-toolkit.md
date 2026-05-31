@@ -1,708 +1,147 @@
-# UI Toolkit
+# UI Toolkit And MVVM
 
 ## Purpose
 
-This document defines how UI is implemented in the project.
+UI Toolkit is the default UI technology for new screens. MVVM is the default
+screen pattern.
 
-The project uses:
+Views stay thin. ViewModels own presentation logic. Business rules stay in
+Application or Domain. See `docs/architecture/navigation.md` for navigation.
 
-```text
-Unity UI Toolkit
-```
+## Ownership
 
-UI Toolkit is the standard UI framework for the project.
+UI Toolkit and ViewModels belong to Presentation. Presentation may contain
+Screens, Views, ViewModels, screen state, screen factories, UXML, USS, and
+reusable UI components.
 
-Legacy UI systems should not be used for new development.
+Presentation must not contain business rules or infrastructure adapters.
 
----
-
-# UI Architecture
-
-UI belongs to:
+## Flow
 
 ```text
-Presentation
+View -> ViewModel -> UseCase -> Domain
+ViewModel -> Router
+ViewModel -> ScreenState -> View
 ```
 
-UI Toolkit is considered a Presentation technology.
+The View binds and forwards user intent. The ViewModel calls UseCases, maps
+results to presentation state, and requests navigation through Router.
 
-UI must not contain:
+## Screen Structure
 
-* Business rules.
-* Persistence logic.
-* Networking logic.
-* Domain logic.
-
-UI is responsible only for presenting state and collecting user input.
-
----
-
-# UI Hierarchy
-
-The application UI follows:
+Keep screen files together:
 
 ```text
-ScreenHost
-    ↓
-Screen
-    ↓
-View
-    ↓
-UI Toolkit Elements
+Presentation/Screens/Inventory/
+  InventoryScreen.cs
+  InventoryView.uxml
+  InventoryView.uss
+  InventoryViewModel.cs
+  InventoryScreenState.cs
+  InventoryScreenFactory.cs
 ```
 
----
+Small screens may use fewer files when behavior is simple.
 
-# Core Concepts
+## Screen vs Scene
 
-The project uses the following concepts:
+A Screen is a routed UI page. A View is the UI Toolkit implementation.
+Screens are not Unity scenes. Use `docs/unity/scenes.md` when authored Unity
+content, cameras, lighting, physics, or scene-local systems are required.
+
+## View
+
+The View may query UI Toolkit elements, bind visual state, forward input to the
+ViewModel, and manage purely visual behavior.
+
+The View must not call UseCases directly, contain business rules, decide
+navigation flow, or load shared/runtime Addressables directly.
+
+## ViewModel
+
+The ViewModel may call UseCases, transform DTOs into presentation state, expose
+commands, request navigation through Router, and own selection, filtering,
+sorting, formatting, loading, and error state.
+
+The ViewModel must not contain Domain business rules, depend on Infrastructure
+implementations, instantiate Views or scenes, become a global event bus, or be
+an application singleton.
+
+## Screen State And Commands
+
+Represent non-trivial screen state explicitly: `Idle`, `Loading`, `Ready`,
+`Empty`, `Error`.
+
+Views render state. ViewModels compute state. Errors should be represented in
+`ScreenState`, not thrown into the View.
+
+Commands belong to the ViewModel. They validate presentation state, call
+UseCases, update screen state, request navigation when needed, and are disabled
+while conflicting async work is running.
+
+## Lifetime And DI
+
+ViewModel lifetime matches screen lifetime. Create ViewModels through screen
+factories or screen scope composition.
+
+Screen-owned subscriptions, cancellation tokens, and asset handles must be
+disposed when the screen closes.
+
+## UXML And USS
+
+UXML defines structure: static layout, named elements, and reusable templates.
+USS defines visual style: layout, typography, spacing, colors, and state
+classes.
+
+Do not put business decisions in UXML or encode feature logic through fragile
+style class combinations.
+
+## Components And Design System
+
+Reusable UI belongs under feature-local `Components` until at least two
+features need it.
+
+Move primitives such as buttons, tabs, inputs, list views, loading states, and
+empty states to a shared design system only when ownership and API are stable.
+
+## Naming
+
+Use names from `docs/conventions/naming.md`.
+
+Typical files: `InventoryScreen.cs`, `InventoryView.uxml`,
+`InventoryView.uss`, `InventoryViewModel.cs`, `InventoryScreenState.cs`.
+
+Element names should be stable and purpose-based: `items-list`,
+`equip-button`, `empty-state`.
+
+## Navigation And Events
+
+Screens and modals are opened through Router and ScreenHost.
+Views and ViewModels do not instantiate screens, modals, or scenes directly.
+
+Local UI interactions stay local:
 
 ```text
-Screen
-
-View
-
-ViewModel
-
-ScreenState
-
-ScreenFactory
-
-ScreenHost
-
-Router
+Button -> View -> ViewModel command
 ```
 
-Each has a specific responsibility.
+Publish global events only for completed application facts.
 
----
+## Preview And Testing
 
-# Screen
+Preview scenes are allowed for fast UI iteration with fake services, but they
+must not become production entry points.
 
-A Screen represents a complete user-facing page.
+Test ViewModels with pure tests and fakes for UseCases, routers, clocks, and
+asset providers. Use runtime tests only for UI Toolkit lifecycle, bindings, or
+ScreenHost integration that cannot be covered without Unity.
 
-Examples:
+## Review Checklist
 
-```text
-Inventory
+Before adding UI or a ViewModel, verify:
 
-Shop
-
-Profile
-
-Settings
-
-BattlePass
-
-Matchmaking
-```
-
-A Screen is not a Unity Scene.
-
-A Screen is a routed UI page.
-
----
-
-# View
-
-A View is a UI Toolkit implementation of a Screen.
-
-Contains:
-
-```text
-UXML
-
-USS
-
-VisualElement bindings
-
-UI callbacks
-```
-
-Responsibilities:
-
-* Display data.
-* Collect user input.
-* Bind ViewModel state.
-
-Views should remain thin.
-
----
-
-# ViewModel
-
-ViewModels belong to Presentation.
-
-Responsibilities:
-
-* Expose UI state.
-* Handle UI actions.
-* Call Use Cases.
-* Transform application data into presentation data.
-
-ViewModels do not contain business rules.
-
-Detailed rules:
-
-```text
-docs/unity/mvvm.md
-```
-
----
-
-# Screen State
-
-Every complex screen should expose explicit state.
-
-Example:
-
-```text
-Loading
-
-Empty
-
-Loaded
-
-Error
-```
-
-Avoid implicit UI state.
-
-State should be easy to inspect and test.
-
----
-
-# Screen Factory
-
-Screens should be created through factories.
-
-Example:
-
-```text
-InventoryScreenFactory
-
-ShopScreenFactory
-
-ProfileScreenFactory
-```
-
-Responsibilities:
-
-* Create View.
-* Create ViewModel.
-* Configure bindings.
-* Configure lifecycle.
-
-Factories own screen construction.
-
----
-
-# Screen Host
-
-The application contains a single Screen Host.
-
-Responsibilities:
-
-* Open screens.
-* Close screens.
-* Maintain navigation stack.
-* Manage modals.
-* Manage overlays.
-
-Screen Host belongs to Bootstrap.
-
----
-
-# Router
-
-The Router owns navigation.
-
-Responsibilities:
-
-```text
-Open Screen
-
-Close Screen
-
-Back
-
-Forward
-
-Pass Navigation Payload
-```
-
-Router should not know screen internals.
-
-Router communicates with Screen Host.
-
----
-
-# Screen Structure
-
-Recommended structure:
-
-```text
-Presentation/
-└── UiToolkit/
-    └── Screens/
-        └── Inventory/
-            ├── InventoryScreen.uxml
-            ├── InventoryScreen.uss
-            ├── InventoryView.cs
-            ├── InventoryViewModel.cs
-            ├── InventoryScreenState.cs
-            └── InventoryScreenFactory.cs
-```
-
-All screen files should remain together.
-
----
-
-# Why Co-Locate Files
-
-Good:
-
-```text
-InventoryScreen/
-├── InventoryScreen.uxml
-├── InventoryScreen.uss
-├── InventoryView.cs
-├── InventoryViewModel.cs
-```
-
-Bad:
-
-```text
-UXML/
-USS/
-Views/
-ViewModels/
-```
-
-spread across the entire project.
-
-Screen ownership is more important than file type.
-
----
-
-# Component Structure
-
-Reusable UI belongs in Components.
-
-Example:
-
-```text
-Presentation/
-└── UiToolkit/
-    └── Components/
-        └── InventoryItemCard/
-            ├── InventoryItemCard.uxml
-            ├── InventoryItemCard.uss
-            ├── InventoryItemCardView.cs
-            └── InventoryItemCardViewModel.cs
-```
-
-Components should remain self-contained.
-
----
-
-# Design System
-
-Shared UI belongs to the Design System.
-
-Example:
-
-```text
-Foundation/
-└── Presentation/
-    └── UiToolkit/
-        ├── Components/
-        ├── Themes/
-        └── Styles/
-```
-
-Contains:
-
-```text
-Buttons
-
-Inputs
-
-Dropdowns
-
-Modal Windows
-
-Loading Indicators
-
-Typography
-
-Theme Definitions
-```
-
-Feature-specific UI should not be moved into the Design System.
-
----
-
-# UXML Rules
-
-UXML defines structure.
-
-Responsibilities:
-
-```text
-Hierarchy
-
-Slots
-
-Containers
-
-Controls
-```
-
-UXML should not contain business logic.
-
-Prefer readable names.
-
-Example:
-
-```xml
-<ui:Button name="equip-button" />
-```
-
-Good.
-
-Avoid:
-
-```xml
-<ui:Button name="button1" />
-```
-
----
-
-# USS Rules
-
-USS defines appearance.
-
-Responsibilities:
-
-```text
-Layout
-
-Spacing
-
-Typography
-
-Colors
-
-Animations
-```
-
-USS should not contain feature-specific logic.
-
-Prefer design tokens and shared styles where appropriate.
-
----
-
-# Naming Rules
-
-Screen:
-
-```text
-InventoryScreen
-```
-
-Files:
-
-```text
-InventoryScreen.uxml
-
-InventoryScreen.uss
-
-InventoryView.cs
-
-InventoryViewModel.cs
-
-InventoryScreenFactory.cs
-
-InventoryScreenState.cs
-```
-
-Component:
-
-```text
-InventoryItemCard
-```
-
-Files:
-
-```text
-InventoryItemCard.uxml
-
-InventoryItemCard.uss
-
-InventoryItemCardView.cs
-```
-
-Use PascalCase.
-
----
-
-# Navigation
-
-Preferred:
-
-```text
-Router
-    ↓
-ScreenHost
-    ↓
-ScreenFactory
-    ↓
-Screen
-```
-
-Avoid direct screen creation.
-
-Bad:
-
-```text
-new InventoryScreen()
-```
-
-inside arbitrary code.
-
-Navigation should be centralized.
-
----
-
-# Modal Windows
-
-Modals should be routed through a Modal Host.
-
-Examples:
-
-```text
-Confirmation Dialog
-
-Purchase Dialog
-
-Error Dialog
-```
-
-Do not instantiate modals directly.
-
-Use factories and routing.
-
----
-
-# Loading Screens
-
-Loading overlays should be centralized.
-
-Preferred:
-
-```text
-LoadingOverlayHost
-```
-
-Avoid custom loading implementations for every screen.
-
----
-
-# UI State
-
-Every screen should explicitly represent state.
-
-Preferred:
-
-```text
-Loading
-
-Loaded
-
-Empty
-
-Error
-```
-
-Avoid:
-
-```text
-Ten unrelated booleans
-```
-
-that implicitly describe state.
-
----
-
-# Async Operations
-
-UI should never block.
-
-Use:
-
-```text
-UniTask
-```
-
-or project-approved async abstractions.
-
-ViewModels should manage loading state.
-
-Views should only react to state changes.
-
----
-
-# Event Handling
-
-Preferred:
-
-```text
-Button Click
-    ↓
-View
-    ↓
-ViewModel
-    ↓
-UseCase
-```
-
-Avoid:
-
-```text
-Button Click
-    ↓
-Global Event Bus
-```
-
-UI actions should not become global events.
-
----
-
-# Scene Usage
-
-Do not create a scene for every screen.
-
-Good screen candidates:
-
-```text
-Inventory
-
-Profile
-
-Shop
-
-Settings
-```
-
-Good scene candidates:
-
-```text
-Main Menu
-
-World Map
-
-Battle
-
-Tutorial
-```
-
-UI Screens and Unity Scenes are different concepts.
-
----
-
-# Preview Scenes
-
-Complex screens may have Preview Scenes.
-
-Examples:
-
-```text
-InventoryPreview
-
-ShopPreview
-
-ProfilePreview
-```
-
-Purpose:
-
-* UI development.
-* Designer workflow.
-* Visual testing.
-
-Preview scenes may use fake services.
-
----
-
-# Testing
-
-UI should be testable.
-
-Recommended:
-
-```text
-ViewModel Tests
-
-Screen Tests
-
-Navigation Tests
-
-Factory Tests
-```
-
-Business rules should not require UI tests.
-
-Business rules belong in Domain tests.
-
----
-
-# Review Checklist
-
-Before creating a new screen ask:
-
-1. Is this a Screen or a Scene?
-2. Does it belong to a Feature?
-3. Does it have a ViewModel?
-4. Does it expose explicit state?
-5. Can it be opened through Router?
-6. Is screen creation delegated to a Factory?
-7. Are UXML and USS co-located?
-
-If any answer is no:
-
-Reconsider the design.
-
----
-
-# Summary
-
-The UI architecture follows:
-
-```text
-Router
-    ↓
-ScreenHost
-    ↓
-ScreenFactory
-    ↓
-Screen
-    ↓
-View
-    ↓
-ViewModel
-    ↓
-UseCases
-```
-
-Use this rule:
-
-```text
-Screens own UI.
-
-ViewModels own presentation state.
-
-UseCases own behavior.
-
-Domain owns business rules.
-```
+1. It belongs to Presentation.
+2. It is a screen, not a scene, unless authored Unity content is needed.
+3. View is thin and ViewModel owns presentation logic.
+4. State is explicit and testable.
+5. Navigation goes through Router and ScreenHost.

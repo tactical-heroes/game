@@ -2,887 +2,141 @@
 
 ## Purpose
 
-This document defines naming conventions used throughout the project.
+Names should reveal responsibility, feature ownership, and layer.
+Prefer consistent, boring names over clever abbreviations.
 
-The goals are:
+## General C# Rules
 
-* Consistency.
-* Discoverability.
-* Predictability.
-* Reduced cognitive load.
+| Item                        | Convention       | Example                |
+| ---                         | ---              | ---                    |
+| Classes, records, structs   | PascalCase       | `InventoryScreen`      |
+| Interfaces                  | `I` + PascalCase | `IInventoryRepository` |
+| Methods, properties, events | PascalCase       | `EquipItemAsync`       |
+| Parameters and locals       | camelCase        | `selectedHero`         |
+| Private fields              | `_camelCase`     | `_repository`          |
+| Constants                   | PascalCase       | `MaxPartySize`         |
+| Async methods               | `Async` suffix   | `LoadInventoryAsync`   |
 
-A developer should be able to determine an object's responsibility from its name.
+Avoid unexplained abbreviations and generic names such as `Manager`, `Helper`,
+`Utils`, `Data`, or `System`.
 
----
+## Feature Names
 
-# General Rules
-
-Use:
-
-```text
-PascalCase
-```
-
-for:
-
-```text
-Classes
-
-Interfaces
-
-Enums
-
-Properties
-
-Methods
-
-Namespaces
-```
-
-Examples:
-
-```text
-InventoryScreen
-
-InventoryViewModel
-
-EquipItemUseCase
-
-InventoryItemEquippedEvent
-```
-
----
-
-# Variables
-
-Use:
-
-```text
-camelCase
-```
-
-Examples:
-
-```text
-inventoryItems
-
-selectedHero
-
-currentProfile
-```
-
----
-
-# Interfaces
-
-Prefix interfaces with:
-
-```text
-I
-```
-
-Examples:
-
-```text
-IInventoryRepository
-
-IPlayerProgressStorage
-
-IAppRouter
-
-IScreenFactory
-```
-
----
-
-# Feature Names
-
-Feature names should represent business capabilities.
-
-Good:
+Feature names are business capabilities:
 
 ```text
 Inventory
-
 Shop
-
 Profile
-
-Matchmaking
-
 Battle
-
-Guilds
-
-Friends
+Matchmaking
+Quests
+Settings
 ```
 
-Bad:
+Do not name features by technical buckets such as `Managers`, `Systems`, or
+`CoreLogic`.
+
+## Layer Patterns
+
+| Concept                   | Pattern                      | Example                      |
+| ------------------------- | ---------------------------- | ---------------------------- |
+| Entity                    | Noun                         | `InventoryItem`              |
+| Value Object              | Noun | NounValue             | `ItemId`, `GoldAmount`       |
+| Domain Service            | Noun + `DomainService`       | `LootRollDomainService`      |
+| Domain Event              | PastFact + `Event`           | `InventoryItemEquippedEvent` |
+|                           |                              |                              |
+| Use Case                  | Verb + Noun + `UseCase`      | `EquipItemUseCase`           |
+|                           |                              |                              |
+| Command                   | Verb + Noun + `Command`      | `EquipItemCommand`           |
+| Query                     | Noun + `Query`               | `InventoryItemsQuery`        |
+|                           |                              |                              |
+| Request                   | Action + `Request`           | `PurchaseItemRequest`        |
+| Response                  | Action + `Response`          | `PurchaseItemResponse`       |
+|                           |                              |                              |
+| Repository Interface      | `I` + Noun + `Repository`    | `IInventoryRepository`       |
+| Repository Implementation | Source + Noun + `Repository` | `RemoteInventoryRepository`  |
+|                           |                              |                              |
+| Gateway Interface         | `I` + Noun + `Gateway`       | `IShopGateway`               |
+|                           |                              |                              |
+| Client                    | System + `Client`            | `PlayFabInventoryClient`     |
+
+## UI Patterns
+
+| Concept          | Pattern                        | Example                  |
+| ---------------- | ------------------------------ | ------------------------ |
+| Screen           | Feature/Page + `Screen`        | `InventoryScreen`        |
+| View             | Feature/Page + `View`          | `InventoryView`          |
+| ViewModel        | Feature/Page + `ViewModel`     | `InventoryViewModel`     |
+| Screen State     | Feature/Page + `ScreenState`   | `InventoryScreenState`   |
+| Screen Factory   | Feature/Page + `ScreenFactory` | `InventoryScreenFactory` |
+| Screen Route     | Feature/Page + `Route`         | `InventoryRoute`         |
+| Screen Presenter | Feature/Page + `Presenter`     | `InventoryPresenter`     |
+| Screen Installer | Feature/Page + `Installer`     | `InventoryInstaller`     |
+| UI Component     | Component + `View`             | `ItemSlotView`           |
+| UXML             | Same as View                   | `InventoryView.uxml`     |
+| USS              | Same as View                   | `InventoryView.uss`      |
+
+## Navigation And Events
+
+| Concept       | Pattern                     | Example                        |
+| ------------- | --------------------------- | ------------------------------ |
+| Route Id      | Feature.Destination         | `Inventory.ItemDetails`        |
+| Route Payload | Destination + `Route`       | `ItemDetailsRoute`             |
+|               |                             |                                |
+| Event         | CompletedFact + `Event`     | `ShopPurchaseCompletedEvent`   |
+| Handler       | Event + `Handler`           | `ShopPurchaseCompletedHandler` |
+|               |                             |                                |
+| Installer     | Feature + `ModuleInstaller` | `InventoryModuleInstaller`     |
+|               |                             |                                |
+| Entry Point   | Scene + `EntryPoint`        | `BattleSceneEntryPoint`        |
+
+## Assemblies And Namespaces
+
+Assembly names use PascalCase segments:
 
 ```text
-Managers
-
-Systems
-
-Utils
-
-CoreStuff
-```
-
----
-
-# Domain Entities
-
-Use nouns.
-
-Examples:
-
-```text
-Inventory
-
-Item
-
-Hero
-
-Guild
-
-Quest
-```
-
-Avoid:
-
-```text
-InventoryEntity
-
-HeroObject
-
-QuestModel
-```
-
-The namespace already provides context.
-
----
-
-# Value Objects
-
-Use domain language.
-
-Examples:
-
-```text
-Currency
-
-Price
-
-HeroId
-
-PlayerId
-
-GuildId
-```
-
-Avoid:
-
-```text
-CurrencyValueObject
-
-PriceVo
-```
-
----
-
-# Domain Services
-
-Use:
-
-```text
-<ServiceName>DomainService
-```
-
-Examples:
-
-```text
-MatchmakingDomainService
-
-BattleResolutionDomainService
-```
-
-Use only when behavior does not belong to an Entity or Value Object.
-
----
-
-# Domain Events
-
-Use:
-
-```text
-<EventName>DomainEvent
-```
-
-Examples:
-
-```text
-ItemEquippedDomainEvent
-
-QuestCompletedDomainEvent
-
-HeroLevelUpDomainEvent
-```
-
-Domain Events belong to Domain.
-
----
-
-# Use Cases
-
-Use:
-
-```text
-<Action><Entity>UseCase
-```
-
-Examples:
-
-```text
-EquipItemUseCase
-
-PurchaseProductUseCase
-
-CreateGuildUseCase
-
-JoinMatchUseCase
-```
-
-UseCase names should describe business actions.
-
----
-
-# Commands
-
-Use:
-
-```text
-<Action><Entity>Command
-```
-
-Examples:
-
-```text
-EquipItemCommand
-
-PurchaseProductCommand
-
-RenameGuildCommand
-```
-
-Commands describe intentions.
-
----
-
-# Queries
-
-Use:
-
-```text
-<Get><Entity>Query
-```
-
-Examples:
-
-```text
-GetInventoryItemsQuery
-
-GetGuildMembersQuery
-
-GetPlayerProfileQuery
-```
-
-Queries return data.
-
----
-
-# Request Models
-
-Use:
-
-```text
-<UseCaseName>Request
-```
-
-Examples:
-
-```text
-EquipItemRequest
-
-PurchaseProductRequest
-
-CreateGuildRequest
-```
-
----
-
-# Response Models
-
-Use:
-
-```text
-<UseCaseName>Response
-```
-
-Examples:
-
-```text
-EquipItemResponse
-
-PurchaseProductResponse
-
-CreateGuildResponse
-```
-
----
-
-# Repositories
-
-Use:
-
-```text
-I<Entity>Repository
-```
-
-Examples:
-
-```text
-IInventoryRepository
-
-IQuestRepository
-
-IGuildRepository
-```
-
-Implementations:
-
-```text
-InventoryRemoteRepository
-
-InventoryLocalRepository
-
-InventoryCachedRepository
-```
-
-Avoid:
-
-```text
-InventoryManager
-
-InventoryService
-```
-
-when repository semantics are intended.
-
----
-
-# API Clients
-
-Use:
-
-```text
-<Entity>ApiClient
-```
-
-Examples:
-
-```text
-InventoryApiClient
-
-GuildApiClient
-
-ProfileApiClient
-```
-
----
-
-# Gateways
-
-Use:
-
-```text
-<Entity>Gateway
-```
-
-Examples:
-
-```text
-PaymentsGateway
-
-AnalyticsGateway
-
-NotificationsGateway
-```
-
-Use when integrating external systems.
-
----
-
-# Screen Names
-
-Use:
-
-```text
-<Feature>Screen
-```
-
-Examples:
-
-```text
-InventoryScreen
-
-ProfileScreen
-
-ShopScreen
-```
-
----
-
-# View Names
-
-Use:
-
-```text
-<Feature>View
-```
-
-Examples:
-
-```text
-InventoryView
-
-ProfileView
-
-ShopView
-```
-
----
-
-# ViewModel Names
-
-Use:
-
-```text
-<Feature>ViewModel
-```
-
-Examples:
-
-```text
-InventoryViewModel
-
-ProfileViewModel
-
-ShopViewModel
-```
-
----
-
-# Screen State Names
-
-Use:
-
-```text
-<Feature>ScreenState
-```
-
-Examples:
-
-```text
-InventoryScreenState
-
-ProfileScreenState
-
-ShopScreenState
-```
-
----
-
-# Screen Factory Names
-
-Use:
-
-```text
-<Feature>ScreenFactory
-```
-
-Examples:
-
-```text
-InventoryScreenFactory
-
-ProfileScreenFactory
-
-ShopScreenFactory
-```
-
----
-
-# UI Components
-
-Use nouns.
-
-Examples:
-
-```text
-InventoryItemCard
-
-HeroPortrait
-
-GuildMemberRow
-
-QuestProgressBar
-```
-
----
-
-# UXML Files
-
-Use:
-
-```text
-<ScreenName>.uxml
-```
-
-Examples:
-
-```text
-InventoryScreen.uxml
-
-ProfileScreen.uxml
-```
-
-Components:
-
-```text
-InventoryItemCard.uxml
-
-HeroPortrait.uxml
-```
-
----
-
-# USS Files
-
-Use:
-
-```text
-<ScreenName>.uss
-```
-
-Examples:
-
-```text
-InventoryScreen.uss
-
-ProfileScreen.uss
-```
-
----
-
-# Routes
-
-Use destination names.
-
-Good:
-
-```text
-Inventory
-
-Profile
-
-Shop
-
-Guild
-```
-
-Bad:
-
-```text
-OpenInventory
-
-NavigateToProfile
-
-ShowShop
-```
-
-Routes identify destinations.
-
----
-
-# Events
-
-Events must use past tense.
-
-Good:
-
-```text
-InventoryItemEquippedEvent
-
-ProfileUpdatedEvent
-
-PurchaseCompletedEvent
-
-QuestCompletedEvent
-```
-
-Bad:
-
-```text
-EquipItemEvent
-
-UpdateProfileEvent
-
-CompletePurchaseEvent
-```
-
-Events describe facts.
-
----
-
-# MessagePipe Handlers
-
-Use:
-
-```text
-<EventName>Handler
-```
-
-Examples:
-
-```text
-InventoryItemEquippedHandler
-
-PurchaseCompletedHandler
-```
-
----
-
-# Installers
-
-Use:
-
-```text
-<Feature>ModuleInstaller
-```
-
-Examples:
-
-```text
-InventoryModuleInstaller
-
-ProfileModuleInstaller
-
-BattleModuleInstaller
-```
-
----
-
-# Entry Points
-
-Use:
-
-```text
-<Scene>EntryPoint
-```
-
-Examples:
-
-```text
-BattleSceneEntryPoint
-
-WorldMapSceneEntryPoint
-
-MainMenuSceneEntryPoint
-```
-
----
-
-# Assemblies
-
-Use:
-
-```text
-Company.Game.Feature.Inventory.Domain
-
 Company.Game.Feature.Inventory.Application
-
-Company.Game.Feature.Inventory.Infrastructure
-
-Company.Game.Feature.Inventory.Presentation
 ```
 
-Assembly names should match ownership.
-
----
-
-# Namespaces
-
-Use:
+Namespaces should align with assemblies:
 
 ```csharp
-namespace Company.Game.Features.Inventory.Domain
-{
-}
+namespace Company.Game.Features.Inventory.Application;
 ```
 
-Structure:
+Package names use lowercase reverse-DNS:
 
 ```text
-Company.Game.Features.<Feature>.<Layer>
+com.company.game.feature.inventory
 ```
 
-Examples:
+## Addressables
+
+Use stable, feature-oriented addresses:
 
 ```text
-Company.Game.Features.Inventory.Domain
-
-Company.Game.Features.Inventory.Application
-
-Company.Game.Features.Inventory.Infrastructure
-
-Company.Game.Features.Inventory.Presentation
+inventory/icons/sword_iron
+battle/scenes/battle_arena_01
+ui/screens/inventory
 ```
 
----
+Do not expose volatile physical folder paths as public addresses.
 
-# ScriptableObjects
+## Tests
 
-Use:
+Test names should describe behavior:
 
 ```text
-<Feature><Purpose>Asset
+EquipItem_WhenSlotIsEmpty_EquipsItem
+PurchaseItem_WhenBalanceIsLow_ReturnsError
 ```
 
-Examples:
+## Review Checklist
 
-```text
-InventoryConfigAsset
+Before introducing a name, verify:
 
-BattleBalanceAsset
-
-StartupRouteAsset
-```
-
----
-
-# Addressables
-
-Use feature-oriented paths.
-
-Good:
-
-```text
-Inventory/Icons/Sword
-
-Profile/Avatars/Knight
-
-Battle/VFX/Explosion
-```
-
-Bad:
-
-```text
-Assets1
-
-Icons2
-
-TempFolder
-```
-
----
-
-# Test Names
-
-Use:
-
-```text
-<ClassName>Tests
-```
-
-Examples:
-
-```text
-EquipItemUseCaseTests
-
-InventoryViewModelTests
-
-InventoryRepositoryTests
-```
-
-Method names:
-
-```text
-Should_Return_Error_When_Item_Not_Found
-
-Should_Equip_Item_When_Requirements_Are_Met
-```
-
----
-
-# Forbidden Names
-
-Avoid:
-
-```text
-Manager
-
-Helper
-
-Utils
-
-Common
-
-Misc
-
-Stuff
-
-Data
-
-Object
-
-EntityModel
-
-Vo
-
-DtoModel
-```
-
-These names usually hide unclear responsibilities.
-
----
-
-# Review Checklist
-
-Before naming something ask:
-
-1. Does the name describe responsibility?
-2. Does the name describe ownership?
-3. Does the name use project terminology?
-4. Would a new developer understand it?
-5. Does the name follow existing conventions?
-
-If any answer is no:
-
-Rename before committing.
-
----
-
-# Summary
-
-Use this rule:
-
-```text
-Names should describe responsibility.
-
-Names should describe ownership.
-
-Names should use business language.
-
-Avoid generic technical names.
-```
+1. The owner feature is clear.
+2. The layer or role is clear.
+3. The name is stable enough for public contracts.
+4. It avoids generic buckets and abbreviations.

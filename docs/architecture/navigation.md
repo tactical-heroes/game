@@ -2,761 +2,134 @@
 
 ## Purpose
 
-This document defines navigation architecture.
+Navigation defines how the application opens screens, modals, overlays, and
+scene-backed flows.
 
-The project uses centralized navigation.
+UI Toolkit screen implementation lives in `docs/unity/ui-toolkit.md`.
+Scene rules live in `docs/unity/scenes.md`.
 
-Navigation is owned by:
+## Core Concepts
 
-```text
-Router
-```
+* Route: stable identifier plus optional payload.
+* Router: application service that accepts navigation requests.
+* ScreenHost: presentation service that owns screen stack and modal host.
+* ScreenFactory: feature-owned factory that creates a screen and its scope.
+* SceneLoader: abstraction for Unity scene loading when a route needs a scene.
 
-UI elements do not navigate directly.
+## Screen vs Scene
 
-Screens do not create other screens.
+Use a screen for UI pages:
 
-Features do not instantiate UI manually.
+* Inventory
+* Settings
+* Profile
+* Shop
+* Pause Menu
+* Modal dialogs
 
----
+Use a Unity scene for authored runtime environments:
 
-# Navigation Goals
+* Bootstrap
+* Battle
+* World Map
+* Tutorial
+* Scene-backed Main Menu
 
-The navigation system should provide:
+Rule: if it is mostly UI, make it a screen. If it needs authored Unity objects,
+lighting, cameras, physics, or scene-local systems, make it a scene.
 
-* Predictable behavior.
-* Centralized routing.
-* Explicit navigation contracts.
-* Testable navigation logic.
-* Consistent screen lifecycle.
-* Clear separation between Screens and Scenes.
-
----
-
-# Core Concepts
-
-The navigation system consists of:
-
-```text
-Router
-
-Route
-
-ScreenHost
-
-ScreenFactory
-
-Navigation Payload
-
-Modal Host
-```
-
----
-
-# Navigation Flow
+## Navigation Flow
 
 ```text
-View
-    ↓
-ViewModel
-    ↓
-Router
-    ↓
-ScreenHost
-    ↓
-ScreenFactory
-    ↓
-Screen
+View -> ViewModel -> Router -> ScreenHost -> ScreenFactory -> Screen
 ```
 
-Only Router may initiate navigation.
+Views do not instantiate screens. ViewModels request navigation through a
+router abstraction. Router does not know screen internals.
 
----
-
-# Screen vs Scene
-
-The most important rule:
+Scene-backed flow:
 
 ```text
-Screen ≠ Scene
+ViewModel -> Router -> SceneLoader -> Scene Entry Point -> ScreenHost
 ```
 
----
+## Routes
 
-# What Is A Screen
-
-A Screen is a routed UI page.
-
-Examples:
+Route names should be stable and feature-oriented:
 
 ```text
-Inventory
-
-Shop
-
-Profile
-
-Settings
-
-Friends
-
-Guilds
+Inventory.Main
+Inventory.ItemDetails
+Shop.Main
+Battle.Loadout
+Battle.Scene
+Settings.Audio
 ```
 
-Screens live inside UI Toolkit.
+Payloads should be small and serializable when possible:
 
-Screens are managed by ScreenHost.
-
----
-
-# What Is A Scene
-
-A Scene is a Unity runtime environment.
-
-Examples:
-
-```text
-MainMenu
-
-WorldMap
-
-Battle
-
-Tutorial
+```csharp
+public readonly record struct InventoryItemDetailsRoute(ItemId ItemId);
 ```
 
-Scenes are managed by SceneManager.
+Do not pass ViewModels, Views, scene objects, or infrastructure handles as
+payload.
 
----
+## Back Stack
 
-# Decision Rule
+The Router owns navigation semantics:
 
-Ask:
+* Push opens a new screen.
+* Replace swaps the current screen.
+* Back closes the current screen when allowed.
+* Modal opens inside the modal host.
+* Overlay opens for app-level transient UI.
 
-```text
-Does this represent a game world?
-```
+Screens may expose `CanClose` or a similar guard when unsaved state exists.
 
-If yes:
+## Startup Routes
 
-```text
-Scene
-```
+Bootstrap resolves the startup route and asks the Router to open it.
+Development routes may target a screen or scene directly, but still go through
+Bootstrap.
 
-Examples:
+## Screen Lifetime
 
-```text
-Battle
+Screen lifetime starts when the route is opened and ends when the screen is
+closed. Its scope owns:
 
-WorldMap
+* ViewModel.
+* Screen state.
+* Screen-local subscriptions.
+* Screen-owned asset handles.
 
-Tutorial
-```
+## Events
 
-If no:
+Do not use global events for normal navigation. Use Router calls.
+Publishing a navigation-completed event is acceptable only when other systems
+need to observe a completed fact.
 
-```text
-Screen
-```
+## Testing
 
-Examples:
+Test routing decisions without Unity scene loading where possible.
+Use integration or runtime tests for SceneLoader and ScreenHost behavior.
 
-```text
-Inventory
-
-Shop
-
-Settings
-
-Profile
-```
-
----
-
-# Router
-
-Router owns navigation.
-
-Responsibilities:
-
-```text
-Open Screen
-
-Close Screen
-
-Replace Screen
-
-Open Scene
-
-Open Modal
-
-Navigate Back
-```
-
-Router should not know screen internals.
-
-Router should not know view internals.
-
----
-
-# ScreenHost
-
-ScreenHost owns screen lifecycle.
-
-Responsibilities:
-
-```text
-Create Screens
-
-Destroy Screens
-
-Maintain Stack
-
-Activate Screens
-
-Deactivate Screens
-```
-
-ScreenHost belongs to Bootstrap.
-
-Exactly one ScreenHost should exist.
-
----
-
-# Screen Factory
-
-Screens are created through factories.
-
-Example:
-
-```text
-InventoryScreenFactory
-
-ShopScreenFactory
-
-ProfileScreenFactory
-```
-
-Responsibilities:
-
-```text
-Create View
-
-Create ViewModel
-
-Configure Bindings
-
-Configure Lifetime
-```
-
-ScreenHost uses factories.
-
-Router never creates screens directly.
-
----
-
-# Route
-
-Navigation is performed through Routes.
-
-Examples:
-
-```text
-Inventory
-
-Shop
-
-Profile
-
-Settings
-```
-
-Routes identify destinations.
-
----
-
-# RouteId
-
-Every route has a unique identifier.
-
-Example:
-
-```text
-Inventory
-
-Profile
-
-Shop
-
-BattlePass
-```
-
-Prefer strongly typed route identifiers.
-
-Avoid string literals throughout the codebase.
-
----
-
-# Route Naming
-
-Use feature-oriented naming.
-
-Good:
-
-```text
-Inventory
-
-Profile
-
-Shop
-
-BattlePass
-```
-
-Bad:
-
-```text
-OpenInventory
-
-InventoryPage
-
-InventoryWindow
-```
-
-Routes identify destinations.
-
-Not actions.
-
----
-
-# Navigation Payload
-
-Routes may accept payloads.
-
-Example:
-
-```text
-Profile
-```
-
-Payload:
-
-```text
-PlayerId
-```
-
-Example:
-
-```text
-HeroDetails
-```
-
-Payload:
-
-```text
-HeroId
-```
-
-Payloads should be immutable.
-
----
-
-# Navigation Example
-
-```text
-Inventory
-    ↓
-Hero Details
-```
-
-Payload:
-
-```text
-HeroId
-```
-
-Router passes payload.
-
-Screen receives payload.
-
----
-
-# Back Stack
-
-Screen navigation maintains a stack.
-
-Example:
-
-```text
-MainMenu
-    ↓
-Inventory
-    ↓
-HeroDetails
-```
-
-Stack:
-
-```text
-MainMenu
-
-Inventory
-
-HeroDetails
-```
-
-Back:
-
-```text
-HeroDetails
-    ↓
-Inventory
-```
-
----
-
-# Replace Navigation
-
-Some routes should replace current routes.
-
-Example:
-
-```text
-Login
-    ↓
-MainMenu
-```
-
-After login:
-
-```text
-Back → disabled
-```
-
-Previous route is removed.
-
----
-
-# Modal Navigation
-
-Modal windows use a dedicated stack.
-
-Examples:
-
-```text
-Confirmation Dialog
-
-Purchase Dialog
-
-Error Dialog
-
-Rename Dialog
-```
-
-Modals are not screens.
-
----
-
-# Modal Host
-
-Modal Host owns modal lifecycle.
-
-Responsibilities:
-
-```text
-Create Modal
-
-Destroy Modal
-
-Manage Modal Stack
-```
-
-Separate from ScreenHost.
-
----
-
-# Overlay Navigation
-
-Overlays are temporary UI.
-
-Examples:
-
-```text
-Loading Overlay
-
-Toast
-
-Notification
-
-Achievement Popup
-```
-
-Overlays are not screens.
-
-Overlays are not modals.
-
----
-
-# Startup Route
-
-Application startup is route-driven.
-
-Example:
-
-```text
-Bootstrap
-    ↓
-Startup Route
-    ↓
-Inventory
-```
-
-or
-
-```text
-Bootstrap
-    ↓
-Startup Route
-    ↓
-MainMenu
-```
-
-This enables fast debugging.
-
----
-
-# Development Routes
-
-Development may override startup routes.
-
-Examples:
-
-```text
-Inventory
-
-Shop
-
-Battle
-```
-
-Useful for:
-
-* UI development.
-* QA.
-* Designer workflows.
-
----
-
-# Scene Navigation
-
-Scene navigation is centralized.
-
-Preferred:
-
-```text
-Router
-    ↓
-Scene Service
-    ↓
-SceneManager
-```
+## Forbidden Patterns
 
 Avoid:
 
-```text
-ViewModel
-    ↓
-SceneManager.LoadScene
-```
-
-Navigation should remain centralized.
-
----
-
-# Additive Scenes
-
-Additive scenes are allowed.
-
-Examples:
-
-```text
-WorldMap
-    ↓
-Battle
-```
-
-or
-
-```text
-WorldMap
-    ↓
-Dungeon
-```
-
-Router remains responsible.
-
----
-
-# Screen Lifetime
-
-```text
-Open Screen
-    ↓
-Create ViewModel
-    ↓
-Create View
-    ↓
-Bind
-```
-
-Close:
-
-```text
-Destroy View
-
-Dispose ViewModel
-
-Release Scope
-```
-
-Navigation owns lifecycle.
-
----
-
-# Navigation Events
-
-Navigation events may exist.
-
-Examples:
-
-```text
-ScreenOpened
-
-ScreenClosed
-
-ModalOpened
-
-ModalClosed
-```
-
-Use sparingly.
-
-Avoid building navigation around events.
-
-Router should remain primary.
-
----
-
-# Deep Linking
-
-Future support:
-
-```text
-Profile/Player123
-
-HeroDetails/Hero42
-
-Guild/Alpha
-```
-
-Routes should be designed with future deep-link support in mind.
-
----
-
-# Testing
-
-Navigation should be testable.
-
-Recommended tests:
-
-```text
-Route Resolution
-
-Back Stack
-
-Payload Passing
-
-Modal Flow
-
-Startup Routes
-```
-
-Navigation logic should not require Unity runtime.
-
----
-
-# Forbidden Patterns
-
-Avoid:
-
-```text
-ScreenManager
-
-UIManager
-
-WindowManager
-
-Global Popup Manager
-
-Static Navigation
-```
-
-with overlapping responsibilities.
-
-Use:
-
-```text
-Router
-
-ScreenHost
-
-ModalHost
-```
-
-instead.
-
----
-
-# Review Checklist
-
-Before adding navigation ask:
-
-1. Is this a Screen or a Scene?
-2. Does Router own navigation?
-3. Does ScreenHost own lifecycle?
-4. Is payload explicit?
-5. Does back navigation work?
-6. Is this a modal instead of a screen?
-7. Can this be tested?
-
-If any answer is no:
-
-Reconsider the design.
-
----
-
-# Summary
-
-Navigation follows:
-
-```text
-Router
-    ↓
-ScreenHost
-    ↓
-ScreenFactory
-    ↓
-Screen
-```
-
-Use this rule:
-
-```text
-Screens display content.
-
-Scenes host worlds.
-
-Router controls navigation.
-
-ScreenHost controls lifecycle.
-```
+* View creating screens directly.
+* ViewModel instantiating Unity scenes.
+* Route payload containing UI or infrastructure objects.
+* One Unity scene per UI page.
+* Global event bus used as a router.
+
+## Review Checklist
+
+Before adding a route, verify:
+
+1. It is named by feature and destination.
+2. Its payload is minimal and stable.
+3. It uses a screen unless a scene is actually required.
+4. Screen creation is delegated to a feature factory.
+5. Bootstrap remains the production entry point.

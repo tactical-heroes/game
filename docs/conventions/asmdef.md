@@ -1,675 +1,143 @@
-# Assembly Definitions (asmdef)
+# Assembly Definitions
 
 ## Purpose
 
-This document defines how Assembly Definitions (`.asmdef`) are organized.
+Assembly Definitions make architecture boundaries visible and enforceable.
+Use asmdefs to control compile dependencies, editor/runtime separation, and
+feature isolation.
 
-Assembly Definitions are used to:
+Dependency rules are defined in `docs/architecture/dependency-rules.md`.
 
-* Enforce architecture boundaries.
-* Reduce compilation times.
-* Make dependencies explicit.
-* Prevent accidental coupling.
-* Improve maintainability.
+## Core Principle
 
-Architecture rules must be enforced through assemblies whenever possible.
+If assembly A uses assembly B, the reference must be explicit.
+No dependency should be hidden by folder placement.
 
----
+## Strategy
 
-# Why Assembly Definitions
-
-Without asmdef files Unity compiles most project code into large shared assemblies.
-
-This creates several problems:
-
-* Slow compilation.
-* Hidden dependencies.
-* Accidental coupling.
-* Difficult architecture enforcement.
-
-Assembly Definitions solve these issues.
-
----
-
-# Core Principle
-
-Dependencies should be visible.
-
-If a dependency exists:
+Small feature:
 
 ```text
-Assembly A
-    ↓
-Assembly B
+Company.Game.Feature.Inventory
+Company.Game.Feature.Inventory.Editor
+Company.Game.Feature.Inventory.Tests.Editor
+Company.Game.Feature.Inventory.Tests.Runtime
 ```
 
-then Assembly A must explicitly reference Assembly B.
-
-Nothing should happen implicitly.
-
----
-
-# Assembly Strategy
-
-The project uses:
-
-```text
-Package
-    ↓
-Assemblies
-```
-
-Packages are ownership boundaries.
-
-Assemblies are dependency boundaries.
-
----
-
-# Small Feature Strategy
-
-For small features:
-
-```text
-Feature Package
-    ↓
-Single Runtime Assembly
-```
-
-Example:
-
-```text
-Company.Game.Feature.Settings
-```
-
-Structure:
-
-```text
-Runtime/
-Editor/
-Tests/
-```
-
-Single runtime assembly is acceptable when:
-
-* The feature is small.
-* The feature has low complexity.
-* The feature is unlikely to grow significantly.
-
----
-
-# Large Feature Strategy
-
-For large features:
-
-```text
-Contracts
-Domain
-Application
-Infrastructure
-Presentation
-Composition
-```
-
-Each layer receives its own assembly.
-
-Example:
+Large feature:
 
 ```text
 Company.Game.Feature.Inventory.Contracts
-
 Company.Game.Feature.Inventory.Domain
-
 Company.Game.Feature.Inventory.Application
-
 Company.Game.Feature.Inventory.Infrastructure
-
 Company.Game.Feature.Inventory.Presentation
-
 Company.Game.Feature.Inventory.Composition
 ```
 
-This is the preferred approach for long-lived business features.
+Start small when the feature is small. Split by layer when boundaries,
+compilation time, or team ownership justify it.
 
----
+## Layer References
 
-# Foundation Assemblies
+Allowed references for split features:
 
-Foundation should be split by responsibility.
+| Assembly | May reference |
+| --- | --- |
+| Contracts | Foundation abstractions only |
+| Domain | Foundation.Domain |
+| Application | Domain, Contracts, Foundation.Application |
+| Infrastructure | Application, Domain, Contracts, Foundation.Infrastructure, SDKs |
+| Presentation | Application, Contracts, Foundation.Presentation, Unity UI APIs |
+| Composition | Same feature layers, VContainer, MessagePipe |
 
-Recommended:
+Forbidden references:
 
-```text
-Company.Game.Foundation.Domain
+* Domain -> Unity, Application, Infrastructure, Presentation.
+* Application -> Infrastructure implementations or Presentation.
+* Presentation -> Infrastructure implementations.
+* Infrastructure -> Presentation.
+* Feature A internals -> Feature B internals.
+* Runtime assembly -> Editor assembly.
 
-Company.Game.Foundation.Application
+## Bootstrap And Foundation
 
-Company.Game.Foundation.Presentation
-
-Company.Game.Foundation.Infrastructure
-```
-
-Optional:
-
-```text
-Company.Game.Foundation.Editor
-```
-
-Avoid creating a giant Foundation assembly.
-
----
-
-# Bootstrap Assemblies
-
-Bootstrap typically contains:
+Bootstrap usually has one runtime assembly:
 
 ```text
 Company.Game.Bootstrap
 ```
 
-Optional:
+Bootstrap references feature Composition assemblies and Foundation.
+Feature assemblies must not reference Bootstrap.
+
+Foundation may be split by responsibility when it grows:
 
 ```text
-Company.Game.Bootstrap.Editor
+Company.Game.Foundation.Domain
+Company.Game.Foundation.Application
+Company.Game.Foundation.Infrastructure
+Company.Game.Foundation.Presentation
 ```
 
-Bootstrap is usually small enough for a single runtime assembly.
+Avoid a giant Foundation assembly that every feature depends on.
 
----
+## Editor Assemblies
 
-# Recommended Inventory Example
+Editor-only code lives in editor assemblies and may reference runtime
+assemblies.
 
-```text
-Company.Game.Feature.Inventory.Contracts
+Runtime code must never reference editor assemblies or `UnityEditor`.
 
-Company.Game.Feature.Inventory.Domain
+## Test Assemblies
 
-Company.Game.Feature.Inventory.Application
-
-Company.Game.Feature.Inventory.Infrastructure
-
-Company.Game.Feature.Inventory.Presentation
-
-Company.Game.Feature.Inventory.Composition
-```
-
----
-
-# Contracts Assembly
-
-Contains:
-
-```text
-Events
-DTOs
-Requests
-Responses
-Public Read Models
-```
-
-Allowed references:
-
-```text
-Foundation.Domain
-Foundation.Application
-```
-
-Should remain lightweight.
-
----
-
-# Domain Assembly
-
-Contains:
-
-```text
-Entities
-Aggregates
-ValueObjects
-DomainServices
-DomainEvents
-```
-
-Allowed references:
-
-```text
-Foundation.Domain
-```
-
-Forbidden:
-
-```text
-UnityEngine
-
-Infrastructure
-
-Presentation
-
-Application
-```
-
-Domain should compile without Unity runtime.
-
----
-
-# Application Assembly
-
-Contains:
-
-```text
-UseCases
-Commands
-Queries
-Ports
-ApplicationServices
-```
-
-Allowed references:
-
-```text
-Contracts
-
-Domain
-
-Foundation.Application
-
-Foundation.Domain
-```
-
-Forbidden:
-
-```text
-Infrastructure
-
-Presentation
-
-Unity UI
-```
-
-Application owns interfaces.
-
-Infrastructure implements them.
-
----
-
-# Infrastructure Assembly
-
-Contains:
-
-```text
-Repositories
-Backend Clients
-Analytics Adapters
-Addressables Adapters
-Persistence Adapters
-```
-
-Allowed references:
-
-```text
-Contracts
-
-Domain
-
-Application
-
-Foundation.Infrastructure
-
-Foundation.Application
-```
-
-Forbidden:
-
-```text
-Presentation
-```
-
-Infrastructure implements Application ports.
-
----
-
-# Presentation Assembly
-
-Contains:
-
-```text
-ViewModels
-Views
-Screens
-Navigation
-ScreenFactories
-UI Components
-```
-
-Allowed references:
-
-```text
-Application
-
-Contracts
-
-Foundation.Presentation
-```
-
-Forbidden:
-
-```text
-Infrastructure
-```
-
-Presentation should not know about concrete adapters.
-
----
-
-# Composition Assembly
-
-Contains:
-
-```text
-Installers
-
-Dependency Registration
-
-Module Registration
-```
-
-Allowed references:
-
-```text
-Contracts
-
-Domain
-
-Application
-
-Infrastructure
-
-Presentation
-```
-
-Composition is the only layer allowed to see everything inside the feature.
-
----
-
-# Assembly Dependency Diagram
-
-```text
-Contracts
-
-Domain
-    ↓
-
-Application
-    ↓
-
-Presentation
-
-Infrastructure
-    ↓
-
-Composition
-```
-
-More explicitly:
-
-```text
-Presentation → Application
-
-Application → Domain
-
-Infrastructure → Application
-
-Infrastructure → Domain
-
-Composition → All
-```
-
----
-
-# Cross-Feature References
-
-Allowed:
-
-```text
-Shop.Application
-    ↓
-Inventory.Contracts
-```
-
-Allowed:
-
-```text
-Achievements.Application
-    ↓
-Inventory.Contracts
-```
-
-Forbidden:
-
-```text
-Shop.Application
-    ↓
-Inventory.Application
-```
-
-Forbidden:
-
-```text
-Shop.Domain
-    ↓
-Inventory.Domain
-```
-
-Features communicate through Contracts only.
-
----
-
-# Editor Assemblies
-
-Every package may contain:
-
-```text
-Company.Game.Feature.Inventory.Editor
-```
-
-Editor assemblies contain:
-
-```text
-Inspectors
-
-Validators
-
-Import Tools
-
-Menu Items
-```
-
-Editor assemblies may reference runtime assemblies.
-
-Runtime assemblies must never reference editor assemblies.
-
----
-
-# Test Assemblies
-
-Every feature should contain:
+Use:
 
 ```text
 Company.Game.Feature.Inventory.Tests.Editor
-
 Company.Game.Feature.Inventory.Tests.Runtime
 ```
 
----
+Editor tests are preferred for pure Domain and Application tests.
+Runtime tests are for Unity lifecycle, scenes, Addressables, and Play Mode
+behavior.
 
-# Editor Test Assemblies
+## Naming
 
-Contains:
-
-```text
-Domain Tests
-
-Application Tests
-
-Editor Tool Tests
-```
-
-Allowed references:
+Assembly names use PascalCase segments:
 
 ```text
-Domain
-
-Application
-
-Contracts
-```
-
-Editor tests should be preferred whenever possible.
-
----
-
-# Runtime Test Assemblies
-
-Contains:
-
-```text
-Presentation Tests
-
-Infrastructure Tests
-
-Integration Tests
-```
-
-Allowed references:
-
-```text
-Presentation
-
-Infrastructure
-
-Composition
-```
-
-Use Runtime tests only when Unity lifecycle is required.
-
----
-
-# Assembly Naming
-
-Runtime:
-
-```text
-Company.Game.Feature.Inventory.Domain
-
 Company.Game.Feature.Inventory.Application
-
-Company.Game.Feature.Inventory.Infrastructure
-
-Company.Game.Feature.Inventory.Presentation
-
-Company.Game.Feature.Inventory.Composition
 ```
 
-Editor:
-
-```text
-Company.Game.Feature.Inventory.Editor
-```
-
-Tests:
-
-```text
-Company.Game.Feature.Inventory.Tests.Editor
-
-Company.Game.Feature.Inventory.Tests.Runtime
-```
-
-Use PascalCase.
-
-Assembly names should match namespaces.
-
----
-
-# Namespace Alignment
-
-Assembly:
-
-```text
-Company.Game.Feature.Inventory.Domain
-```
-
-Namespace:
+Namespaces should align:
 
 ```csharp
-namespace Company.Game.Features.Inventory.Domain
+namespace Company.Game.Features.Inventory.Application
 {
 }
 ```
 
-Assembly and namespace should align whenever possible.
+See `docs/conventions/naming.md` for the full naming table.
 
----
+## When To Split
 
-# When To Split Assemblies
+Split assemblies when:
 
-Create separate assemblies when:
+* A feature has real layer complexity.
+* Architecture boundaries need compiler enforcement.
+* Compile time becomes noticeable.
+* Multiple people work in the feature.
+* Editor code must be isolated.
 
-* Feature complexity grows.
-* Compilation time becomes noticeable.
-* Architecture boundaries matter.
-* Multiple developers work on the feature.
-* Long-term maintenance is expected.
+Do not create many assemblies for a tiny screen or a simple static feature.
 
----
+## Review Checklist
 
-# When NOT To Split Assemblies
+Before adding or changing an asmdef, verify:
 
-Do not create six assemblies for:
-
-```text
-Settings
-
-Credits
-
-About Screen
-
-Simple Prototype Features
-```
-
-Use a single runtime assembly.
-
-Prefer simplicity.
-
----
-
-# Assembly Review Checklist
-
-Before creating a reference ask:
-
-1. Does the dependency point inward?
-2. Can this dependency be replaced with Contracts?
-3. Can this dependency be replaced with an interface?
-4. Is Domain still independent?
-5. Is Presentation still isolated from Infrastructure?
-6. Is this dependency visible in asmdef?
-
-If any answer is no:
-
-Reconsider the design.
-
----
-
-# Summary
-
-Assemblies are architectural boundaries.
-
-Use this rule:
-
-```text
-Packages define ownership.
-
-Assemblies define dependencies.
-
-Compiler-enforced boundaries are preferred over documentation-only boundaries.
-```
-
-If architecture rules cannot be enforced through asmdef references, they will eventually be violated.
+1. References match the dependency rules.
+2. Runtime code does not reference editor code.
+3. Cross-feature references use Contracts only.
+4. Domain compiles without Unity runtime dependencies.
+5. Assembly and namespace names are aligned.

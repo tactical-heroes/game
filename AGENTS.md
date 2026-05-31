@@ -23,23 +23,18 @@ Before making architectural changes read:
 
 | Topic                 | Document                                   |
 | --------------------- | ------------------------------------------ |
-| Architecture overview | docs/architecture/architecture-overview.md |
 | Bootstrap             | docs/architecture/bootstrap.md             |
-| Composition root      | docs/architecture/composition-root.md      |
 | Dependency rules      | docs/architecture/dependency-rules.md      |
-| Modular monolith      | docs/architecture/modular-monolith.md      |
 | Navigation            | docs/architecture/navigation.md            |
 
 | Assembly definitions  | docs/conventions/asmdef.md                 |
 | Dependency injection  | docs/conventions/dependency-injection.md   |
 | Events and messaging  | docs/conventions/events.md                 |
-| Folder structure      | docs/conventions/folder-structure.md       |
 | Naming conventions    | docs/conventions/naming.md                 |
-| Package structure     | docs/conventions/packages.md               |
+| Project structure     | docs/conventions/project-structure.md      |
 | Testing               | docs/conventions/testing.md                |
 
 | Addressables          | docs/unity/addressables.md                 |
-| MVVM                  | docs/unity/mvvm.md                         |
 | Scenes                | docs/unity/scenes.md                       |
 | UI Toolkit            | docs/unity/ui-toolkit.md                   |
 
@@ -96,7 +91,7 @@ New screen:
 docs/unity/ui-toolkit.md
 
 New ViewModel:
-docs/unity/mvvm.md
+docs/unity/ui-toolkit.md
 
 New UseCase:
 docs/examples/usecase-example.md
@@ -108,13 +103,13 @@ New Event:
 docs/conventions/events.md
 
 New Package:
-docs/conventions/packages.md
+docs/conventions/project-structure.md
 
 New Scene:
 docs/unity/scenes.md
 
 New Dependency Registration:
-docs/architecture/composition-root.md
+docs/conventions/dependency-injection.md
 
 ---
 
