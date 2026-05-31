@@ -19,10 +19,10 @@ critical orchestration.
 
 ## Event Types
 
-| Type              | Location            | Scope                           |
-| ---               | ---                 | ---                             |
-| Domain Event      | Feature Domain      | Internal business fact          |
-| Contract Event    | Feature Contracts   | Cross-feature public fact       |
+| Type           | Location          | Scope                     |
+| -------------- | ----------------- | ------------------------- |
+| Domain Event   | Feature Domain    | Internal business fact    |
+| Contract Event | Feature Contracts | Cross-feature public fact |
 
 Domain entities must not publish directly to MessagePipe. Application collects
 or handles domain events and publishes contract events only when needed.

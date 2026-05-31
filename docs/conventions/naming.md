@@ -8,7 +8,7 @@ Prefer consistent, boring names over clever abbreviations.
 ## General C# Rules
 
 | Item                        | Convention       | Example                |
-| ---                         | ---              | ---                    |
+| --------------------------- | ---------------- | ---------------------- |
 | Classes, records, structs   | PascalCase       | `InventoryScreen`      |
 | Interfaces                  | `I` + PascalCase | `IInventoryRepository` |
 | Methods, properties, events | PascalCase       | `EquipItemAsync`       |
@@ -42,23 +42,17 @@ Do not name features by technical buckets such as `Managers`, `Systems`, or
 | Concept                   | Pattern                      | Example                      |
 | ------------------------- | ---------------------------- | ---------------------------- |
 | Entity                    | Noun                         | `InventoryItem`              |
-| Value Object              | Noun | NounValue             | `ItemId`, `GoldAmount`       |
+| Value Object              | Noun or NounValue            | `ItemId`, `GoldAmount`       |
 | Domain Service            | Noun + `DomainService`       | `LootRollDomainService`      |
 | Domain Event              | PastFact + `Event`           | `InventoryItemEquippedEvent` |
-|                           |                              |                              |
 | Use Case                  | Verb + Noun + `UseCase`      | `EquipItemUseCase`           |
-|                           |                              |                              |
 | Command                   | Verb + Noun + `Command`      | `EquipItemCommand`           |
 | Query                     | Noun + `Query`               | `InventoryItemsQuery`        |
-|                           |                              |                              |
 | Request                   | Action + `Request`           | `PurchaseItemRequest`        |
 | Response                  | Action + `Response`          | `PurchaseItemResponse`       |
-|                           |                              |                              |
 | Repository Interface      | `I` + Noun + `Repository`    | `IInventoryRepository`       |
 | Repository Implementation | Source + Noun + `Repository` | `RemoteInventoryRepository`  |
-|                           |                              |                              |
 | Gateway Interface         | `I` + Noun + `Gateway`       | `IShopGateway`               |
-|                           |                              |                              |
 | Client                    | System + `Client`            | `PlayFabInventoryClient`     |
 
 ## UI Patterns
@@ -83,12 +77,9 @@ Do not name features by technical buckets such as `Managers`, `Systems`, or
 | ------------- | --------------------------- | ------------------------------ |
 | Route Id      | Feature.Destination         | `Inventory.ItemDetails`        |
 | Route Payload | Destination + `Route`       | `ItemDetailsRoute`             |
-|               |                             |                                |
 | Event         | CompletedFact + `Event`     | `ShopPurchaseCompletedEvent`   |
 | Handler       | Event + `Handler`           | `ShopPurchaseCompletedHandler` |
-|               |                             |                                |
 | Installer     | Feature + `ModuleInstaller` | `InventoryModuleInstaller`     |
-|               |                             |                                |
 | Entry Point   | Scene + `EntryPoint`        | `BattleSceneEntryPoint`        |
 
 ## Assemblies And Namespaces

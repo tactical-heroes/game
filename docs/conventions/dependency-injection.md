@@ -55,11 +55,11 @@ inject only orchestration dependencies needed by the adapter.
 
 Choose the smallest lifetime that works:
 
-| Lifetime  | Use for 														|
-| --- 		| --- 															|
-| Singleton | Stateless app-wide services, configuration, stable clients 	|
-| Scoped 	| Scene services, screen ViewModels, screen state, local caches |
-| Transient | Short-lived stateless objects 								|
+| Lifetime  | Use for                                                       |
+| --------- | ------------------------------------------------------------- |
+| Singleton | Stateless app-wide services, configuration, stable clients    |
+| Scoped    | Scene services, screen ViewModels, screen state, local caches |
+| Transient | Short-lived stateless objects                                 |
 
 Do not make ViewModels, scene-local services, or screen-local resources
 application singletons.

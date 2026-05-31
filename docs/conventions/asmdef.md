@@ -42,14 +42,14 @@ compilation time, or team ownership justify it.
 
 Allowed references for split features:
 
-| Assembly | May reference |
-| --- | --- |
-| Contracts | Foundation abstractions only |
-| Domain | Foundation.Domain |
-| Application | Domain, Contracts, Foundation.Application |
-| Infrastructure | Application, Domain, Contracts, Foundation.Infrastructure, SDKs |
-| Presentation | Application, Contracts, Foundation.Presentation, Unity UI APIs |
-| Composition | Same feature layers, VContainer, MessagePipe |
+| Assembly       | May reference                                             |
+| -------------- | --------------------------------------------------------- |
+| Contracts      | Foundation abstractions only                              |
+| Domain         | Foundation.Domain                                         |
+| Application    | Domain, Contracts, Foundation.Application                 |
+| Infrastructure | Application, Domain, Contracts, Foundation.Infrastructure |
+| Presentation   | Application, Contracts, Foundation.Presentation           |
+| Composition    | Same feature layers, VContainer, MessagePipe              |
 
 Forbidden references:
 
