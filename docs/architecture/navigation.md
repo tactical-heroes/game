@@ -87,6 +87,17 @@ The Router owns navigation semantics:
 
 Screens may expose `CanClose` or a similar guard when unsaved state exists.
 
+## Transitions
+
+Screen, modal, overlay, and scene-backed transitions should be smooth.
+
+Use Router, ScreenHost, and SceneLoader as the ownership boundary for
+transitions. Views may animate visual entry and exit state, but they must not
+decide navigation flow.
+
+Use PrimeTween for UI and gameplay tweens. Transitions must preserve
+cancellation, loading, and error behavior.
+
 ## Startup Routes
 
 Bootstrap resolves the startup route and asks the Router to open it.
@@ -133,3 +144,4 @@ Before adding a route, verify:
 3. It uses a screen unless a scene is actually required.
 4. Screen creation is delegated to a feature factory.
 5. Bootstrap remains the production entry point.
+6. Transitions are smooth and owned by navigation or screen code.

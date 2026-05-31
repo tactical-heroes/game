@@ -37,6 +37,7 @@ Read when relevant:
 | Events or MessagePipe                                | docs/conventions/events.md               |
 | Naming a new type, route, assembly, package, or test | docs/conventions/naming.md               |
 | Tests or test layout                                 | docs/conventions/testing.md              |
+| UI design, Figma source, visual states               | docs/design/figma.md                     |
 | Addressables or asset loading                        | docs/unity/addressables.md               |
 | Local storage, SQLite, or secrets                    | docs/unity/storage.md                    |
 | Unity scenes, scene entry points, scene scope        | docs/unity/scenes.md                     |
@@ -53,6 +54,7 @@ Read when relevant:
 | Feature or package      | docs/conventions/project-structure.md    |
 | Event                   | docs/conventions/events.md               |
 | Scene                   | docs/unity/scenes.md                     |
+| UI design mapping       | docs/design/figma.md                     |
 | Storage                 | docs/unity/storage.md                    |
 | Dependency registration | docs/conventions/dependency-injection.md |
 | asmdef                  | docs/conventions/asmdef.md               |
