@@ -46,6 +46,7 @@
 
 # Visual Studio cache directory
 .vs/
+.vsconfig
 
 # IDE local settings
 .idea/
@@ -61,6 +62,7 @@ ExportedObj/
 *.csproj
 *.unityproj
 *.sln
+*.slnx
 *.suo
 *.tmp
 *.user

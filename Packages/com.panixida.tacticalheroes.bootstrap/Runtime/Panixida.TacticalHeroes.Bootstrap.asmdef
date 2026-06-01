@@ -1,8 +1,8 @@
 {
-  "name": "Panixida.TacticalHeroes.Feature.MainMenu",
-  "rootNamespace": "Panixida.TacticalHeroes.Features.MainMenu",
+  "name": "Panixida.TacticalHeroes.Bootstrap",
+  "rootNamespace": "Panixida.TacticalHeroes.Bootstrap",
   "references": [
-    "Panixida.TacticalHeroes.Foundation.Presentation",
+    "Panixida.TacticalHeroes.Feature.MainMenu",
     "VContainer"
   ],
   "includePlatforms": [],

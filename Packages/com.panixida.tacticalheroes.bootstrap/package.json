@@ -1,0 +1,11 @@
+{
+  "name": "com.panixida.tacticalheroes.bootstrap",
+  "displayName": "Tactical Heroes Bootstrap",
+  "version": "0.1.0",
+  "unity": "6000.0",
+  "description": "Application startup and root composition for Tactical Heroes.",
+  "dependencies": {
+    "com.panixida.tacticalheroes.feature.main-menu": "0.1.0",
+    "jp.hadashikick.vcontainer": "1.18.0"
+  }
+}
