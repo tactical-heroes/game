@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Collections.Generic;
+using Panixida.TacticalHeroes.Foundation.Presentation.Components;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -7,64 +9,130 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
     [RequireComponent(typeof(UIDocument))]
     public sealed class MainMenuView : MonoBehaviour
     {
-        const string SelectedClass = "selected";
         const string ScreenHiddenClass = "screen-hidden";
 
         [SerializeField] VisualTreeAsset _settingsViewAsset;
 
-        readonly List<Button> _menuButtons = new();
+        readonly List<GameButtonView> _menuButtons = new();
+        UIDocument _document;
+        Coroutine _bindCoroutine;
         VisualElement _menuRoot;
+        VisualElement _settingsContainer;
         VisualElement _settingsRoot;
         bool _isSettingsVisible;
+        bool _isBound;
 
         void OnEnable()
         {
-            var document = GetComponent<UIDocument>();
-            var root = document.rootVisualElement;
+            _document = GetComponent<UIDocument>();
+            _bindCoroutine = StartCoroutine(BindWhenDocumentReady());
+        }
+
+        void OnDisable()
+        {
+            if (_bindCoroutine != null)
+            {
+                StopCoroutine(_bindCoroutine);
+                _bindCoroutine = null;
+            }
+
+            Unbind();
+        }
+
+        IEnumerator BindWhenDocumentReady()
+        {
+            yield return null;
+
+            if (!isActiveAndEnabled)
+            {
+                yield break;
+            }
+
+            Bind();
+            _bindCoroutine = null;
+        }
+
+        void Bind()
+        {
+            Unbind();
+
+            var root = _document.rootVisualElement;
             _menuRoot = root.Q<VisualElement>("menu-root");
+            if (_menuRoot == null)
+            {
+                Debug.LogWarning("Main menu root was not found in UIDocument.");
+                return;
+            }
 
             CreateSettingsView(root);
 
-            SyncLayeredText(root);
+            SyncLayeredTitleText(root);
 
             _menuButtons.Clear();
-            root.Query<Button>(className: "menu-button").ForEach(_menuButtons.Add);
+            root.Query<GameButtonView>(className: "menu-button").ForEach(_menuButtons.Add);
 
             foreach (var button in _menuButtons)
             {
-                button.RegisterCallback<PointerEnterEvent>(_ => SelectButton(button));
-                button.RegisterCallback<FocusInEvent>(_ => SelectButton(button));
-                button.clicked += () => HandleMenuAction(button.name);
+                button.RegisterCallback<FocusInEvent>(OnMenuButtonFocusIn);
+                button.RegisterCallback<ClickEvent>(OnMenuButtonClicked);
             }
 
-            root.Q<Button>("discord-button")?.RegisterCallback<ClickEvent>(_ => Debug.Log("Menu action: Discord"));
-            root.Q<Button>("support-button")?.RegisterCallback<ClickEvent>(_ => Debug.Log("Menu action: Tech Support"));
-            root.Q<Button>("footer-settings-button")?.RegisterCallback<ClickEvent>(_ => ShowSettings());
+            root.Q<Button>("discord-button")?.RegisterCallback<ClickEvent>(OnDiscordClicked);
+            root.Q<Button>("support-button")?.RegisterCallback<ClickEvent>(OnSupportClicked);
+            root.Q<Button>("footer-settings-button")?.RegisterCallback<ClickEvent>(OnFooterSettingsClicked);
 
-            root.Q<Button>("settings-back-button")?.RegisterCallback<ClickEvent>(_ => ShowMenu());
-            root.Q<Button>("settings-cancel-button")?.RegisterCallback<ClickEvent>(_ => ShowMenu());
-            root.Q<Button>("settings-restore-defaults-button")?.RegisterCallback<ClickEvent>(_ => Debug.Log("Settings action: Restore Defaults"));
-            root.Q<Button>("settings-apply-button")?.RegisterCallback<ClickEvent>(_ => Debug.Log("Settings action: Apply"));
-
-            var selected = root.Q<Button>(className: SelectedClass) ?? root.Q<Button>("single-player-button");
-            if (selected != null)
-            {
-                SelectButton(selected);
-                selected.Focus();
-            }
+            root.Q<Button>("settings-back-button")?.RegisterCallback<ClickEvent>(OnSettingsBackClicked);
+            root.Q<Button>("settings-cancel-button")?.RegisterCallback<ClickEvent>(OnSettingsCancelClicked);
+            root.Q<Button>("settings-restore-defaults-button")?.RegisterCallback<ClickEvent>(OnSettingsRestoreDefaultsClicked);
+            root.Q<Button>("settings-apply-button")?.RegisterCallback<ClickEvent>(OnSettingsApplyClicked);
 
             ShowMenu();
+            _isBound = true;
+        }
+
+        void Unbind()
+        {
+            if (!_isBound || _document == null)
+            {
+                return;
+            }
+
+            var root = _document.rootVisualElement;
+            foreach (var button in _menuButtons)
+            {
+                button.UnregisterCallback<FocusInEvent>(OnMenuButtonFocusIn);
+                button.UnregisterCallback<ClickEvent>(OnMenuButtonClicked);
+            }
+
+            root.Q<Button>("discord-button")?.UnregisterCallback<ClickEvent>(OnDiscordClicked);
+            root.Q<Button>("support-button")?.UnregisterCallback<ClickEvent>(OnSupportClicked);
+            root.Q<Button>("footer-settings-button")?.UnregisterCallback<ClickEvent>(OnFooterSettingsClicked);
+
+            root.Q<Button>("settings-back-button")?.UnregisterCallback<ClickEvent>(OnSettingsBackClicked);
+            root.Q<Button>("settings-cancel-button")?.UnregisterCallback<ClickEvent>(OnSettingsCancelClicked);
+            root.Q<Button>("settings-restore-defaults-button")?.UnregisterCallback<ClickEvent>(OnSettingsRestoreDefaultsClicked);
+            root.Q<Button>("settings-apply-button")?.UnregisterCallback<ClickEvent>(OnSettingsApplyClicked);
+
+            _menuButtons.Clear();
+            _menuRoot = null;
+            _settingsContainer = null;
+            _settingsRoot = null;
+            _isSettingsVisible = false;
+            _isBound = false;
         }
 
         void CreateSettingsView(VisualElement root)
         {
-            if (_settingsViewAsset == null || root.Q<VisualElement>("settings-root") != null)
+            var existingSettingsRoot = root.Q<VisualElement>("settings-root");
+            if (_settingsViewAsset == null || existingSettingsRoot != null)
             {
-                _settingsRoot = root.Q<VisualElement>("settings-root");
+                _settingsRoot = existingSettingsRoot;
+                _settingsContainer = root.Q<VisualElement>("settings-container") ?? _settingsRoot;
                 return;
             }
 
             var settingsContainer = _settingsViewAsset.CloneTree();
+            settingsContainer.name = "settings-container";
             settingsContainer.style.position = Position.Absolute;
             settingsContainer.style.left = 0;
             settingsContainer.style.top = 0;
@@ -72,10 +140,11 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
             settingsContainer.style.bottom = 0;
             root.Add(settingsContainer);
 
+            _settingsContainer = settingsContainer;
             _settingsRoot = root.Q<VisualElement>("settings-root");
         }
 
-        static void SyncLayeredText(VisualElement root)
+        static void SyncLayeredTitleText(VisualElement root)
         {
             var title = root.Q<Label>("menu-title");
             if (title != null)
@@ -83,26 +152,76 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
                 root.Query<Label>(className: "menu-title-layer")
                     .ForEach(layer => layer.text = title.text);
             }
-
-            root.Query<VisualElement>(className: "menu-button-label-stack").ForEach(stack =>
-            {
-                var source = stack.Q<Label>(className: "menu-button-label-source");
-                if (source == null)
-                {
-                    return;
-                }
-
-                stack.Query<Label>(className: "menu-button-label-layer")
-                    .ForEach(layer => layer.text = source.text);
-            });
         }
 
-        void SelectButton(Button selectedButton)
+        void SelectButton(GameButtonView selectedButton)
         {
             foreach (var button in _menuButtons)
             {
-                button.EnableInClassList(SelectedClass, button == selectedButton);
+                button.Selected = button == selectedButton;
             }
+        }
+
+        void ClearMenuSelection()
+        {
+            foreach (var button in _menuButtons)
+            {
+                button.Selected = false;
+            }
+        }
+
+        void OnMenuButtonFocusIn(FocusInEvent evt)
+        {
+            if (evt.currentTarget is GameButtonView button)
+            {
+                SelectButton(button);
+            }
+        }
+
+        void OnMenuButtonClicked(ClickEvent evt)
+        {
+            if (evt.currentTarget is not GameButtonView button)
+            {
+                return;
+            }
+
+            SelectButton(button);
+            HandleMenuAction(button.name);
+        }
+
+        static void OnDiscordClicked(ClickEvent evt)
+        {
+            Debug.Log("Menu action: Discord");
+        }
+
+        static void OnSupportClicked(ClickEvent evt)
+        {
+            Debug.Log("Menu action: Tech Support");
+        }
+
+        void OnFooterSettingsClicked(ClickEvent evt)
+        {
+            ShowSettings();
+        }
+
+        void OnSettingsBackClicked(ClickEvent evt)
+        {
+            ShowMenu();
+        }
+
+        void OnSettingsCancelClicked(ClickEvent evt)
+        {
+            ShowMenu();
+        }
+
+        static void OnSettingsRestoreDefaultsClicked(ClickEvent evt)
+        {
+            Debug.Log("Settings action: Restore Defaults");
+        }
+
+        static void OnSettingsApplyClicked(ClickEvent evt)
+        {
+            Debug.Log("Settings action: Apply");
         }
 
         void HandleMenuAction(string buttonName)
@@ -146,6 +265,7 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
 
             _isSettingsVisible = true;
             SetScreenVisible(_menuRoot, false);
+            SetScreenVisible(_settingsContainer, true);
             SetScreenVisible(_settingsRoot, true);
             _settingsRoot.Q<Button>("settings-back-button")?.Focus();
         }
@@ -153,8 +273,10 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
         void ShowMenu()
         {
             _isSettingsVisible = false;
+            ClearMenuSelection();
             SetScreenVisible(_menuRoot, true);
             SetScreenVisible(_settingsRoot, false);
+            SetScreenVisible(_settingsContainer, false);
         }
 
         static void SetScreenVisible(VisualElement screen, bool visible)
@@ -165,6 +287,7 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
             }
 
             screen.EnableInClassList(ScreenHiddenClass, !visible);
+            screen.style.display = visible ? DisplayStyle.Flex : DisplayStyle.None;
             screen.pickingMode = visible ? PickingMode.Position : PickingMode.Ignore;
         }
     }

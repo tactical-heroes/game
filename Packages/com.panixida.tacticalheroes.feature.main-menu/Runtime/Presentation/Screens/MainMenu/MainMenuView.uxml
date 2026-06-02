@@ -1,6 +1,7 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:foundation="Panixida.TacticalHeroes.Foundation.Presentation.Components" editor-extension-mode="False">
     <Style src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Typography/Typography.uss" />
     <Style src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Components/DecorativePanel/DecorativePanel.uss" />
+    <Style src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Components/GameButton/GameButtonView.uss" />
     <Style src="MainMenuView.uss" />
     <ui:Template name="DecorativePanelChrome" src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Components/DecorativePanel/DecorativePanelChrome.uxml" />
     <ui:VisualElement name="menu-root" class="screen menu-root">
@@ -20,56 +21,11 @@
             <ui:VisualElement class="title-separator" />
             <ui:Label class="menu-subtitle" text="Forge your legend across a shattered realm" />
 
-            <ui:Button name="single-player-button" class="menu-button selected">
-                <ui:VisualElement class="button-tint" />
-                <ui:VisualElement class="button-selected-glow" />
-                <ui:VisualElement class="menu-button-label-stack">
-                    <ui:Label class="menu-button-label-layer menu-button-label-shadow typography-controls-large-button-label" text="SINGLE PLAYER" />
-                    <ui:Label class="menu-button-label-layer menu-button-label-glow typography-controls-large-button-label" text="SINGLE PLAYER" />
-                    <ui:Label class="menu-button-label-layer menu-button-label menu-button-label-source typography-controls-large-button-label" text="SINGLE PLAYER" />
-                    <ui:Label class="menu-button-label-layer menu-button-label-highlight typography-controls-large-button-label" text="SINGLE PLAYER" />
-                </ui:VisualElement>
-            </ui:Button>
-            <ui:Button name="multiplayer-button" class="menu-button">
-                <ui:VisualElement class="button-tint" />
-                <ui:VisualElement class="button-selected-glow" />
-                <ui:VisualElement class="menu-button-label-stack">
-                    <ui:Label class="menu-button-label-layer menu-button-label-shadow typography-controls-large-button-label" text="MULTIPLAYER" />
-                    <ui:Label class="menu-button-label-layer menu-button-label-glow typography-controls-large-button-label" text="MULTIPLAYER" />
-                    <ui:Label class="menu-button-label-layer menu-button-label menu-button-label-source typography-controls-large-button-label" text="MULTIPLAYER" />
-                    <ui:Label class="menu-button-label-layer menu-button-label-highlight typography-controls-large-button-label" text="MULTIPLAYER" />
-                </ui:VisualElement>
-            </ui:Button>
-            <ui:Button name="hero-creation-button" class="menu-button">
-                <ui:VisualElement class="button-tint" />
-                <ui:VisualElement class="button-selected-glow" />
-                <ui:VisualElement class="menu-button-label-stack">
-                    <ui:Label class="menu-button-label-layer menu-button-label-shadow typography-controls-large-button-label" text="HERO CREATION" />
-                    <ui:Label class="menu-button-label-layer menu-button-label-glow typography-controls-large-button-label" text="HERO CREATION" />
-                    <ui:Label class="menu-button-label-layer menu-button-label menu-button-label-source typography-controls-large-button-label" text="HERO CREATION" />
-                    <ui:Label class="menu-button-label-layer menu-button-label-highlight typography-controls-large-button-label" text="HERO CREATION" />
-                </ui:VisualElement>
-            </ui:Button>
-            <ui:Button name="settings-button" class="menu-button">
-                <ui:VisualElement class="button-tint" />
-                <ui:VisualElement class="button-selected-glow" />
-                <ui:VisualElement class="menu-button-label-stack">
-                    <ui:Label class="menu-button-label-layer menu-button-label-shadow typography-controls-large-button-label" text="SETTINGS" />
-                    <ui:Label class="menu-button-label-layer menu-button-label-glow typography-controls-large-button-label" text="SETTINGS" />
-                    <ui:Label class="menu-button-label-layer menu-button-label menu-button-label-source typography-controls-large-button-label" text="SETTINGS" />
-                    <ui:Label class="menu-button-label-layer menu-button-label-highlight typography-controls-large-button-label" text="SETTINGS" />
-                </ui:VisualElement>
-            </ui:Button>
-            <ui:Button name="exit-button" class="menu-button">
-                <ui:VisualElement class="button-tint" />
-                <ui:VisualElement class="button-selected-glow" />
-                <ui:VisualElement class="menu-button-label-stack">
-                    <ui:Label class="menu-button-label-layer menu-button-label-shadow typography-controls-large-button-label" text="EXIT" />
-                    <ui:Label class="menu-button-label-layer menu-button-label-glow typography-controls-large-button-label" text="EXIT" />
-                    <ui:Label class="menu-button-label-layer menu-button-label menu-button-label-source typography-controls-large-button-label" text="EXIT" />
-                    <ui:Label class="menu-button-label-layer menu-button-label-highlight typography-controls-large-button-label" text="EXIT" />
-                </ui:VisualElement>
-            </ui:Button>
+            <foundation:GameButtonView name="single-player-button" class="menu-button" label="SINGLE PLAYER" />
+            <foundation:GameButtonView name="multiplayer-button" class="menu-button" label="MULTIPLAYER" />
+            <foundation:GameButtonView name="hero-creation-button" class="menu-button" label="HERO CREATION" />
+            <foundation:GameButtonView name="settings-button" class="menu-button" label="SETTINGS" />
+            <foundation:GameButtonView name="exit-button" class="menu-button" label="EXIT" />
 
             <ui:VisualElement class="footer-ornament footer-ornament-left" />
             <ui:VisualElement class="footer-ornament footer-ornament-right" />

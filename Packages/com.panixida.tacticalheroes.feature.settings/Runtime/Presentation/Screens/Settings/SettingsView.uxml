@@ -1,6 +1,7 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:foundation="Panixida.TacticalHeroes.Foundation.Presentation.Components" editor-extension-mode="False">
     <Style src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Typography/Typography.uss" />
     <Style src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Components/DecorativePanel/DecorativePanel.uss" />
+    <Style src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Components/GameButton/GameButtonView.uss" />
     <Style src="SettingsView.uss" />
     <ui:Template name="DecorativePanelChrome" src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Components/DecorativePanel/DecorativePanelChrome.uxml" />
     <ui:VisualElement name="settings-root" class="screen settings-root screen-hidden">
@@ -14,10 +15,7 @@
 
         <ui:VisualElement class="settings-navigation th-panel">
             <ui:Instance template="DecorativePanelChrome" class="th-panel-chrome" />
-            <ui:Button name="settings-navigation-general-button" class="settings-navigation-button selected">
-                <ui:VisualElement class="settings-button-tint" />
-                <ui:Label class="settings-navigation-button-label" text="GENERAL" />
-            </ui:Button>
+            <foundation:GameButtonView name="settings-navigation-general-button" class="settings-navigation-button" label="GENERAL" selected="true" />
         </ui:VisualElement>
 
         <ui:VisualElement class="settings-panels">
@@ -26,7 +24,6 @@
                 <ui:Label class="settings-card-title" text="DISPLAY" />
                 <ui:VisualElement class="settings-title-rule settings-title-rule-left" />
                 <ui:VisualElement class="settings-title-rule settings-title-rule-right" />
-                <ui:VisualElement class="settings-title-jewel" />
 
                 <ui:VisualElement class="settings-row row-1">
                     <ui:VisualElement class="settings-row-icon icon-resolution" />
@@ -73,7 +70,6 @@
                 <ui:Label class="settings-card-title" text="QUALITY" />
                 <ui:VisualElement class="settings-title-rule settings-title-rule-left" />
                 <ui:VisualElement class="settings-title-rule settings-title-rule-right" />
-                <ui:VisualElement class="settings-title-jewel" />
 
                 <ui:VisualElement class="settings-row quality-row-1">
                     <ui:VisualElement class="settings-row-icon icon-quality" />
@@ -108,7 +104,6 @@
                 <ui:Label class="settings-card-title" text="AUDIO" />
                 <ui:VisualElement class="settings-title-rule settings-title-rule-left" />
                 <ui:VisualElement class="settings-title-rule settings-title-rule-right" />
-                <ui:VisualElement class="settings-title-jewel" />
 
                 <ui:VisualElement class="settings-row audio-row-1">
                     <ui:VisualElement class="settings-row-icon icon-music" />
@@ -140,7 +135,6 @@
                 <ui:Label class="settings-card-title" text="GAMEPLAY" />
                 <ui:VisualElement class="settings-title-rule settings-title-rule-left" />
                 <ui:VisualElement class="settings-title-rule settings-title-rule-right" />
-                <ui:VisualElement class="settings-title-jewel" />
 
                 <ui:VisualElement class="settings-row gameplay-row-1">
                     <ui:VisualElement class="settings-row-icon icon-language" />
@@ -163,26 +157,10 @@
         </ui:VisualElement>
 
         <ui:VisualElement class="settings-footer-actions">
-            <ui:Button name="settings-back-button" class="settings-action-button">
-                <ui:VisualElement class="settings-button-tint" />
-                <ui:VisualElement class="settings-button-glow" />
-                <ui:Label class="settings-action-button-label" text="BACK" />
-            </ui:Button>
-            <ui:Button name="settings-restore-defaults-button" class="settings-action-button">
-                <ui:VisualElement class="settings-button-tint" />
-                <ui:VisualElement class="settings-button-glow" />
-                <ui:Label class="settings-action-button-label settings-action-button-label-long" text="RESTORE DEFAULTS" />
-            </ui:Button>
-            <ui:Button name="settings-apply-button" class="settings-action-button selected">
-                <ui:VisualElement class="settings-button-tint" />
-                <ui:VisualElement class="settings-button-glow" />
-                <ui:Label class="settings-action-button-label" text="APPLY" />
-            </ui:Button>
-            <ui:Button name="settings-cancel-button" class="settings-action-button">
-                <ui:VisualElement class="settings-button-tint" />
-                <ui:VisualElement class="settings-button-glow" />
-                <ui:Label class="settings-action-button-label" text="CANCEL" />
-            </ui:Button>
+            <foundation:GameButtonView name="settings-back-button" class="settings-action-button" label="BACK" />
+            <foundation:GameButtonView name="settings-restore-defaults-button" class="settings-action-button" label="RESTORE DEFAULTS" />
+            <foundation:GameButtonView name="settings-apply-button" class="settings-action-button" label="APPLY" />
+            <foundation:GameButtonView name="settings-cancel-button" class="settings-action-button" label="CANCEL" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

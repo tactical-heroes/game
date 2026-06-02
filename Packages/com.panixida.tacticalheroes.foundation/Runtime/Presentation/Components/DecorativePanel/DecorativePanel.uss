@@ -8,6 +8,7 @@
     top: 0;
     right: 0;
     bottom: 0;
+    picking-mode: ignore;
 }
 
 .th-panel-shadow {
@@ -17,6 +18,7 @@
     right: -2px;
     bottom: -2px;
     background-color: rgba(0, 0, 0, 0.14);
+    picking-mode: ignore;
 }
 
 .th-panel-background {
@@ -26,6 +28,7 @@
     right: 0;
     bottom: 0;
     background-color: rgba(8, 6, 4, 0.88);
+    picking-mode: ignore;
 }
 
 .th-panel-border {
@@ -42,6 +45,7 @@
     border-right-color: rgba(127, 82, 32, 0.62);
     border-top-color: rgba(127, 82, 32, 0.62);
     border-bottom-color: rgba(127, 82, 32, 0.62);
+    picking-mode: ignore;
 }
 
 .th-panel-inner-border {
@@ -58,6 +62,7 @@
     border-right-color: rgba(47, 33, 20, 0.82);
     border-top-color: rgba(47, 33, 20, 0.82);
     border-bottom-color: rgba(47, 33, 20, 0.82);
+    picking-mode: ignore;
 }
 
 .th-panel-corner {
@@ -65,6 +70,7 @@
     width: 62px;
     height: 62px;
     opacity: 0.72;
+    picking-mode: ignore;
 }
 
 .th-panel-corner-top-left {
@@ -90,6 +96,7 @@
 .th-panel-corner-line {
     position: absolute;
     background-color: rgba(151, 91, 29, 0.88);
+    picking-mode: ignore;
 }
 
 .th-panel-corner-line-outer {
@@ -114,6 +121,7 @@
     height: 10px;
     background-color: rgba(179, 111, 34, 0.86);
     rotate: 45deg;
+    picking-mode: ignore;
 }
 
 .th-panel-corner-top-left .th-panel-corner-line-horizontal.th-panel-corner-line-outer {

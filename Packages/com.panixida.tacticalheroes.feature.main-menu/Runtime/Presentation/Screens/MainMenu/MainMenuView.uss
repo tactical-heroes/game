@@ -32,6 +32,7 @@
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.10);
+    picking-mode: ignore;
 }
 
 .menu-panel {
@@ -50,6 +51,7 @@
     height: 200px;
     background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/menu_logo_emblem.png");
     -unity-background-scale-mode: scale-to-fit;
+    picking-mode: ignore;
 }
 
 .menu-title-stack {
@@ -58,6 +60,7 @@
     top: 286px;
     width: 530px;
     height: 88px;
+    picking-mode: ignore;
 }
 
 .menu-title-layer {
@@ -107,6 +110,7 @@
     height: 50px;
     background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/menu_title_separator.png");
     -unity-background-scale-mode: stretch-to-fill;
+    picking-mode: ignore;
 }
 
 .menu-subtitle {
@@ -121,6 +125,7 @@
     -unity-font-style: normal;
     -unity-text-align: middle-center;
     letter-spacing: 0.6px;
+    picking-mode: ignore;
 }
 
 .menu-button {
@@ -128,82 +133,13 @@
     left: 58px;
     width: 494px;
     height: 80px;
-    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/menu_button_base.png");
-    -unity-background-scale-mode: stretch-to-fill;
-    -unity-background-image-tint-color: rgba(255, 255, 255, 0.88);
-    background-color: rgba(0, 0, 0, 0);
-    border-left-width: 0;
-    border-right-width: 0;
-    border-top-width: 0;
-    border-bottom-width: 0;
-    padding-left: 56px;
-    padding-right: 56px;
-    padding-top: 0;
-    padding-bottom: 0;
 }
 
-.button-tint {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 494px;
-    height: 80px;
-    background-color: rgba(0, 0, 0, 0.08);
-}
-
-.button-selected-glow {
-    display: none;
-    position: absolute;
-    left: 18px;
-    top: 7px;
-    width: 458px;
-    height: 66px;
-    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/menu_button_selected_glow.png");
-    -unity-background-scale-mode: stretch-to-fill;
-}
-
-.menu-button-label-stack {
-    position: absolute;
-    left: 56px;
-    top: 15px;
-    width: 382px;
-    height: 48px;
-}
-
-.menu-button-label-layer {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 382px;
-    height: 48px;
+.menu-button .th-button__label-layer {
     font-size: 28px;
     -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/CormorantGaramond-SemiBold.otf");
     -unity-font-style: normal;
-    -unity-text-align: middle-center;
     letter-spacing: 2.52px;
-}
-
-.menu-button-label-shadow {
-    top: 2px;
-    color: rgba(0, 0, 0, 0.72);
-    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.70);
-}
-
-.menu-button-label-glow {
-    display: none;
-    color: rgba(255, 148, 36, 0.28);
-    -unity-text-outline-width: 2px;
-    -unity-text-outline-color: rgba(255, 148, 36, 0.18);
-    text-shadow: 0 0 6px rgba(255, 148, 36, 0.28);
-}
-
-.menu-button-label {
-    color: #dbc79e;
-}
-
-.menu-button-label-highlight {
-    top: -1px;
-    color: rgba(255, 237, 190, 0.16);
 }
 
 #single-player-button {
@@ -226,58 +162,6 @@
     top: 758px;
 }
 
-.menu-button:hover {
-    -unity-background-image-tint-color: #ffffff;
-}
-
-.menu-button:hover .button-tint {
-    background-color: rgba(0, 0, 0, 0);
-}
-
-.menu-button:hover .button-selected-glow {
-    display: flex;
-}
-
-.menu-button:hover .menu-button-label-glow {
-    display: flex;
-}
-
-.menu-button:hover .menu-button-label {
-    color: #ffe5a8;
-}
-
-.menu-button:hover .menu-button-label-highlight {
-    color: rgba(255, 246, 208, 0.34);
-}
-
-.menu-button:active .menu-button-label {
-    color: #fff2ad;
-}
-
-.menu-button.selected {
-    -unity-background-image-tint-color: #ffffff;
-}
-
-.menu-button.selected .button-tint {
-    background-color: rgba(0, 0, 0, 0);
-}
-
-.menu-button.selected .button-selected-glow {
-    display: flex;
-}
-
-.menu-button.selected .menu-button-label-glow {
-    display: flex;
-}
-
-.menu-button.selected .menu-button-label {
-    color: #ffe5a8;
-}
-
-.menu-button.selected .menu-button-label-highlight {
-    color: rgba(255, 246, 208, 0.34);
-}
-
 .footer-ornament {
     position: absolute;
     bottom: 18px;
@@ -286,6 +170,7 @@
     background-image: url("Images/menu_footer_ornament.png");
     -unity-background-scale-mode: stretch-to-fill;
     -unity-background-image-tint-color: #ffffff;
+    picking-mode: ignore;
 }
 
 .footer-ornament-left {
@@ -309,6 +194,7 @@
     -unity-text-align: middle-center;
     letter-spacing: 0.98px;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+    picking-mode: ignore;
 }
 
 .footer-links {
