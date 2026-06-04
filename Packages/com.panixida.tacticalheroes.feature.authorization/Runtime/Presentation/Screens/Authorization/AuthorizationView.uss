@@ -1,0 +1,672 @@
+.screen {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 1;
+    translate: 0 0;
+    transition-property: opacity, translate;
+    transition-duration: 260ms;
+    transition-timing-function: ease-in-out;
+}
+
+.screen-hidden {
+    opacity: 0;
+    translate: 0 18px;
+}
+
+.authorization-root {
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+    background-color: #080705;
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/menu_background.png");
+    -unity-background-scale-mode: stretch-to-fill;
+}
+
+.auth-dark-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.10);
+}
+
+.auth-readability-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 768px;
+    height: 1080px;
+    background-color: rgba(0, 0, 0, 0.34);
+}
+
+.auth-page {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.auth-panel {
+    position: absolute;
+    right: 28px;
+    width: 610px;
+}
+
+.auth-sign-in-panel {
+    top: 26px;
+    height: 1028px;
+}
+
+.auth-create-account-panel {
+    top: 18px;
+    height: 1044px;
+}
+
+.auth-panel .th-panel-background {
+    background-color: rgba(8, 6, 4, 0.52);
+}
+
+.auth-panel .th-panel-shadow {
+    background-color: rgba(0, 0, 0, 0.18);
+}
+
+.auth-panel-vignette {
+    position: absolute;
+    left: 16px;
+    top: 16px;
+    right: 16px;
+    bottom: 16px;
+    background-color: rgba(0, 0, 0, 0.18);
+}
+
+.auth-logo {
+    position: absolute;
+    left: 205px;
+    top: 56px;
+    width: 200px;
+    height: 200px;
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/menu_logo_emblem.png");
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.auth-create-logo {
+    top: 42px;
+}
+
+.auth-title-stack {
+    position: absolute;
+    left: 40px;
+    width: 530px;
+    height: 78px;
+}
+
+.auth-sign-in-title-stack {
+    top: 244px;
+}
+
+.auth-create-title-stack {
+    top: 230px;
+}
+
+.auth-title-layer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 530px;
+    height: 70px;
+    font-size: 42px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/Cinzel-Bold.ttf");
+    -unity-font-style: normal;
+    -unity-text-align: middle-center;
+    letter-spacing: 1.68px;
+}
+
+.auth-create-title-stack .auth-title-layer {
+    font-size: 34px;
+    letter-spacing: 1.7px;
+}
+
+.auth-title-shadow {
+    left: 3px;
+    top: 6px;
+    width: 524px;
+    color: rgba(18, 7, 3, 0.90);
+}
+
+.auth-title-glow {
+    color: rgba(255, 179, 31, 0.24);
+    -unity-text-outline-width: 3px;
+    -unity-text-outline-color: rgba(255, 179, 31, 0.18);
+    text-shadow: 0 0 7px rgba(255, 179, 31, 0.24);
+}
+
+.auth-title-main {
+    color: #facc47;
+    -unity-text-outline-width: 1px;
+    -unity-text-outline-color: rgba(255, 242, 173, 0.38);
+    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.78);
+}
+
+.auth-title-highlight {
+    top: -1px;
+    color: rgba(255, 242, 173, 0.46);
+}
+
+.auth-title-separator {
+    position: absolute;
+    left: 58px;
+    width: 494px;
+    height: 50px;
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/menu_title_separator.png");
+    -unity-background-scale-mode: stretch-to-fill;
+}
+
+.auth-sign-in-title-separator {
+    top: 314px;
+}
+
+.auth-create-title-separator {
+    top: 304px;
+}
+
+.auth-subtitle {
+    position: absolute;
+    left: 58px;
+    width: 494px;
+    height: 30px;
+    color: #dbc28f;
+    font-size: 20px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/CormorantGaramond-Medium.otf");
+    -unity-font-style: normal;
+    -unity-text-align: middle-center;
+    letter-spacing: 0.6px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.58);
+}
+
+.auth-sign-in-subtitle {
+    top: 366px;
+}
+
+.auth-create-subtitle {
+    top: 350px;
+}
+
+.auth-field {
+    position: absolute;
+    left: 58px;
+    width: 494px;
+    height: 78px;
+}
+
+.auth-sign-in-email-field {
+    top: 432px;
+}
+
+.auth-sign-in-password-field {
+    top: 548px;
+}
+
+.auth-create-login-field {
+    top: 402px;
+}
+
+.auth-create-email-field {
+    top: 494px;
+}
+
+.auth-create-password-field {
+    top: 586px;
+}
+
+.auth-create-confirm-password-field {
+    top: 678px;
+}
+
+.auth-field-label {
+    position: absolute;
+    left: 4px;
+    top: 0;
+    width: 220px;
+    height: 18px;
+    color: #edad45;
+    font-size: 12px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/Cinzel-Bold.ttf");
+    -unity-font-style: normal;
+    -unity-text-align: middle-left;
+    letter-spacing: 0.72px;
+}
+
+.auth-text-input {
+    position: absolute;
+    left: 0;
+    top: 23px;
+    width: 494px;
+    height: 55px;
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/auth_input_base.png");
+    -unity-background-scale-mode: stretch-to-fill;
+    background-color: rgba(0, 0, 0, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.auth-text-input .unity-base-field__input {
+    background-color: rgba(0, 0, 0, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    color: #dbc28f;
+    font-size: 21px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/CormorantGaramond-Medium.otf");
+    -unity-font-style: normal;
+    -unity-text-align: middle-left;
+    padding-left: 38px;
+    padding-right: 58px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.auth-placeholder {
+    position: absolute;
+    left: 38px;
+    top: 35px;
+    width: 370px;
+    height: 31px;
+    color: rgba(219, 194, 143, 0.42);
+    font-size: 21px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/CormorantGaramond-Medium.otf");
+    -unity-font-style: normal;
+    -unity-text-align: middle-left;
+}
+
+.auth-placeholder-hidden {
+    display: none;
+}
+
+.auth-validation-message {
+    position: absolute;
+    left: 4px;
+    top: 80px;
+    width: 486px;
+    height: 18px;
+    color: #e87049;
+    font-size: 12px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/Inter-Medium.ttf");
+    -unity-font-style: normal;
+    -unity-text-align: middle-left;
+}
+
+.auth-eye-button {
+    position: absolute;
+    left: 438px;
+    top: 30px;
+    width: 38px;
+    height: 38px;
+    background-color: rgba(0, 0, 0, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.auth-eye-button:hover {
+    background-color: rgba(255, 180, 55, 0.08);
+}
+
+.auth-eye-button:active {
+    background-color: rgba(0, 0, 0, 0.18);
+}
+
+.auth-eye-icon {
+    position: absolute;
+    left: 5px;
+    top: 7px;
+    width: 28px;
+    height: 24px;
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/auth_eye_closed.png");
+    -unity-background-scale-mode: scale-to-fit;
+    -unity-background-image-tint-color: rgba(219, 194, 143, 0.72);
+}
+
+.auth-option-row {
+    position: absolute;
+    left: 58px;
+    width: 494px;
+    height: 38px;
+}
+
+.auth-remember-row {
+    top: 662px;
+}
+
+.auth-terms-row {
+    top: 774px;
+}
+
+.auth-checkbox {
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 26px;
+    height: 26px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgba(199, 125, 41, 0.72);
+    border-right-color: rgba(199, 125, 41, 0.72);
+    border-top-color: rgba(199, 125, 41, 0.72);
+    border-bottom-color: rgba(199, 125, 41, 0.72);
+    background-color: rgba(0, 0, 0, 0.40);
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.auth-checkbox:hover {
+    border-left-color: rgba(255, 212, 92, 0.82);
+    border-right-color: rgba(255, 212, 92, 0.82);
+    border-top-color: rgba(255, 212, 92, 0.82);
+    border-bottom-color: rgba(255, 212, 92, 0.82);
+    background-color: rgba(255, 181, 45, 0.08);
+}
+
+.auth-checkbox.auth-checkbox--selected {
+    border-left-color: rgba(255, 212, 92, 0.90);
+    border-right-color: rgba(255, 212, 92, 0.90);
+    border-top-color: rgba(255, 212, 92, 0.90);
+    border-bottom-color: rgba(255, 212, 92, 0.90);
+    background-color: rgba(237, 173, 69, 0.34);
+}
+
+.auth-option-label {
+    position: absolute;
+    left: 40px;
+    top: 0;
+    width: 260px;
+    height: 34px;
+    color: #dbc28f;
+    font-size: 20px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/CormorantGaramond-Medium.otf");
+    -unity-font-style: normal;
+    -unity-text-align: middle-left;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.72);
+}
+
+.auth-terms-label {
+    width: 440px;
+    font-size: 18px;
+}
+
+.auth-link-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 172px;
+    height: 34px;
+    color: #edad45;
+    font-size: 18px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/CormorantGaramond-Medium.otf");
+    -unity-font-style: normal;
+    -unity-text-align: middle-right;
+    background-color: rgba(0, 0, 0, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.auth-link-button:hover {
+    color: #ffd45c;
+}
+
+.auth-button {
+    position: absolute;
+    left: 58px;
+    width: 494px;
+    height: 80px;
+}
+
+.auth-button .th-button__label-layer {
+    font-size: 28px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/CormorantGaramond-SemiBold.otf");
+    -unity-font-style: normal;
+    letter-spacing: 2.52px;
+}
+
+.auth-show-create-account-button .th-button__label-layer,
+.auth-create-account-submit-button .th-button__label-layer,
+.auth-back-to-sign-in-button .th-button__label-layer {
+    font-size: 24px;
+    letter-spacing: 1.92px;
+}
+
+.auth-sign-in-submit-button {
+    top: 704px;
+}
+
+.auth-show-create-account-button {
+    top: 786px;
+}
+
+.auth-sign-in-back-button {
+    top: 868px;
+}
+
+.auth-create-account-submit-button {
+    top: 836px;
+}
+
+.auth-back-to-sign-in-button {
+    top: 918px;
+}
+
+.auth-footer-ornament {
+    position: absolute;
+    bottom: 18px;
+    width: 150px;
+    height: 18px;
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/ui_footer_ornament.png");
+    -unity-background-scale-mode: stretch-to-fill;
+}
+
+.auth-footer-ornament-left {
+    left: 104px;
+}
+
+.auth-footer-ornament-right {
+    left: 356px;
+}
+
+.auth-version-label {
+    position: absolute;
+    left: 210px;
+    bottom: 8px;
+    width: 190px;
+    height: 36px;
+    color: #dbb87a;
+    font-size: 14px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/Cinzel-Regular.ttf");
+    -unity-font-style: normal;
+    -unity-text-align: middle-center;
+    letter-spacing: 0.98px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+}
+
+.auth-footer-links {
+    position: absolute;
+    left: 50px;
+    bottom: 36px;
+    width: 190px;
+    height: 58px;
+    flex-direction: row;
+}
+
+.auth-icon-button {
+    position: absolute;
+    top: 0;
+    width: 54px;
+    height: 54px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    background-color: rgba(0, 0, 0, 0);
+    -unity-background-scale-mode: scale-to-fit;
+    -unity-background-image-tint-color: #ffffff;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.auth-icon-button:hover,
+.auth-icon-button:active,
+.auth-icon-button:focus,
+.auth-icon-button:disabled {
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.auth-icon-button:hover {
+    -unity-background-image-tint-color: #ffffff;
+}
+
+.auth-icon-button:active {
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0.82);
+}
+
+.auth-icon-button:disabled {
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0.62);
+}
+
+.auth-icon-button-overlay {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 2px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.auth-icon-button-hover-glow {
+    left: 8px;
+    top: 8px;
+    right: 8px;
+    bottom: 8px;
+    border-radius: 3px;
+    background-color: rgba(255, 184, 46, 0.11);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgba(255, 184, 56, 0.42);
+    border-right-color: rgba(255, 184, 56, 0.42);
+    border-top-color: rgba(255, 184, 56, 0.42);
+    border-bottom-color: rgba(255, 184, 56, 0.42);
+}
+
+.auth-icon-button-selected-glow {
+    left: 6px;
+    top: 6px;
+    right: 6px;
+    bottom: 6px;
+    border-radius: 3px;
+    background-color: rgba(255, 173, 41, 0.18);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgba(255, 199, 64, 0.64);
+    border-right-color: rgba(255, 199, 64, 0.64);
+    border-top-color: rgba(255, 199, 64, 0.64);
+    border-bottom-color: rgba(255, 199, 64, 0.64);
+}
+
+.auth-icon-button-active-tint {
+    background-color: rgba(0, 0, 0, 0.24);
+}
+
+.auth-icon-button-disabled-tint {
+    background-color: rgba(0, 0, 0, 0.42);
+}
+
+.auth-icon-button:hover .auth-icon-button-hover-glow {
+    display: flex;
+}
+
+.auth-icon-button:active .auth-icon-button-hover-glow {
+    display: none;
+}
+
+.auth-icon-button:active .auth-icon-button-active-tint {
+    display: flex;
+}
+
+.auth-icon-button.auth-icon-button--selected .auth-icon-button-selected-glow {
+    display: flex;
+}
+
+.auth-icon-button:disabled .auth-icon-button-hover-glow,
+.auth-icon-button:disabled .auth-icon-button-selected-glow,
+.auth-icon-button:disabled .auth-icon-button-active-tint {
+    display: none;
+}
+
+.auth-icon-button:disabled .auth-icon-button-disabled-tint {
+    display: flex;
+}
+
+.auth-icon-button-discord {
+    left: 0;
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/ui_icon_button_discord.png");
+}
+
+.auth-icon-button-support {
+    left: 68px;
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/ui_icon_button_support.png");
+}
+
+.auth-icon-button-settings {
+    left: 136px;
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/ui_icon_button_settings.png");
+}

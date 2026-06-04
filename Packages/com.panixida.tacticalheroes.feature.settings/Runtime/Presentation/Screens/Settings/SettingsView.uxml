@@ -1,7 +1,11 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:foundation="Panixida.TacticalHeroes.Foundation.Presentation.Components" editor-extension-mode="False">
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:foundation="Panixida.TacticalHeroes.Foundation.Presentation.Components" xmlns:settings="Panixida.TacticalHeroes.Features.Settings.Presentation.Components" editor-extension-mode="False">
     <Style src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Typography/Typography.uss" />
     <Style src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Components/DecorativePanel/DecorativePanel.uss" />
     <Style src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Components/GameButton/GameButtonView.uss" />
+    <Style src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Components/Dropdown/DropdownView.uss" />
+    <Style src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Components/Switch/SwitchView.uss" />
+    <Style src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Components/ProgressBar/ProgressBarView.uss" />
+    <Style src="../../Components/SettingsPercentSliderView.uss" />
     <Style src="SettingsView.uss" />
     <ui:Template name="DecorativePanelChrome" src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Components/DecorativePanel/DecorativePanelChrome.uxml" />
     <ui:VisualElement name="settings-root" class="screen settings-root screen-hidden">
@@ -28,40 +32,25 @@
                 <ui:VisualElement class="settings-row row-1">
                     <ui:VisualElement class="settings-row-icon icon-resolution" />
                     <ui:Label class="settings-row-label" text="Resolution" />
-                    <ui:Button class="settings-dropdown">
-                        <ui:Label class="settings-dropdown-value" text="1920x1080 (16:9)" />
-                        <ui:VisualElement class="settings-dropdown-arrow" />
-                    </ui:Button>
+                    <foundation:DropdownView class="settings-dropdown" value="1920x1080 (16:9)" options="1920x1080 (16:9)|2560x1440 (16:9)|1600x900 (16:9)|1280x720 (16:9)" />
                 </ui:VisualElement>
                 <ui:VisualElement class="settings-row-divider divider-1" />
                 <ui:VisualElement class="settings-row row-2">
                     <ui:VisualElement class="settings-row-icon icon-display-mode" />
                     <ui:Label class="settings-row-label" text="Display Mode" />
-                    <ui:Button class="settings-dropdown">
-                        <ui:Label class="settings-dropdown-value" text="Fullscreen" />
-                        <ui:VisualElement class="settings-dropdown-arrow" />
-                    </ui:Button>
+                    <foundation:DropdownView class="settings-dropdown" value="Fullscreen" options="Fullscreen|Borderless|Windowed" />
                 </ui:VisualElement>
                 <ui:VisualElement class="settings-row-divider divider-2" />
                 <ui:VisualElement class="settings-row row-3">
                     <ui:VisualElement class="settings-row-icon icon-frame-rate" />
                     <ui:Label class="settings-row-label" text="Max Frame Rate" />
-                    <ui:Button class="settings-dropdown">
-                        <ui:Label class="settings-dropdown-value" text="120 FPS" />
-                        <ui:VisualElement class="settings-dropdown-arrow" />
-                    </ui:Button>
+                    <foundation:DropdownView class="settings-dropdown" value="120 FPS" options="60 FPS|120 FPS|144 FPS|Unlimited" />
                 </ui:VisualElement>
                 <ui:VisualElement class="settings-row-divider divider-3" />
                 <ui:VisualElement class="settings-row row-4">
                     <ui:VisualElement class="settings-row-icon icon-brightness" />
                     <ui:Label class="settings-row-label" text="Brightness" />
-                    <ui:VisualElement class="settings-slider">
-                        <ui:VisualElement class="settings-slider-track" />
-                        <ui:VisualElement class="settings-slider-fill fill-75" />
-                        <ui:VisualElement class="settings-value-box">
-                            <ui:Label class="settings-value-text" text="75%" />
-                        </ui:VisualElement>
-                    </ui:VisualElement>
+                    <settings:SettingsPercentSliderView class="settings-slider" value="75" />
                 </ui:VisualElement>
             </ui:VisualElement>
 
@@ -74,28 +63,19 @@
                 <ui:VisualElement class="settings-row quality-row-1">
                     <ui:VisualElement class="settings-row-icon icon-quality" />
                     <ui:Label class="settings-row-label" text="Overall Quality" />
-                    <ui:Button class="settings-dropdown">
-                        <ui:Label class="settings-dropdown-value" text="High" />
-                        <ui:VisualElement class="settings-dropdown-arrow" />
-                    </ui:Button>
+                    <foundation:DropdownView class="settings-dropdown" value="High" options="Low|Medium|High|Ultra" />
                 </ui:VisualElement>
                 <ui:VisualElement class="settings-row-divider quality-divider-1" />
                 <ui:VisualElement class="settings-row quality-row-2">
                     <ui:VisualElement class="settings-row-icon icon-textures" />
                     <ui:Label class="settings-row-label" text="Textures" />
-                    <ui:Button class="settings-dropdown">
-                        <ui:Label class="settings-dropdown-value" text="High" />
-                        <ui:VisualElement class="settings-dropdown-arrow" />
-                    </ui:Button>
+                    <foundation:DropdownView class="settings-dropdown" value="High" options="Low|Medium|High|Ultra" />
                 </ui:VisualElement>
                 <ui:VisualElement class="settings-row-divider quality-divider-2" />
                 <ui:VisualElement class="settings-row quality-row-3">
                     <ui:VisualElement class="settings-row-icon icon-effects" />
                     <ui:Label class="settings-row-label" text="Effects Quality" />
-                    <ui:Button class="settings-dropdown">
-                        <ui:Label class="settings-dropdown-value" text="High" />
-                        <ui:VisualElement class="settings-dropdown-arrow" />
-                    </ui:Button>
+                    <foundation:DropdownView class="settings-dropdown" value="High" options="Low|Medium|High|Ultra" />
                 </ui:VisualElement>
             </ui:VisualElement>
 
@@ -108,25 +88,13 @@
                 <ui:VisualElement class="settings-row audio-row-1">
                     <ui:VisualElement class="settings-row-icon icon-music" />
                     <ui:Label class="settings-row-label" text="Music Volume" />
-                    <ui:VisualElement class="settings-slider">
-                        <ui:VisualElement class="settings-slider-track" />
-                        <ui:VisualElement class="settings-slider-fill fill-72" />
-                        <ui:VisualElement class="settings-value-box">
-                            <ui:Label class="settings-value-text" text="72%" />
-                        </ui:VisualElement>
-                    </ui:VisualElement>
+                    <settings:SettingsPercentSliderView class="settings-slider" value="72" />
                 </ui:VisualElement>
                 <ui:VisualElement class="settings-row-divider audio-divider-1" />
                 <ui:VisualElement class="settings-row audio-row-2">
                     <ui:VisualElement class="settings-row-icon icon-effects-volume" />
                     <ui:Label class="settings-row-label" text="Effects Volume" />
-                    <ui:VisualElement class="settings-slider">
-                        <ui:VisualElement class="settings-slider-track" />
-                        <ui:VisualElement class="settings-slider-fill fill-85" />
-                        <ui:VisualElement class="settings-value-box">
-                            <ui:Label class="settings-value-text" text="85%" />
-                        </ui:VisualElement>
-                    </ui:VisualElement>
+                    <settings:SettingsPercentSliderView class="settings-slider" value="85" />
                 </ui:VisualElement>
             </ui:VisualElement>
 
@@ -139,19 +107,13 @@
                 <ui:VisualElement class="settings-row gameplay-row-1">
                     <ui:VisualElement class="settings-row-icon icon-language" />
                     <ui:Label class="settings-row-label" text="Language" />
-                    <ui:Button class="settings-dropdown">
-                        <ui:Label class="settings-dropdown-value" text="English" />
-                        <ui:VisualElement class="settings-dropdown-arrow" />
-                    </ui:Button>
+                    <foundation:DropdownView class="settings-dropdown" value="English" options="English|German|French|Spanish" />
                 </ui:VisualElement>
                 <ui:VisualElement class="settings-row-divider gameplay-divider-1" />
                 <ui:VisualElement class="settings-row gameplay-row-2">
                     <ui:VisualElement class="settings-row-icon icon-damage" />
                     <ui:Label class="settings-row-label" text="Show Damage Numbers" />
-                    <ui:Button class="settings-toggle selected">
-                        <ui:Label class="settings-toggle-label" text="ON" />
-                        <ui:VisualElement class="settings-toggle-knob" />
-                    </ui:Button>
+                    <foundation:SwitchView class="settings-switch" value="true" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>

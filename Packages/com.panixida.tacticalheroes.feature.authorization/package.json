@@ -1,0 +1,10 @@
+{
+  "name": "com.panixida.tacticalheroes.feature.authorization",
+  "displayName": "Tactical Heroes Feature Authorization",
+  "version": "0.1.0",
+  "unity": "6000.0",
+  "description": "Authorization screens feature for Tactical Heroes.",
+  "dependencies": {
+    "com.panixida.tacticalheroes.foundation": "0.1.0"
+  }
+}

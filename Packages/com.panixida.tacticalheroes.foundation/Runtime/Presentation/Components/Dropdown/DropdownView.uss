@@ -1,0 +1,201 @@
+.th-dropdown {
+    position: relative;
+    width: 252px;
+    height: 40px;
+    min-width: 252px;
+    min-height: 40px;
+    overflow: visible;
+    background-color: rgba(0, 0, 0, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-radius: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.th-dropdown__glow {
+    display: none;
+    position: absolute;
+    left: -3px;
+    top: -3px;
+    right: -3px;
+    bottom: -3px;
+    border-radius: 4px;
+    background-color: rgba(240, 106, 26, 0.18);
+}
+
+.th-dropdown__background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 2px;
+    background-color: rgba(0, 0, 0, 0.42);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgba(199, 125, 41, 0.58);
+    border-right-color: rgba(199, 125, 41, 0.58);
+    border-top-color: rgba(199, 125, 41, 0.58);
+    border-bottom-color: rgba(199, 125, 41, 0.58);
+}
+
+.th-dropdown__top-highlight {
+    position: absolute;
+    left: 1px;
+    top: 1px;
+    right: 1px;
+    height: 1px;
+    background-color: rgba(255, 212, 92, 0.32);
+}
+
+.th-dropdown__value {
+    position: absolute;
+    left: 16px;
+    top: 4px;
+    width: 194px;
+    height: 32px;
+    color: #dbc28f;
+    font-size: 21px;
+    -unity-font-definition: url("../../Fonts/CormorantGaramond-Medium.otf");
+    -unity-text-align: middle-left;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.72);
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.th-dropdown__arrow {
+    position: absolute;
+    left: 226.8px;
+    top: 14.87px;
+    width: 14.4px;
+    height: 10.26px;
+    background-image: url("../../Images/ui_icon_arrow_down.png");
+    -unity-background-scale-mode: stretch-to-fill;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.th-dropdown__menu {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 46px;
+    width: 252px;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.84);
+    border-radius: 2px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgba(199, 125, 41, 0.78);
+    border-right-color: rgba(199, 125, 41, 0.78);
+    border-top-color: rgba(199, 125, 41, 0.78);
+    border-bottom-color: rgba(199, 125, 41, 0.78);
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 1px;
+    padding-bottom: 3px;
+}
+
+.th-dropdown__option {
+    height: 36px;
+    color: #b6925a;
+    font-size: 18px;
+    -unity-font-definition: url("../../Fonts/CormorantGaramond-Medium.otf");
+    -unity-text-align: middle-left;
+    background-color: rgba(0, 0, 0, 0);
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.th-dropdown:hover .th-dropdown__background {
+    background-color: rgba(0, 0, 0, 0.52);
+    border-left-color: rgba(199, 125, 41, 0.82);
+    border-right-color: rgba(199, 125, 41, 0.82);
+    border-top-color: rgba(199, 125, 41, 0.82);
+    border-bottom-color: rgba(199, 125, 41, 0.82);
+}
+
+.th-dropdown:hover .th-dropdown__glow {
+    display: flex;
+    background-color: rgba(240, 106, 26, 0.11);
+}
+
+.th-dropdown:focus .th-dropdown__background,
+.th-dropdown.th-dropdown--open .th-dropdown__background {
+    background-color: rgba(0, 0, 0, 0.42);
+    border-left-color: rgba(245, 195, 90, 0.95);
+    border-right-color: rgba(245, 195, 90, 0.95);
+    border-top-color: rgba(245, 195, 90, 0.95);
+    border-bottom-color: rgba(245, 195, 90, 0.95);
+}
+
+.th-dropdown:focus .th-dropdown__top-highlight,
+.th-dropdown.th-dropdown--open .th-dropdown__top-highlight {
+    background-color: rgba(255, 212, 92, 0.55);
+}
+
+.th-dropdown:focus .th-dropdown__glow,
+.th-dropdown.th-dropdown--open .th-dropdown__glow {
+    display: flex;
+    background-color: rgba(240, 106, 26, 0.17);
+}
+
+.th-dropdown.th-dropdown--open .th-dropdown__menu {
+    display: flex;
+}
+
+.th-dropdown__option:hover,
+.th-dropdown__option.th-dropdown__option--selected {
+    color: #ead199;
+    background-color: rgba(58, 27, 8, 0.72);
+}
+
+.th-dropdown:disabled .th-dropdown__background {
+    background-color: rgba(0, 0, 0, 0.22);
+    border-left-color: rgba(199, 125, 41, 0.24);
+    border-right-color: rgba(199, 125, 41, 0.24);
+    border-top-color: rgba(199, 125, 41, 0.24);
+    border-bottom-color: rgba(199, 125, 41, 0.24);
+}
+
+.th-dropdown:disabled .th-dropdown__top-highlight {
+    background-color: rgba(255, 212, 92, 0.12);
+}
+
+.th-dropdown:disabled .th-dropdown__value {
+    color: #7f6d4d;
+    text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.th-dropdown:disabled .th-dropdown__arrow {
+    opacity: 0.35;
+}
+
+.th-dropdown:disabled .th-dropdown__glow,
+.th-dropdown:disabled .th-dropdown__menu {
+    display: none;
+}

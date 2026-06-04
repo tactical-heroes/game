@@ -1,0 +1,65 @@
+.settings-percent-slider {
+    position: relative;
+    width: 390px;
+    height: 40px;
+    min-width: 390px;
+    min-height: 40px;
+}
+
+.settings-percent-slider__progress {
+    position: absolute;
+    left: 0;
+    top: 15px;
+}
+
+.settings-percent-slider__field {
+    position: absolute;
+    left: 318px;
+    top: 0;
+    width: 72px;
+    height: 40px;
+    min-width: 72px;
+    min-height: 40px;
+    background-color: rgba(0, 0, 0, 0.50);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgba(199, 125, 41, 0.58);
+    border-right-color: rgba(199, 125, 41, 0.58);
+    border-top-color: rgba(199, 125, 41, 0.58);
+    border-bottom-color: rgba(199, 125, 41, 0.58);
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.settings-percent-slider__field .unity-base-field__input,
+.settings-percent-slider__field .unity-base-text-field__input,
+.settings-percent-slider__field .unity-text-input {
+    width: 70px;
+    height: 38px;
+    color: #ffd45c;
+    font-size: 17px;
+    -unity-font-definition: url("../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/Inter-Medium.ttf");
+    -unity-text-align: middle-center;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.72);
+    background-color: rgba(0, 0, 0, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}

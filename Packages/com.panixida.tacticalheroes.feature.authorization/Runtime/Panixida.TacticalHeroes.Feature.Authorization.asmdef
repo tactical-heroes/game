@@ -1,0 +1,16 @@
+{
+  "name": "Panixida.TacticalHeroes.Feature.Authorization",
+  "rootNamespace": "Panixida.TacticalHeroes.Features.Authorization",
+  "references": [
+    "Panixida.TacticalHeroes.Foundation.Presentation"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

@@ -393,50 +393,6 @@
     top: 0;
     width: 252px;
     height: 40px;
-    background-color: rgba(0, 0, 0, 0.42);
-    border-left-width: 1px;
-    border-right-width: 1px;
-    border-top-width: 1px;
-    border-bottom-width: 1px;
-    border-left-color: rgba(199, 125, 41, 0.58);
-    border-right-color: rgba(199, 125, 41, 0.58);
-    border-top-color: rgba(199, 125, 41, 0.58);
-    border-bottom-color: rgba(199, 125, 41, 0.58);
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-}
-
-.settings-dropdown:hover {
-    border-left-color: rgba(255, 212, 92, 0.78);
-    border-right-color: rgba(255, 212, 92, 0.78);
-    border-top-color: rgba(255, 212, 92, 0.78);
-    border-bottom-color: rgba(255, 212, 92, 0.78);
-}
-
-.settings-dropdown-value {
-    position: absolute;
-    left: 16px;
-    top: 4px;
-    width: 194px;
-    height: 32px;
-    color: #dbc28f;
-    font-size: 21px;
-    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/CormorantGaramond-Medium.otf");
-    -unity-text-align: middle-left;
-    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.72);
-}
-
-.settings-dropdown-arrow {
-    position: absolute;
-    right: 11px;
-    top: 10px;
-    width: 20px;
-    height: 20px;
-    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/ui_icon_arrow_down.png");
-    -unity-background-scale-mode: scale-to-fit;
-    background-color: rgba(0, 0, 0, 0);
 }
 
 .settings-slider {
@@ -447,123 +403,12 @@
     height: 40px;
 }
 
-.settings-slider-track {
-    position: absolute;
-    left: 0;
-    top: 15px;
-    width: 300px;
-    height: 10px;
-    border-radius: 5px;
-    background-color: rgba(9, 7, 5, 0.82);
-    border-left-width: 1px;
-    border-right-width: 1px;
-    border-top-width: 1px;
-    border-bottom-width: 1px;
-    border-left-color: rgba(140, 87, 23, 0.90);
-    border-right-color: rgba(140, 87, 23, 0.90);
-    border-top-color: rgba(140, 87, 23, 0.90);
-    border-bottom-color: rgba(140, 87, 23, 0.90);
-}
-
-.settings-slider-fill {
-    position: absolute;
-    left: 1px;
-    top: 16px;
-    height: 8px;
-    border-radius: 4px;
-    background-color: #e88f21;
-    border-left-width: 1px;
-    border-right-width: 1px;
-    border-top-width: 1px;
-    border-bottom-width: 1px;
-    border-left-color: rgba(255, 196, 59, 0.85);
-    border-right-color: rgba(255, 196, 59, 0.85);
-    border-top-color: rgba(255, 196, 59, 0.85);
-    border-bottom-color: rgba(255, 196, 59, 0.85);
-}
-
-.fill-72 {
-    width: 215px;
-}
-
-.fill-75 {
-    width: 224px;
-}
-
-.fill-85 {
-    width: 253px;
-}
-
-.settings-value-box {
-    position: absolute;
-    left: 318px;
-    top: 0;
-    width: 72px;
-    height: 40px;
-    background-color: rgba(0, 0, 0, 0.50);
-    border-left-width: 1px;
-    border-right-width: 1px;
-    border-top-width: 1px;
-    border-bottom-width: 1px;
-    border-left-color: rgba(199, 125, 41, 0.58);
-    border-right-color: rgba(199, 125, 41, 0.58);
-    border-top-color: rgba(199, 125, 41, 0.58);
-    border-bottom-color: rgba(199, 125, 41, 0.58);
-}
-
-.settings-value-text {
-    width: 72px;
-    height: 40px;
-    color: #ffd45c;
-    font-size: 17px;
-    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/Inter-Medium.ttf");
-    -unity-text-align: middle-center;
-    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.72);
-}
-
-.settings-toggle {
+.settings-switch {
     position: absolute;
     left: 497px;
     top: 2px;
     width: 112px;
     height: 36px;
-    border-radius: 18px;
-    background-color: rgba(11, 8, 6, 0.90);
-    border-left-width: 1px;
-    border-right-width: 1px;
-    border-top-width: 1px;
-    border-bottom-width: 1px;
-    border-left-color: rgba(184, 110, 28, 0.95);
-    border-right-color: rgba(184, 110, 28, 0.95);
-    border-top-color: rgba(184, 110, 28, 0.95);
-    border-bottom-color: rgba(184, 110, 28, 0.95);
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-}
-
-.settings-toggle-label {
-    position: absolute;
-    left: 12px;
-    top: 0;
-    width: 52px;
-    height: 36px;
-    color: #f7b840;
-    font-size: 14px;
-    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/Inter-Medium.ttf");
-    -unity-text-align: middle-center;
-}
-
-.settings-toggle-knob {
-    position: absolute;
-    left: 81px;
-    top: 5px;
-    width: 26px;
-    height: 26px;
-    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/ui_toggle_knob.png");
-    -unity-background-scale-mode: scale-to-fit;
-    background-color: rgba(0, 0, 0, 0);
 }
 
 .settings-footer-actions {

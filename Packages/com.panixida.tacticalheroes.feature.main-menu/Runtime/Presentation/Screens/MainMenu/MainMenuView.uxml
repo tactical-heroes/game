@@ -33,9 +33,24 @@
         </ui:VisualElement>
 
         <ui:VisualElement class="footer-links">
-            <ui:Button name="discord-button" class="icon-button icon-button-discord" />
-            <ui:Button name="support-button" class="icon-button icon-button-support" />
-            <ui:Button name="footer-settings-button" class="icon-button icon-button-settings" />
+            <ui:Button name="discord-button" class="icon-button icon-button-discord">
+                <ui:VisualElement class="icon-button-overlay icon-button-hover-glow" />
+                <ui:VisualElement class="icon-button-overlay icon-button-selected-glow" />
+                <ui:VisualElement class="icon-button-overlay icon-button-active-tint" />
+                <ui:VisualElement class="icon-button-overlay icon-button-disabled-tint" />
+            </ui:Button>
+            <ui:Button name="support-button" class="icon-button icon-button-support">
+                <ui:VisualElement class="icon-button-overlay icon-button-hover-glow" />
+                <ui:VisualElement class="icon-button-overlay icon-button-selected-glow" />
+                <ui:VisualElement class="icon-button-overlay icon-button-active-tint" />
+                <ui:VisualElement class="icon-button-overlay icon-button-disabled-tint" />
+            </ui:Button>
+            <ui:Button name="footer-settings-button" class="icon-button icon-button-settings">
+                <ui:VisualElement class="icon-button-overlay icon-button-hover-glow" />
+                <ui:VisualElement class="icon-button-overlay icon-button-selected-glow" />
+                <ui:VisualElement class="icon-button-overlay icon-button-active-tint" />
+                <ui:VisualElement class="icon-button-overlay icon-button-disabled-tint" />
+            </ui:Button>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

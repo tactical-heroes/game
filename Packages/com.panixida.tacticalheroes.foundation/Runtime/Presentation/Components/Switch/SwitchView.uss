@@ -1,0 +1,155 @@
+.th-switch {
+    position: relative;
+    width: 112px;
+    height: 36px;
+    min-width: 112px;
+    min-height: 36px;
+    background-color: rgba(0, 0, 0, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-radius: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.th-switch__track {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 112px;
+    height: 36px;
+    border-radius: 18px;
+    background-color: rgba(11, 8, 6, 0.90);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgba(184, 110, 28, 0.95);
+    border-right-color: rgba(184, 110, 28, 0.95);
+    border-top-color: rgba(184, 110, 28, 0.95);
+    border-bottom-color: rgba(184, 110, 28, 0.95);
+}
+
+.th-switch__hover-glow {
+    display: none;
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    width: 108px;
+    height: 32px;
+    border-radius: 16px;
+    background-color: rgba(255, 148, 36, 0.10);
+}
+
+.th-switch__pressed-shade {
+    display: none;
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    width: 108px;
+    height: 32px;
+    border-radius: 16px;
+    background-color: rgba(0, 0, 0, 0.18);
+}
+
+.th-switch__label {
+    position: absolute;
+    left: 48px;
+    top: 0;
+    width: 52px;
+    height: 36px;
+    color: #a68d62;
+    font-size: 14px;
+    -unity-font-definition: url("../../Fonts/Inter-Medium.ttf");
+    -unity-text-align: middle-center;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.72);
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.th-switch__knob {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    width: 26px;
+    height: 26px;
+    background-image: url("../../Images/ui_toggle_knob.png");
+    -unity-background-scale-mode: stretch-to-fill;
+    -unity-background-image-tint-color: #9f6a26;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.th-switch:hover .th-switch__track {
+    border-left-color: #e28f27;
+    border-right-color: #e28f27;
+    border-top-color: #e28f27;
+    border-bottom-color: #e28f27;
+}
+
+.th-switch:hover .th-switch__hover-glow {
+    display: flex;
+}
+
+.th-switch:active .th-switch__track {
+    background-color: rgba(11, 8, 6, 0.98);
+}
+
+.th-switch:active .th-switch__pressed-shade {
+    display: flex;
+}
+
+.th-switch:active .th-switch__knob {
+    top: 4px;
+    width: 29px;
+    height: 28px;
+}
+
+.th-switch.th-switch--on .th-switch__label {
+    left: 12px;
+    color: #f7b840;
+}
+
+.th-switch.th-switch--on .th-switch__knob {
+    left: 81px;
+    background-image: url("../../Images/ui_toggle_knob_on.png");
+    -unity-background-image-tint-color: #ffffff;
+}
+
+.th-switch.th-switch--on:active .th-switch__knob {
+    left: 78px;
+}
+
+.th-switch:disabled .th-switch__track {
+    background-color: rgba(11, 8, 6, 0.42);
+    border-left-color: rgba(184, 110, 28, 0.32);
+    border-right-color: rgba(184, 110, 28, 0.32);
+    border-top-color: rgba(184, 110, 28, 0.32);
+    border-bottom-color: rgba(184, 110, 28, 0.32);
+}
+
+.th-switch:disabled .th-switch__label {
+    color: rgba(110, 95, 70, 0.58);
+}
+
+.th-switch:disabled .th-switch__knob {
+    -unity-background-image-tint-color: rgba(92, 70, 43, 0.72);
+}
+
+.th-switch:disabled .th-switch__hover-glow,
+.th-switch:disabled .th-switch__pressed-shade {
+    display: none;
+}

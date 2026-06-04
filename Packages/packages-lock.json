@@ -60,6 +60,14 @@
         "jp.hadashikick.vcontainer": "1.18.0"
       }
     },
+    "com.panixida.tacticalheroes.feature.authorization": {
+      "version": "file:com.panixida.tacticalheroes.feature.authorization",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.panixida.tacticalheroes.foundation": "0.1.0"
+      }
+    },
     "com.panixida.tacticalheroes.feature.main-menu": {
       "version": "file:com.panixida.tacticalheroes.feature.main-menu",
       "depth": 0,

@@ -1,0 +1,69 @@
+.th-progress-bar {
+    position: relative;
+    width: 300px;
+    height: 9px;
+    min-width: 300px;
+    min-height: 9px;
+    background-color: rgba(0, 0, 0, 0);
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.th-progress-bar__track {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 300px;
+    height: 9px;
+    border-radius: 4px;
+    background-color: #080604;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgba(127, 90, 36, 0.55);
+    border-right-color: rgba(127, 90, 36, 0.55);
+    border-top-color: rgba(127, 90, 36, 0.55);
+    border-bottom-color: rgba(127, 90, 36, 0.55);
+}
+
+.th-progress-bar__fill {
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    height: 5px;
+    border-radius: 3px;
+    background-image: url("../../Images/ui_progress_fill.png");
+    -unity-background-scale-mode: stretch-to-fill;
+    -unity-background-image-tint-color: #ffffff;
+    background-color: #f06a1a;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-left-color: rgba(196, 138, 43, 0.80);
+    border-right-color: rgba(255, 177, 43, 0.72);
+}
+
+.th-progress-bar:hover .th-progress-bar__fill {
+    background-color: #f47a21;
+    -unity-background-image-tint-color: #ffe0a6;
+}
+
+.th-progress-bar:active .th-progress-bar__fill {
+    background-color: #f06a1a;
+    -unity-background-image-tint-color: #ffffff;
+}
+
+.th-progress-bar:disabled .th-progress-bar__fill {
+    background-color: rgba(92, 73, 47, 0.60);
+    -unity-background-image-tint-color: rgba(92, 73, 47, 0.60);
+    border-left-color: rgba(92, 73, 47, 0.0);
+    border-right-color: rgba(92, 73, 47, 0.0);
+}
