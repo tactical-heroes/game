@@ -56,6 +56,19 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
             "settings-toggle-knob"
         };
 
+        static readonly SettingsSnapshot DefaultSettings = new(
+            "1920x1080 (16:9)",
+            "Fullscreen",
+            "120 FPS",
+            75f,
+            "High",
+            "High",
+            "High",
+            72f,
+            85f,
+            "English",
+            true);
+
         readonly List<GameButtonView> _menuButtons = new();
         UIDocument _document;
         Coroutine _bindCoroutine;
@@ -66,6 +79,18 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
         VisualElement _authorizationRoot;
         VisualElement _authSignInPage;
         VisualElement _authCreateAccountPage;
+        DropdownView _settingsResolutionDropdown;
+        DropdownView _settingsDisplayModeDropdown;
+        DropdownView _settingsFrameRateDropdown;
+        DropdownView _settingsOverallQualityDropdown;
+        DropdownView _settingsTexturesDropdown;
+        DropdownView _settingsEffectsQualityDropdown;
+        DropdownView _settingsLanguageDropdown;
+        INotifyValueChanged<float> _settingsBrightnessSlider;
+        INotifyValueChanged<float> _settingsMusicVolumeSlider;
+        INotifyValueChanged<float> _settingsEffectsVolumeSlider;
+        SwitchView _settingsShowDamageNumbersSwitch;
+        SettingsSnapshot _appliedSettings = DefaultSettings;
         bool _isSettingsVisible;
         bool _isAuthorizationVisible;
         bool _isBound;
@@ -129,7 +154,6 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
 
             foreach (var button in _menuButtons)
             {
-                button.RegisterCallback<FocusInEvent>(OnMenuButtonFocusIn);
                 button.RegisterCallback<ClickEvent>(OnMenuButtonClicked);
             }
 
@@ -160,6 +184,8 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
             root.Q<Button>("auth-create-support-button")?.RegisterCallback<ClickEvent>(OnSupportClicked);
             root.Q<Button>("auth-create-settings-button")?.RegisterCallback<ClickEvent>(OnFooterSettingsClicked);
             BindAuthTextFields(root);
+            CacheSettingsControls(root);
+            ApplySettingsToControls(_appliedSettings);
 
             ShowMenu();
             _isBound = true;
@@ -175,7 +201,6 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
             var root = _document.rootVisualElement;
             foreach (var button in _menuButtons)
             {
-                button.UnregisterCallback<FocusInEvent>(OnMenuButtonFocusIn);
                 button.UnregisterCallback<ClickEvent>(OnMenuButtonClicked);
             }
 
@@ -218,6 +243,17 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
             _authorizationRoot = null;
             _authSignInPage = null;
             _authCreateAccountPage = null;
+            _settingsResolutionDropdown = null;
+            _settingsDisplayModeDropdown = null;
+            _settingsFrameRateDropdown = null;
+            _settingsOverallQualityDropdown = null;
+            _settingsTexturesDropdown = null;
+            _settingsEffectsQualityDropdown = null;
+            _settingsLanguageDropdown = null;
+            _settingsBrightnessSlider = null;
+            _settingsMusicVolumeSlider = null;
+            _settingsEffectsVolumeSlider = null;
+            _settingsShowDamageNumbersSwitch = null;
             _isSettingsVisible = false;
             _isAuthorizationVisible = false;
             _isBound = false;
@@ -277,6 +313,81 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
             _authCreateAccountPage = _authorizationRoot?.Q<VisualElement>("auth-create-account-page");
         }
 
+        void CacheSettingsControls(VisualElement root)
+        {
+            var settingsRoot = _settingsRoot ?? root;
+            if (settingsRoot == null)
+            {
+                return;
+            }
+
+            _settingsResolutionDropdown = settingsRoot.Q<DropdownView>("settings-resolution-dropdown");
+            _settingsDisplayModeDropdown = settingsRoot.Q<DropdownView>("settings-display-mode-dropdown");
+            _settingsFrameRateDropdown = settingsRoot.Q<DropdownView>("settings-frame-rate-dropdown");
+            _settingsOverallQualityDropdown = settingsRoot.Q<DropdownView>("settings-overall-quality-dropdown");
+            _settingsTexturesDropdown = settingsRoot.Q<DropdownView>("settings-textures-dropdown");
+            _settingsEffectsQualityDropdown = settingsRoot.Q<DropdownView>("settings-effects-quality-dropdown");
+            _settingsLanguageDropdown = settingsRoot.Q<DropdownView>("settings-language-dropdown");
+            _settingsBrightnessSlider = settingsRoot.Q<VisualElement>("settings-brightness-slider") as INotifyValueChanged<float>;
+            _settingsMusicVolumeSlider = settingsRoot.Q<VisualElement>("settings-music-volume-slider") as INotifyValueChanged<float>;
+            _settingsEffectsVolumeSlider = settingsRoot.Q<VisualElement>("settings-effects-volume-slider") as INotifyValueChanged<float>;
+            _settingsShowDamageNumbersSwitch = settingsRoot.Q<SwitchView>("settings-show-damage-numbers-switch");
+        }
+
+        SettingsSnapshot CaptureSettingsFromControls()
+        {
+            return new SettingsSnapshot(
+                GetDropdownValue(_settingsResolutionDropdown, DefaultSettings.Resolution),
+                GetDropdownValue(_settingsDisplayModeDropdown, DefaultSettings.DisplayMode),
+                GetDropdownValue(_settingsFrameRateDropdown, DefaultSettings.FrameRate),
+                GetPercentValue(_settingsBrightnessSlider, DefaultSettings.Brightness),
+                GetDropdownValue(_settingsOverallQualityDropdown, DefaultSettings.OverallQuality),
+                GetDropdownValue(_settingsTexturesDropdown, DefaultSettings.Textures),
+                GetDropdownValue(_settingsEffectsQualityDropdown, DefaultSettings.EffectsQuality),
+                GetPercentValue(_settingsMusicVolumeSlider, DefaultSettings.MusicVolume),
+                GetPercentValue(_settingsEffectsVolumeSlider, DefaultSettings.EffectsVolume),
+                GetDropdownValue(_settingsLanguageDropdown, DefaultSettings.Language),
+                _settingsShowDamageNumbersSwitch?.value ?? DefaultSettings.ShowDamageNumbers);
+        }
+
+        void ApplySettingsToControls(SettingsSnapshot settings)
+        {
+            SetDropdownValue(_settingsResolutionDropdown, settings.Resolution);
+            SetDropdownValue(_settingsDisplayModeDropdown, settings.DisplayMode);
+            SetDropdownValue(_settingsFrameRateDropdown, settings.FrameRate);
+            SetPercentValue(_settingsBrightnessSlider, settings.Brightness);
+            SetDropdownValue(_settingsOverallQualityDropdown, settings.OverallQuality);
+            SetDropdownValue(_settingsTexturesDropdown, settings.Textures);
+            SetDropdownValue(_settingsEffectsQualityDropdown, settings.EffectsQuality);
+            SetPercentValue(_settingsMusicVolumeSlider, settings.MusicVolume);
+            SetPercentValue(_settingsEffectsVolumeSlider, settings.EffectsVolume);
+            SetDropdownValue(_settingsLanguageDropdown, settings.Language);
+            _settingsShowDamageNumbersSwitch?.SetValueWithoutNotify(settings.ShowDamageNumbers);
+        }
+
+        static string GetDropdownValue(DropdownView dropdown, string fallback)
+        {
+            return dropdown == null || string.IsNullOrEmpty(dropdown.Value) ? fallback : dropdown.Value;
+        }
+
+        static void SetDropdownValue(DropdownView dropdown, string value)
+        {
+            if (dropdown != null)
+            {
+                dropdown.Value = value;
+            }
+        }
+
+        static float GetPercentValue(INotifyValueChanged<float> control, float fallback)
+        {
+            return control?.value ?? fallback;
+        }
+
+        static void SetPercentValue(INotifyValueChanged<float> control, float value)
+        {
+            control?.SetValueWithoutNotify(value);
+        }
+
         static void BindAuthTextFields(VisualElement root)
         {
             root.Query<TextField>(className: "auth-text-input").ForEach(textField =>
@@ -314,27 +425,11 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
             }
         }
 
-        void SelectButton(GameButtonView selectedButton)
-        {
-            foreach (var button in _menuButtons)
-            {
-                button.Selected = button == selectedButton;
-            }
-        }
-
         void ClearMenuSelection()
         {
             foreach (var button in _menuButtons)
             {
                 button.Selected = false;
-            }
-        }
-
-        void OnMenuButtonFocusIn(FocusInEvent evt)
-        {
-            if (evt.currentTarget is GameButtonView button)
-            {
-                SelectButton(button);
             }
         }
 
@@ -345,7 +440,7 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
                 return;
             }
 
-            SelectButton(button);
+            ClearMenuSelection();
             HandleMenuAction(button.name);
         }
 
@@ -371,16 +466,18 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
 
         void OnSettingsCancelClicked(ClickEvent evt)
         {
-            ShowMenu();
+            ApplySettingsToControls(_appliedSettings);
         }
 
-        static void OnSettingsRestoreDefaultsClicked(ClickEvent evt)
+        void OnSettingsRestoreDefaultsClicked(ClickEvent evt)
         {
+            ApplySettingsToControls(DefaultSettings);
             Debug.Log("Settings action: Restore Defaults");
         }
 
-        static void OnSettingsApplyClicked(ClickEvent evt)
+        void OnSettingsApplyClicked(ClickEvent evt)
         {
+            _appliedSettings = CaptureSettingsFromControls();
             Debug.Log("Settings action: Apply");
         }
 
@@ -496,6 +593,7 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
 
             _isSettingsVisible = true;
             _isAuthorizationVisible = false;
+            ApplySettingsToControls(_appliedSettings);
             SetScreenVisible(_menuRoot, false);
             SetScreenVisible(_authorizationRoot, false);
             SetScreenVisible(_authorizationContainer, false);
@@ -553,6 +651,47 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
             SetScreenVisible(_settingsContainer, false);
             SetScreenVisible(_authorizationRoot, false);
             SetScreenVisible(_authorizationContainer, false);
+        }
+
+        readonly struct SettingsSnapshot
+        {
+            public readonly string Resolution;
+            public readonly string DisplayMode;
+            public readonly string FrameRate;
+            public readonly float Brightness;
+            public readonly string OverallQuality;
+            public readonly string Textures;
+            public readonly string EffectsQuality;
+            public readonly float MusicVolume;
+            public readonly float EffectsVolume;
+            public readonly string Language;
+            public readonly bool ShowDamageNumbers;
+
+            public SettingsSnapshot(
+                string resolution,
+                string displayMode,
+                string frameRate,
+                float brightness,
+                string overallQuality,
+                string textures,
+                string effectsQuality,
+                float musicVolume,
+                float effectsVolume,
+                string language,
+                bool showDamageNumbers)
+            {
+                Resolution = resolution;
+                DisplayMode = displayMode;
+                FrameRate = frameRate;
+                Brightness = brightness;
+                OverallQuality = overallQuality;
+                Textures = textures;
+                EffectsQuality = effectsQuality;
+                MusicVolume = musicVolume;
+                EffectsVolume = effectsVolume;
+                Language = language;
+                ShowDamageNumbers = showDamageNumbers;
+            }
         }
 
         static void SetScreenVisible(VisualElement screen, bool visible)

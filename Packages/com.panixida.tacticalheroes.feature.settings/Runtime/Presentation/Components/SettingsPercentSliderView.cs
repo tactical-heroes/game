@@ -100,10 +100,11 @@ namespace Panixida.TacticalHeroes.Features.Settings.Presentation.Components
 
             if (!TryParsePercent(evt.newValue, out var parsedValue))
             {
+                UpdateFieldText();
                 return;
             }
 
-            SetValue(parsedValue, true, false);
+            SetValue(parsedValue, true, true);
         }
 
         void UpdateFieldText()

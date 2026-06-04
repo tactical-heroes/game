@@ -87,10 +87,16 @@
     top: 5px;
     width: 26px;
     height: 26px;
-    background-image: url("../../Images/ui_toggle_knob.png");
-    -unity-background-scale-mode: stretch-to-fill;
-    -unity-background-image-tint-color: #9f6a26;
-    background-color: rgba(0, 0, 0, 0);
+    border-radius: 13px;
+    background-color: #7a5120;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: #b66e1c;
+    border-right-color: #5d3d1a;
+    border-top-color: #b66e1c;
+    border-bottom-color: #5d3d1a;
 }
 
 .th-switch:hover .th-switch__track {
@@ -116,6 +122,7 @@
     top: 4px;
     width: 29px;
     height: 28px;
+    border-radius: 14px;
 }
 
 .th-switch.th-switch--on .th-switch__label {
@@ -125,8 +132,11 @@
 
 .th-switch.th-switch--on .th-switch__knob {
     left: 81px;
-    background-image: url("../../Images/ui_toggle_knob_on.png");
-    -unity-background-image-tint-color: #ffffff;
+    background-color: #f7b840;
+    border-left-color: #ffe18a;
+    border-right-color: #b8731f;
+    border-top-color: #ffe18a;
+    border-bottom-color: #b8731f;
 }
 
 .th-switch.th-switch--on:active .th-switch__knob {
@@ -146,7 +156,11 @@
 }
 
 .th-switch:disabled .th-switch__knob {
-    -unity-background-image-tint-color: rgba(92, 70, 43, 0.72);
+    background-color: rgba(92, 70, 43, 0.72);
+    border-left-color: rgba(117, 86, 50, 0.52);
+    border-right-color: rgba(55, 40, 26, 0.58);
+    border-top-color: rgba(117, 86, 50, 0.52);
+    border-bottom-color: rgba(55, 40, 26, 0.58);
 }
 
 .th-switch:disabled .th-switch__hover-glow,

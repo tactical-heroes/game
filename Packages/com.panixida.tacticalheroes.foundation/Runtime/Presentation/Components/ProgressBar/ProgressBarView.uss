@@ -39,31 +39,25 @@
     top: 2px;
     height: 5px;
     border-radius: 3px;
-    background-image: url("../../Images/ui_progress_fill.png");
-    -unity-background-scale-mode: stretch-to-fill;
-    -unity-background-image-tint-color: #ffffff;
     background-color: #f06a1a;
-    border-left-width: 1px;
+    border-left-width: 2px;
     border-right-width: 1px;
     border-top-width: 0;
     border-bottom-width: 0;
-    border-left-color: rgba(196, 138, 43, 0.80);
+    border-left-color: #c48a2b;
     border-right-color: rgba(255, 177, 43, 0.72);
 }
 
 .th-progress-bar:hover .th-progress-bar__fill {
     background-color: #f47a21;
-    -unity-background-image-tint-color: #ffe0a6;
 }
 
 .th-progress-bar:active .th-progress-bar__fill {
     background-color: #f06a1a;
-    -unity-background-image-tint-color: #ffffff;
 }
 
 .th-progress-bar:disabled .th-progress-bar__fill {
     background-color: rgba(92, 73, 47, 0.60);
-    -unity-background-image-tint-color: rgba(92, 73, 47, 0.60);
     border-left-color: rgba(92, 73, 47, 0.0);
     border-right-color: rgba(92, 73, 47, 0.0);
 }

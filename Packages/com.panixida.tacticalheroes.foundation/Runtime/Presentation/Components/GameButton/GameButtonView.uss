@@ -33,15 +33,15 @@
 .th-button__glow {
     display: none;
     position: absolute;
-    left: 18px;
-    top: 7px;
-    right: 18px;
-    bottom: 7px;
-    background-image: url("../../Images/menu_button_selected_glow.png");
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("../../Images/menu_button_base.png");
     -unity-background-scale-mode: stretch-to-fill;
+    -unity-background-image-tint-color: #d07f2a;
     background-color: rgba(0, 0, 0, 0);
-    border-radius: 8px;
-    opacity: 1;
+    opacity: 0.62;
 }
 
 .th-button__pressed-shade {
@@ -114,9 +114,8 @@
 
 .th-button:hover .th-button__glow {
     display: flex;
-    background-image: url("../../Images/menu_button_selected_glow.png");
-    background-color: rgba(0, 0, 0, 0);
-    opacity: 0.58;
+    -unity-background-image-tint-color: #d8882f;
+    opacity: 0.54;
 }
 
 .th-button:hover .th-button__label-glow {
@@ -139,12 +138,14 @@
     background-color: rgba(0, 0, 0, 0.20);
 }
 
-.th-button:active .th-button__glow {
-    display: none;
-}
-
 .th-button:active .th-button__pressed-shade {
     display: flex;
+}
+
+.th-button:active .th-button__glow {
+    display: flex;
+    -unity-background-image-tint-color: #a65e1d;
+    opacity: 0.34;
 }
 
 .th-button:active .th-button__label-stack {
@@ -161,7 +162,7 @@
 }
 
 .th-button.th-button--selected {
-    -unity-background-image-tint-color: #ffffff;
+    -unity-background-image-tint-color: #ffd08a;
 }
 
 .th-button.th-button--selected .th-button__tint {
@@ -170,9 +171,8 @@
 
 .th-button.th-button--selected .th-button__glow {
     display: flex;
-    background-image: url("../../Images/menu_button_selected_glow.png");
-    background-color: rgba(0, 0, 0, 0);
-    opacity: 1;
+    -unity-background-image-tint-color: #e69a36;
+    opacity: 0.72;
 }
 
 .th-button.th-button--selected .th-button__label-glow {
@@ -193,7 +193,7 @@
 }
 
 .th-button.th-button--selected:active .th-button__glow {
-    display: none;
+    opacity: 0.30;
 }
 
 .th-button.th-button--selected:active .th-button__label {

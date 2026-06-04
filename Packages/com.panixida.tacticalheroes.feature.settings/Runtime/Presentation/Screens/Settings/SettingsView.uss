@@ -435,11 +435,11 @@
 }
 
 #settings-apply-button {
-    left: 919px;
+    left: 1378px;
 }
 
 #settings-cancel-button {
-    left: 1378px;
+    left: 919px;
 }
 
 .settings-action-button .th-button__label-stack {
