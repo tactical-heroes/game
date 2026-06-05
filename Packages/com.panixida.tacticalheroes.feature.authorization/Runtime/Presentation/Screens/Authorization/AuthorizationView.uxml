@@ -2,6 +2,8 @@
     <Style src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Typography/Typography.uss" />
     <Style src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Components/DecorativePanel/DecorativePanel.uss" />
     <Style src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Components/GameButton/GameButtonView.uss" />
+    <Style src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Components/Input/InputView.uss" />
+    <Style src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Components/Checkbox/CheckboxView.uss" />
     <Style src="AuthorizationView.uss" />
     <ui:Template name="DecorativePanelChrome" src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Components/DecorativePanel/DecorativePanelChrome.uxml" />
     <ui:VisualElement name="authorization-root" class="screen authorization-root screen-hidden">
@@ -21,27 +23,23 @@
                     <ui:Label class="auth-title-layer auth-title-highlight typography-display-main-title" text="SIGN IN" />
                 </ui:VisualElement>
                 <ui:VisualElement class="auth-title-separator auth-sign-in-title-separator" />
-                <ui:Label class="auth-subtitle auth-sign-in-subtitle" text="Access your tactical command center" />
+                <ui:Label name="auth-sign-in-subtitle" class="auth-subtitle auth-sign-in-subtitle" text="Access your tactical command center" />
 
                 <ui:VisualElement class="auth-field auth-sign-in-email-field">
                     <ui:Label class="auth-field-label" text="Email" />
-                    <ui:TextField name="auth-sign-in-email-input" class="auth-text-input" />
-                    <ui:Label class="auth-placeholder" text="commander@example.com" />
-                    <ui:Label class="auth-validation-message screen-hidden" text="Enter a valid email address" />
+                    <foundation:InputView name="auth-sign-in-email-input" class="auth-text-input" placeholder="commander@example.com" validation-message="Enter a valid email address." />
                 </ui:VisualElement>
 
                 <ui:VisualElement class="auth-field auth-sign-in-password-field">
                     <ui:Label class="auth-field-label" text="Password" />
-                    <ui:TextField name="auth-sign-in-password-input" class="auth-text-input auth-password-input" />
-                    <ui:Label class="auth-placeholder" text="Password" />
+                    <foundation:InputView name="auth-sign-in-password-input" class="auth-text-input auth-password-input" placeholder="Password" password="true" validation-message="Enter your password." />
                     <ui:Button name="auth-sign-in-password-visibility-button" class="auth-eye-button">
                         <ui:VisualElement class="auth-eye-icon" />
                     </ui:Button>
-                    <ui:Label class="auth-validation-message screen-hidden" text="Enter your password" />
                 </ui:VisualElement>
 
                 <ui:VisualElement class="auth-option-row auth-remember-row">
-                    <ui:Button name="auth-remember-checkbox" class="auth-checkbox" />
+                    <foundation:CheckboxView name="auth-remember-checkbox" class="auth-checkbox" />
                     <ui:Label class="auth-option-label" text="Remember me" />
                     <ui:Button name="auth-forgot-password-button" class="auth-link-button" text="Forgot password?" />
                 </ui:VisualElement>
@@ -90,45 +88,38 @@
                     <ui:Label class="auth-title-layer auth-title-highlight typography-display-main-title" text="CREATE ACCOUNT" />
                 </ui:VisualElement>
                 <ui:VisualElement class="auth-title-separator auth-create-title-separator" />
-                <ui:Label class="auth-subtitle auth-create-subtitle" text="Begin your campaign with a new account" />
+                <ui:Label name="auth-create-subtitle" class="auth-subtitle auth-create-subtitle" text="Begin your campaign with a new account" />
 
                 <ui:VisualElement class="auth-field auth-create-login-field">
                     <ui:Label class="auth-field-label" text="Login" />
-                    <ui:TextField name="auth-create-login-input" class="auth-text-input" />
-                    <ui:Label class="auth-placeholder" text="Commander name" />
-                    <ui:Label class="auth-validation-message screen-hidden" text="Enter a login" />
+                    <foundation:InputView name="auth-create-login-input" class="auth-text-input" placeholder="Commander name" validation-message="Use 3-20 characters." />
                 </ui:VisualElement>
 
                 <ui:VisualElement class="auth-field auth-create-email-field">
                     <ui:Label class="auth-field-label" text="Email" />
-                    <ui:TextField name="auth-create-email-input" class="auth-text-input" />
-                    <ui:Label class="auth-placeholder" text="commander@example.com" />
-                    <ui:Label class="auth-validation-message screen-hidden" text="Enter a valid email address" />
+                    <foundation:InputView name="auth-create-email-input" class="auth-text-input" placeholder="commander@example.com" validation-message="Enter a valid email address." />
                 </ui:VisualElement>
 
                 <ui:VisualElement class="auth-field auth-create-password-field">
                     <ui:Label class="auth-field-label" text="Password" />
-                    <ui:TextField name="auth-create-password-input" class="auth-text-input auth-password-input" />
-                    <ui:Label class="auth-placeholder" text="Password" />
+                    <foundation:InputView name="auth-create-password-input" class="auth-text-input auth-password-input" placeholder="Password" password="true" validation-message="Use 8+ chars, 1 digit, 1 uppercase and 1 lowercase." />
                     <ui:Button name="auth-create-password-visibility-button" class="auth-eye-button">
                         <ui:VisualElement class="auth-eye-icon" />
                     </ui:Button>
-                    <ui:Label class="auth-validation-message screen-hidden" text="Enter your password" />
                 </ui:VisualElement>
 
                 <ui:VisualElement class="auth-field auth-create-confirm-password-field">
                     <ui:Label class="auth-field-label" text="Confirm Password" />
-                    <ui:TextField name="auth-create-confirm-password-input" class="auth-text-input auth-password-input" />
-                    <ui:Label class="auth-placeholder" text="Repeat password" />
+                    <foundation:InputView name="auth-create-confirm-password-input" class="auth-text-input auth-password-input" placeholder="Repeat password" password="true" validation-message="Passwords do not match." />
                     <ui:Button name="auth-create-confirm-password-visibility-button" class="auth-eye-button">
                         <ui:VisualElement class="auth-eye-icon" />
                     </ui:Button>
-                    <ui:Label class="auth-validation-message screen-hidden" text="Passwords must match" />
                 </ui:VisualElement>
 
                 <ui:VisualElement class="auth-option-row auth-terms-row">
-                    <ui:Button name="auth-terms-checkbox" class="auth-checkbox" />
+                    <foundation:CheckboxView name="auth-terms-checkbox" class="auth-checkbox" />
                     <ui:Label class="auth-option-label auth-terms-label" text="I accept the Terms of Service and Privacy Policy" />
+                    <ui:Label name="auth-terms-validation-message" class="auth-validation-message auth-terms-validation-message screen-hidden" text="Accept the Terms of Service and Privacy Policy to create an account." />
                 </ui:VisualElement>
 
                 <foundation:GameButtonView name="auth-create-account-submit-button" class="auth-button auth-create-account-submit-button" label="CREATE ACCOUNT" />

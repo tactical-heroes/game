@@ -1,0 +1,162 @@
+.th-checkbox {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    min-height: 16px;
+    overflow: visible;
+    background-color: rgba(0, 0, 0, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-radius: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.th-checkbox:hover,
+.th-checkbox:active,
+.th-checkbox:focus,
+.th-checkbox:disabled {
+    background-color: rgba(0, 0, 0, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+}
+
+.th-checkbox__box {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    background-color: rgba(6, 5, 4, 0.98);
+    border-left-width: 1.35px;
+    border-right-width: 1.35px;
+    border-top-width: 1.35px;
+    border-bottom-width: 1.35px;
+    border-left-color: rgba(184, 115, 33, 0.95);
+    border-right-color: rgba(184, 115, 33, 0.95);
+    border-top-color: rgba(184, 115, 33, 0.95);
+    border-bottom-color: rgba(184, 115, 33, 0.95);
+}
+
+.th-checkbox:hover .th-checkbox__box {
+    background-color: #0a0805;
+    border-left-width: 1.65px;
+    border-right-width: 1.65px;
+    border-top-width: 1.65px;
+    border-bottom-width: 1.65px;
+    border-left-color: #ffad38;
+    border-right-color: #ffad38;
+    border-top-color: #ffad38;
+    border-bottom-color: #ffad38;
+}
+
+.th-checkbox:active .th-checkbox__box {
+    background-color: #1f0b03;
+    border-left-width: 1.8px;
+    border-right-width: 1.8px;
+    border-top-width: 1.8px;
+    border-bottom-width: 1.8px;
+    border-left-color: #ff660a;
+    border-right-color: #ff660a;
+    border-top-color: #ff660a;
+    border-bottom-color: #ff660a;
+}
+
+.th-checkbox:focus .th-checkbox__box {
+    background-color: #060504;
+    border-left-width: 1.65px;
+    border-right-width: 1.65px;
+    border-top-width: 1.65px;
+    border-bottom-width: 1.65px;
+    border-left-color: #ffc757;
+    border-right-color: #ffc757;
+    border-top-color: #ffc757;
+    border-bottom-color: #ffc757;
+}
+
+.th-checkbox.th-checkbox--error .th-checkbox__box {
+    background-color: #060504;
+    border-left-width: 1.65px;
+    border-right-width: 1.65px;
+    border-top-width: 1.65px;
+    border-bottom-width: 1.65px;
+    border-left-color: #c71f0f;
+    border-right-color: #c71f0f;
+    border-top-color: #c71f0f;
+    border-bottom-color: #c71f0f;
+}
+
+.th-checkbox:disabled .th-checkbox__box {
+    background-color: rgba(9, 8, 6, 0.78);
+    border-left-width: 1.15px;
+    border-right-width: 1.15px;
+    border-top-width: 1.15px;
+    border-bottom-width: 1.15px;
+    border-left-color: rgba(135, 115, 87, 0.62);
+    border-right-color: rgba(135, 115, 87, 0.62);
+    border-top-color: rgba(135, 115, 87, 0.62);
+    border-bottom-color: rgba(135, 115, 87, 0.62);
+}
+
+.th-checkbox__checkmark {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 16px;
+    height: 16px;
+}
+
+.th-checkbox.th-checkbox--checked .th-checkbox__checkmark {
+    display: flex;
+}
+
+.th-checkbox__checkmark-short,
+.th-checkbox__checkmark-long {
+    position: absolute;
+    height: 3px;
+    background-color: #b87321;
+    border-radius: 1px;
+}
+
+.th-checkbox__checkmark-short {
+    left: 3px;
+    top: 9px;
+    width: 6px;
+    rotate: 45deg;
+}
+
+.th-checkbox__checkmark-long {
+    left: 6px;
+    top: 7px;
+    width: 10px;
+    rotate: -45deg;
+}
+
+.th-checkbox.th-checkbox--checked:hover .th-checkbox__checkmark-short,
+.th-checkbox.th-checkbox--checked:hover .th-checkbox__checkmark-long,
+.th-checkbox.th-checkbox--checked:focus .th-checkbox__checkmark-short,
+.th-checkbox.th-checkbox--checked:focus .th-checkbox__checkmark-long {
+    background-color: #ffc757;
+}
+
+.th-checkbox.th-checkbox--checked:active .th-checkbox__checkmark-short,
+.th-checkbox.th-checkbox--checked:active .th-checkbox__checkmark-long {
+    background-color: #ff660a;
+}
+
+.th-checkbox.th-checkbox--checked:disabled .th-checkbox__checkmark-short,
+.th-checkbox.th-checkbox--checked:disabled .th-checkbox__checkmark-long {
+    background-color: rgba(135, 115, 87, 0.62);
+}

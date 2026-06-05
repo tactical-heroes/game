@@ -22,7 +22,7 @@
     height: 100%;
     background-color: #080705;
     background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/menu_background.png");
-    -unity-background-scale-mode: stretch-to-fill;
+    -unity-background-scale-mode: scale-and-crop;
 }
 
 .menu-dark-overlay {
