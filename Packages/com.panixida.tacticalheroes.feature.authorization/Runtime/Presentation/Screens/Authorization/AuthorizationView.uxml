@@ -8,12 +8,9 @@
     <ui:Template name="DecorativePanelChrome" src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Components/DecorativePanel/DecorativePanelChrome.uxml" />
     <ui:VisualElement name="authorization-root" class="screen authorization-root screen-hidden">
         <ui:VisualElement class="auth-dark-overlay" />
-        <ui:VisualElement class="auth-readability-panel" />
-
         <ui:VisualElement name="auth-sign-in-page" class="auth-page auth-sign-in-page">
             <ui:VisualElement class="auth-panel auth-sign-in-panel th-panel">
                 <ui:Instance template="DecorativePanelChrome" class="th-panel-chrome" />
-                <ui:VisualElement class="auth-panel-vignette" />
                 <ui:VisualElement class="auth-logo" />
 
                 <ui:VisualElement class="auth-title-stack auth-sign-in-title-stack">
@@ -78,7 +75,6 @@
         <ui:VisualElement name="auth-create-account-page" class="auth-page auth-create-account-page screen-hidden">
             <ui:VisualElement class="auth-panel auth-create-account-panel th-panel">
                 <ui:Instance template="DecorativePanelChrome" class="th-panel-chrome" />
-                <ui:VisualElement class="auth-panel-vignette" />
                 <ui:VisualElement class="auth-logo auth-create-logo" />
 
                 <ui:VisualElement class="auth-title-stack auth-create-title-stack">

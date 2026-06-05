@@ -288,6 +288,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Panixida.TacticalHeroes.Feature.MainMenu::Panixida.TacticalHeroes.Features.MainMenu.Presentation.MainMenuView
   _settingsViewAsset: {fileID: 9197481963319205126, guid: b37a37e04db04e7aa9d211dd5539f101, type: 3}
   _authorizationViewAsset: {fileID: 9197481963319205126, guid: 993fc828c930488d8b4f63c199c45692, type: 3}
+  _lobbyViewAsset: {fileID: 9197481963319205126, guid: 71ea0713722145578e555e2d544bf79a, type: 3}
 --- !u!114 &1499700863
 MonoBehaviour:
   m_ObjectHideFlags: 0

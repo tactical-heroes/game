@@ -73,8 +73,17 @@
       "depth": 0,
       "source": "embedded",
       "dependencies": {
+        "com.panixida.tacticalheroes.feature.lobby": "0.1.0",
         "com.panixida.tacticalheroes.foundation": "0.1.0",
         "jp.hadashikick.vcontainer": "1.18.0"
+      }
+    },
+    "com.panixida.tacticalheroes.feature.lobby": {
+      "version": "file:com.panixida.tacticalheroes.feature.lobby",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.panixida.tacticalheroes.foundation": "0.1.0"
       }
     },
     "com.panixida.tacticalheroes.feature.settings": {

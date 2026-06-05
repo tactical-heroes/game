@@ -24,11 +24,12 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
         const float FooterLinksHeight = 58f;
         const float FooterLinksLeft = 50f;
         const float FooterLinksBottom = 36f;
-        const float AuthReadabilityPanelWidth = 768f;
         const float AuthSignInPanelTop = 26f;
         const float AuthSignInPanelHeight = 1028f;
         const float AuthCreatePanelTop = 18f;
         const float AuthCreatePanelHeight = 1044f;
+        const float LobbyDesignWidth = 1920f;
+        const float LobbyDesignHeight = 1080f;
         const string DefaultAuthEmail = "hero@tacticalheroes.test";
         const string DefaultAuthPassword = "Hero1234";
         const string BlockedAuthEmail = "blocked@tacticalheroes.test";
@@ -48,13 +49,12 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
 
         [SerializeField] VisualTreeAsset _settingsViewAsset;
         [SerializeField] VisualTreeAsset _authorizationViewAsset;
+        [SerializeField] VisualTreeAsset _lobbyViewAsset;
 
         static readonly string[] NonInteractiveClasses =
         {
             "menu-dark-overlay",
             "auth-dark-overlay",
-            "auth-readability-panel",
-            "auth-panel-vignette",
             "auth-logo",
             "auth-title-stack",
             "auth-title-layer",
@@ -133,9 +133,11 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
         VisualElement _settingsRoot;
         VisualElement _authorizationContainer;
         VisualElement _authorizationRoot;
+        VisualElement _lobbyContainer;
+        VisualElement _lobbyRoot;
+        VisualElement _lobbyContent;
         VisualElement _authSignInPage;
         VisualElement _authCreateAccountPage;
-        VisualElement _authReadabilityPanel;
         GameButtonView _authSignInSubmitButton;
         GameButtonView _authCreateAccountSubmitButton;
         InputView _authSignInEmailInput;
@@ -162,8 +164,13 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
         SettingsSnapshot _appliedSettings = DefaultSettings;
         bool _isSettingsVisible;
         bool _isAuthorizationVisible;
+        bool _isLobbyVisible;
         bool _authSignInValidationVisible;
+        bool _authSignInCredentialValidationVisible;
         bool _authCreateValidationVisible;
+        string _lastFailedSignInEmail = string.Empty;
+        string _lastFailedSignInPassword = string.Empty;
+        SettingsReturnTarget _settingsReturnTarget;
         bool _isBound;
 
         void OnEnable()
@@ -218,6 +225,7 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
 
             CreateSettingsView(root);
             CreateAuthorizationView(root);
+            CreateLobbyView(root);
             SetNonInteractivePicking(root);
 
             SyncLayeredTitleText(root);
@@ -255,6 +263,13 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
             root.Q<Button>("auth-create-discord-button")?.RegisterCallback<ClickEvent>(OnDiscordClicked);
             root.Q<Button>("auth-create-support-button")?.RegisterCallback<ClickEvent>(OnSupportClicked);
             root.Q<Button>("auth-create-settings-button")?.RegisterCallback<ClickEvent>(OnFooterSettingsClicked);
+            root.Q<Button>("lobby-discord-button")?.RegisterCallback<ClickEvent>(OnDiscordClicked);
+            root.Q<Button>("lobby-support-button")?.RegisterCallback<ClickEvent>(OnSupportClicked);
+            root.Q<Button>("lobby-settings-button")?.RegisterCallback<ClickEvent>(OnFooterSettingsClicked);
+            root.Q<Button>("lobby-chat-settings-button")?.RegisterCallback<ClickEvent>(OnFooterSettingsClicked);
+            root.Q<Button>("lobby-start-matchmaking-button")?.RegisterCallback<ClickEvent>(OnLobbyStartMatchmakingClicked);
+            root.Q<Button>("lobby-leaderboards-button")?.RegisterCallback<ClickEvent>(OnLobbyLeaderboardsClicked);
+            root.Q<Button>("lobby-match-history-button")?.RegisterCallback<ClickEvent>(OnLobbyMatchHistoryClicked);
             BindAuthTextFields(root);
             CacheSettingsControls(root);
             ApplySettingsToControls(_appliedSettings);
@@ -307,6 +322,13 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
                 root.Q<Button>("auth-create-discord-button")?.UnregisterCallback<ClickEvent>(OnDiscordClicked);
                 root.Q<Button>("auth-create-support-button")?.UnregisterCallback<ClickEvent>(OnSupportClicked);
                 root.Q<Button>("auth-create-settings-button")?.UnregisterCallback<ClickEvent>(OnFooterSettingsClicked);
+                root.Q<Button>("lobby-discord-button")?.UnregisterCallback<ClickEvent>(OnDiscordClicked);
+                root.Q<Button>("lobby-support-button")?.UnregisterCallback<ClickEvent>(OnSupportClicked);
+                root.Q<Button>("lobby-settings-button")?.UnregisterCallback<ClickEvent>(OnFooterSettingsClicked);
+                root.Q<Button>("lobby-chat-settings-button")?.UnregisterCallback<ClickEvent>(OnFooterSettingsClicked);
+                root.Q<Button>("lobby-start-matchmaking-button")?.UnregisterCallback<ClickEvent>(OnLobbyStartMatchmakingClicked);
+                root.Q<Button>("lobby-leaderboards-button")?.UnregisterCallback<ClickEvent>(OnLobbyLeaderboardsClicked);
+                root.Q<Button>("lobby-match-history-button")?.UnregisterCallback<ClickEvent>(OnLobbyMatchHistoryClicked);
             }
 
             UnbindAuthControls();
@@ -323,9 +345,11 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
             _settingsRoot = null;
             _authorizationContainer = null;
             _authorizationRoot = null;
+            _lobbyContainer = null;
+            _lobbyRoot = null;
+            _lobbyContent = null;
             _authSignInPage = null;
             _authCreateAccountPage = null;
-            _authReadabilityPanel = null;
             _authSignInSubmitButton = null;
             _authCreateAccountSubmitButton = null;
             _authSignInEmailInput = null;
@@ -351,8 +375,13 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
             _settingsShowDamageNumbersSwitch = null;
             _isSettingsVisible = false;
             _isAuthorizationVisible = false;
+            _isLobbyVisible = false;
             _authSignInValidationVisible = false;
+            _authSignInCredentialValidationVisible = false;
             _authCreateValidationVisible = false;
+            _lastFailedSignInEmail = string.Empty;
+            _lastFailedSignInPassword = string.Empty;
+            _settingsReturnTarget = SettingsReturnTarget.Menu;
             _isBound = false;
         }
 
@@ -402,6 +431,31 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
             _authorizationContainer = authorizationContainer;
             _authorizationRoot = root.Q<VisualElement>("authorization-root");
             CacheAuthorizationPages();
+        }
+
+        void CreateLobbyView(VisualElement root)
+        {
+            var existingLobbyRoot = root.Q<VisualElement>("lobby-root");
+            if (_lobbyViewAsset == null || existingLobbyRoot != null)
+            {
+                _lobbyRoot = existingLobbyRoot;
+                _lobbyContainer = root.Q<VisualElement>("lobby-container") ?? _lobbyRoot;
+                _lobbyContent = _lobbyRoot?.Q<VisualElement>("lobby-content");
+                return;
+            }
+
+            var lobbyContainer = _lobbyViewAsset.CloneTree();
+            lobbyContainer.name = "lobby-container";
+            lobbyContainer.style.position = Position.Absolute;
+            lobbyContainer.style.left = 0;
+            lobbyContainer.style.top = 0;
+            lobbyContainer.style.right = 0;
+            lobbyContainer.style.bottom = 0;
+            root.Add(lobbyContainer);
+
+            _lobbyContainer = lobbyContainer;
+            _lobbyRoot = root.Q<VisualElement>("lobby-root");
+            _lobbyContent = _lobbyRoot?.Q<VisualElement>("lobby-content");
         }
 
         void CacheAuthorizationPages()
@@ -534,6 +588,11 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
         {
             SyncSignInSubmitButton();
 
+            if (_authSignInCredentialValidationVisible && IsCurrentFailedSignInAttempt())
+            {
+                return;
+            }
+
             if (_authSignInValidationVisible)
             {
                 ValidateSignInFields(true);
@@ -601,6 +660,7 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
 
             if (showErrors)
             {
+                ClearSignInCredentialValidationState();
                 _authSignInValidationVisible = !isValid;
                 SetSubtitleValidation(_authSignInSubtitle, AuthSignInSubtitleMessage, !isValid);
                 SetInputValidation(_authSignInEmailInput, !emailValid, AuthEmailValidationMessage);
@@ -644,6 +704,7 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
         void ClearSignInValidation()
         {
             _authSignInValidationVisible = false;
+            ClearSignInCredentialValidationState();
             SetSubtitleValidation(_authSignInSubtitle, AuthSignInSubtitleMessage, false);
             SetInputValidation(_authSignInEmailInput, false, AuthEmailValidationMessage);
             SetInputValidation(_authSignInPasswordInput, false, AuthPasswordRequiredMessage);
@@ -663,6 +724,7 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
         void ShowSignInEmailError(string message)
         {
             _authSignInValidationVisible = true;
+            RememberFailedSignInAttempt();
             SetSubtitleValidation(_authSignInSubtitle, AuthSignInSubtitleMessage, true);
             SetInputValidation(_authSignInEmailInput, true, message);
             SetInputValidation(_authSignInPasswordInput, false, AuthPasswordRequiredMessage);
@@ -671,9 +733,30 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
         void ShowSignInPasswordError(string message)
         {
             _authSignInValidationVisible = true;
+            RememberFailedSignInAttempt();
             SetSubtitleValidation(_authSignInSubtitle, AuthSignInSubtitleMessage, true);
             SetInputValidation(_authSignInEmailInput, false, AuthEmailValidationMessage);
             SetInputValidation(_authSignInPasswordInput, true, message);
+        }
+
+        void RememberFailedSignInAttempt()
+        {
+            _authSignInCredentialValidationVisible = true;
+            _lastFailedSignInEmail = GetTrimmedInputValue(_authSignInEmailInput);
+            _lastFailedSignInPassword = GetInputValue(_authSignInPasswordInput);
+        }
+
+        bool IsCurrentFailedSignInAttempt()
+        {
+            return string.Equals(_lastFailedSignInEmail, GetTrimmedInputValue(_authSignInEmailInput), StringComparison.Ordinal)
+                && string.Equals(_lastFailedSignInPassword, GetInputValue(_authSignInPasswordInput), StringComparison.Ordinal);
+        }
+
+        void ClearSignInCredentialValidationState()
+        {
+            _authSignInCredentialValidationVisible = false;
+            _lastFailedSignInEmail = string.Empty;
+            _lastFailedSignInPassword = string.Empty;
         }
 
         static void SetSubtitleValidation(Label label, string defaultMessage, bool hasError)
@@ -818,8 +901,6 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
         {
             _menuPanel = root.Q<VisualElement>(className: "menu-panel");
             _menuFooterLinks = root.Q<VisualElement>(className: "footer-links");
-            _authReadabilityPanel = root.Q<VisualElement>(className: "auth-readability-panel");
-
             _authPanels.Clear();
             root.Query<VisualElement>(className: "auth-panel").ForEach(_authPanels.Add);
 
@@ -865,6 +946,7 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
             var safeArea = GetSafeAreaInsets(width, height);
             ApplyMenuResponsiveLayout(width, height, safeArea);
             ApplyAuthorizationResponsiveLayout(width, height, safeArea);
+            ApplyLobbyResponsiveLayout(width, height, safeArea);
             ApplySettingsResponsiveLayout(width, height, safeArea);
         }
 
@@ -892,8 +974,6 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
                 ApplyScaledElement(panel, xOffset, yOffset + top * scale, MenuPanelWidth, panelHeight, scale);
             }
 
-            ApplyReadabilityPanel(width, height, safeArea, scale, yOffset);
-
             foreach (var footerLinks in _authFooterLinks)
             {
                 ApplyFooterLinksLayout(footerLinks, width, height, safeArea);
@@ -914,25 +994,20 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
             }
         }
 
-        void ApplyReadabilityPanel(float width, float height, SafeAreaInsets safeArea, float scale, float yOffset)
+        void ApplyLobbyResponsiveLayout(float width, float height, SafeAreaInsets safeArea)
         {
-            if (_authReadabilityPanel == null)
+            if (_lobbyContent == null)
             {
                 return;
             }
 
-            var panelWidth = AuthReadabilityPanelWidth * scale;
-            var panelHeight = ReferenceHeight * scale;
-            var panelLeft = Mathf.Max(safeArea.Left, width - safeArea.Right - panelWidth);
+            var availableWidth = Mathf.Max(1f, width - safeArea.Left - safeArea.Right);
+            var availableHeight = Mathf.Max(1f, height - safeArea.Top - safeArea.Bottom);
+            var scale = Mathf.Min(1f, availableWidth / LobbyDesignWidth, availableHeight / LobbyDesignHeight);
+            var xOffset = safeArea.Left + Mathf.Max(0f, (availableWidth - LobbyDesignWidth * scale) * 0.5f);
+            var yOffset = safeArea.Top + Mathf.Max(0f, (availableHeight - LobbyDesignHeight * scale) * 0.5f);
 
-            _authReadabilityPanel.style.left = panelLeft;
-            _authReadabilityPanel.style.top = yOffset;
-            _authReadabilityPanel.style.right = StyleKeyword.Auto;
-            _authReadabilityPanel.style.bottom = StyleKeyword.Auto;
-            _authReadabilityPanel.style.width = panelWidth;
-            _authReadabilityPanel.style.height = Mathf.Min(panelHeight, height - safeArea.Top - safeArea.Bottom);
-            _authReadabilityPanel.style.transformOrigin = new TransformOrigin(0, 0);
-            _authReadabilityPanel.style.scale = new Scale(Vector2.one);
+            ApplyScaledElement(_lobbyContent, xOffset, yOffset, LobbyDesignWidth, LobbyDesignHeight, scale);
         }
 
         static void ApplyFooterLinksLayout(VisualElement footerLinks, float width, float height, SafeAreaInsets safeArea)
@@ -1066,11 +1141,18 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
 
         void OnFooterSettingsClicked(ClickEvent evt)
         {
+            _settingsReturnTarget = _isLobbyVisible ? SettingsReturnTarget.Lobby : SettingsReturnTarget.Menu;
             ShowSettings();
         }
 
         void OnSettingsBackClicked(ClickEvent evt)
         {
+            if (_settingsReturnTarget == SettingsReturnTarget.Lobby)
+            {
+                ShowLobby();
+                return;
+            }
+
             ShowMenu();
         }
 
@@ -1111,6 +1193,7 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
             {
                 ClearSignInValidation();
                 Debug.Log($"Authorization success: signed in as {account.Login}");
+                ShowLobby();
                 return;
             }
 
@@ -1133,6 +1216,7 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
             AuthAccounts.Add(account);
             ClearCreateAccountValidation();
             Debug.Log($"Authorization success: account created for {account.Email}");
+            ShowLobby();
         }
 
         void OnShowCreateAccountClicked(ClickEvent evt)
@@ -1157,6 +1241,21 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
         static void OnForgotPasswordClicked(ClickEvent evt)
         {
             Debug.Log("Authorization action: Forgot Password");
+        }
+
+        static void OnLobbyStartMatchmakingClicked(ClickEvent evt)
+        {
+            Debug.Log("Lobby action: Start Matchmaking");
+        }
+
+        static void OnLobbyLeaderboardsClicked(ClickEvent evt)
+        {
+            Debug.Log("Lobby action: Leaderboards");
+        }
+
+        static void OnLobbyMatchHistoryClicked(ClickEvent evt)
+        {
+            Debug.Log("Lobby action: Match History");
         }
 
         static void OnAuthPasswordVisibilityClicked(ClickEvent evt)
@@ -1190,6 +1289,7 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
                     Debug.Log("Menu action: Hero Creation");
                     break;
                 case "settings-button":
+                    _settingsReturnTarget = SettingsReturnTarget.Menu;
                     ShowSettings();
                     break;
                 case "exit-button":
@@ -1217,10 +1317,13 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
 
             _isSettingsVisible = true;
             _isAuthorizationVisible = false;
+            _isLobbyVisible = false;
             ApplySettingsToControls(_appliedSettings);
             SetScreenVisible(_menuRoot, false);
             SetScreenVisible(_authorizationRoot, false);
             SetScreenVisible(_authorizationContainer, false);
+            SetScreenVisible(_lobbyRoot, false);
+            SetScreenVisible(_lobbyContainer, false);
             SetScreenVisible(_settingsContainer, true);
             SetScreenVisible(_settingsRoot, true);
             _settingsRoot.Q<Button>("settings-back-button")?.Focus();
@@ -1247,13 +1350,41 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
 
             _isSettingsVisible = false;
             _isAuthorizationVisible = true;
+            _isLobbyVisible = false;
             ShowSignInPage();
             SetScreenVisible(_menuRoot, false);
             SetScreenVisible(_settingsRoot, false);
             SetScreenVisible(_settingsContainer, false);
+            SetScreenVisible(_lobbyRoot, false);
+            SetScreenVisible(_lobbyContainer, false);
             SetScreenVisible(_authorizationContainer, true);
             SetScreenVisible(_authorizationRoot, true);
             _authorizationRoot.Q<Button>("auth-sign-in-submit-button")?.Focus();
+        }
+
+        void ShowLobby()
+        {
+            if (_lobbyRoot == null)
+            {
+                Debug.LogWarning("Lobby view asset is not assigned.");
+                return;
+            }
+
+            _isSettingsVisible = false;
+            _isAuthorizationVisible = false;
+            _isLobbyVisible = true;
+            ClearMenuSelection();
+            ClearSignInValidation();
+            ClearCreateAccountValidation();
+            SyncAuthSubmitButtons();
+            SetScreenVisible(_menuRoot, false);
+            SetScreenVisible(_settingsRoot, false);
+            SetScreenVisible(_settingsContainer, false);
+            SetScreenVisible(_authorizationRoot, false);
+            SetScreenVisible(_authorizationContainer, false);
+            SetScreenVisible(_lobbyContainer, true);
+            SetScreenVisible(_lobbyRoot, true);
+            _lobbyRoot.Q<Button>("lobby-start-matchmaking-button")?.Focus();
         }
 
         void ShowSignInPage()
@@ -1273,6 +1404,8 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
         {
             _isSettingsVisible = false;
             _isAuthorizationVisible = false;
+            _isLobbyVisible = false;
+            _settingsReturnTarget = SettingsReturnTarget.Menu;
             ClearMenuSelection();
             ClearSignInValidation();
             ClearCreateAccountValidation();
@@ -1282,6 +1415,8 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
             SetScreenVisible(_settingsContainer, false);
             SetScreenVisible(_authorizationRoot, false);
             SetScreenVisible(_authorizationContainer, false);
+            SetScreenVisible(_lobbyRoot, false);
+            SetScreenVisible(_lobbyContainer, false);
         }
 
         sealed class AuthAccount
@@ -1298,6 +1433,12 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
                 Password = password;
                 IsBlocked = isBlocked;
             }
+        }
+
+        enum SettingsReturnTarget
+        {
+            Menu,
+            Lobby
         }
 
         readonly struct ResponsiveElementSpec

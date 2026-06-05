@@ -1,0 +1,1577 @@
+.screen {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 1;
+    translate: 0 0;
+    transition-property: opacity, translate;
+    transition-duration: 260ms;
+    transition-timing-function: ease-in-out;
+}
+
+.screen-hidden {
+    opacity: 0;
+    translate: 0 18px;
+}
+
+.lobby-root {
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+    background-color: #050302;
+}
+
+.lobby-background,
+.lobby-dark-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.lobby-background {
+    background-image: url("Images/lobby_background.png");
+    -unity-background-scale-mode: scale-and-crop;
+}
+
+.lobby-dark-overlay {
+    background-color: rgba(0, 0, 0, 0.18);
+}
+
+.lobby-bottom-shadow {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 140px;
+    background-color: rgba(0, 0, 0, 0.70);
+}
+
+.lobby-left-depth {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 530px;
+    background-color: rgba(0, 0, 0, 0.24);
+}
+
+.lobby-right-depth {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 540px;
+    background-color: rgba(0, 0, 0, 0.34);
+}
+
+.lobby-content {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1920px;
+    height: 1080px;
+}
+
+.lobby-header {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1920px;
+    height: 288px;
+}
+
+.lobby-logo {
+    position: absolute;
+    left: 910px;
+    top: 12px;
+    width: 100px;
+    height: 100px;
+    background-image: url("Images/lobby_logo_emblem.png");
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.lobby-title {
+    position: absolute;
+    left: 510px;
+    top: 102px;
+    width: 900px;
+    height: 70px;
+    font-size: 46px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/Cinzel-Bold.ttf");
+    -unity-font-style: normal;
+    -unity-text-align: middle-center;
+    letter-spacing: 1.84px;
+}
+
+.lobby-title-shadow {
+    left: 513px;
+    top: 108px;
+    color: rgba(18, 7, 3, 0.90);
+}
+
+.lobby-title-glow {
+    color: rgba(255, 179, 31, 0.24);
+    -unity-text-outline-width: 3px;
+    -unity-text-outline-color: rgba(255, 179, 31, 0.18);
+    text-shadow: 0 0 7px rgba(255, 179, 31, 0.24);
+}
+
+.lobby-title-main {
+    color: #facc47;
+    -unity-text-outline-width: 1px;
+    -unity-text-outline-color: rgba(255, 242, 173, 0.38);
+    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.78);
+}
+
+.lobby-subtitle {
+    position: absolute;
+    left: 610px;
+    top: 195px;
+    width: 700px;
+    height: 30px;
+    color: #dbc28f;
+    font-size: 20px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/CormorantGaramond-Medium.otf");
+    -unity-font-style: normal;
+    -unity-text-align: middle-center;
+    letter-spacing: 0.6px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.58);
+}
+
+.lobby-title-separator {
+    position: absolute;
+    left: 713px;
+    top: 157px;
+    width: 494px;
+    height: 50px;
+    background-image: url("Images/lobby_title_separator.png");
+    -unity-background-scale-mode: stretch-to-fill;
+}
+
+.lobby-left-column,
+.lobby-right-column,
+.lobby-center-content {
+    position: absolute;
+}
+
+.lobby-left-column {
+    left: 30px;
+    top: 30px;
+    width: 470px;
+    height: 930px;
+}
+
+.lobby-center-content {
+    left: 500px;
+    top: 250px;
+    width: 910px;
+    height: 760px;
+}
+
+.lobby-right-column {
+    left: 1420px;
+    top: 30px;
+    width: 470px;
+    height: 930px;
+}
+
+.lobby-panel,
+.lobby-mode-card {
+    position: absolute;
+    background-color: rgba(7, 5, 3, 0.84);
+    border-left-width: 1.2px;
+    border-right-width: 1.2px;
+    border-top-width: 1.2px;
+    border-bottom-width: 1.2px;
+    border-left-color: rgba(127, 82, 32, 0.74);
+    border-right-color: rgba(127, 82, 32, 0.74);
+    border-top-color: rgba(127, 82, 32, 0.74);
+    border-bottom-color: rgba(127, 82, 32, 0.74);
+}
+
+.lobby-panel-corner {
+    position: absolute;
+    width: 62px;
+    height: 62px;
+    opacity: 0.72;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-left-color: rgba(142, 91, 34, 0.88);
+    border-right-color: rgba(142, 91, 34, 0.88);
+    border-top-color: rgba(142, 91, 34, 0.88);
+    border-bottom-color: rgba(142, 91, 34, 0.88);
+}
+
+.lobby-panel-corner--tl {
+    left: 0;
+    top: 0;
+    border-left-width: 2px;
+    border-top-width: 2px;
+}
+
+.lobby-panel-corner--tr {
+    right: 0;
+    top: 0;
+    border-right-width: 2px;
+    border-top-width: 2px;
+}
+
+.lobby-panel-corner--br {
+    right: 0;
+    bottom: 0;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+}
+
+.lobby-panel-corner--bl {
+    left: 0;
+    bottom: 0;
+    border-left-width: 2px;
+    border-bottom-width: 2px;
+}
+
+.lobby-profile-panel {
+    left: 0;
+    top: 0;
+    width: 470px;
+    height: 220px;
+}
+
+.lobby-friends-panel {
+    left: 0;
+    top: 240px;
+    width: 470px;
+    height: 690px;
+}
+
+.lobby-quests-panel {
+    left: 0;
+    top: 0;
+    width: 470px;
+    height: 220px;
+}
+
+.lobby-chat-panel {
+    left: 0;
+    top: 240px;
+    width: 470px;
+    height: 690px;
+}
+
+.lobby-profile-avatar {
+    position: absolute;
+    left: 22px;
+    top: 23px;
+    width: 150px;
+    height: 165px;
+}
+
+.lobby-avatar-image,
+.lobby-avatar-frame,
+.lobby-friend-avatar,
+.lobby-chat-avatar {
+    position: absolute;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.lobby-avatar-image {
+    left: 19px;
+    top: 26px;
+    width: 112px;
+    height: 112px;
+}
+
+.lobby-avatar-frame {
+    left: 0;
+    top: 0;
+    width: 150px;
+    height: 165px;
+}
+
+.lobby-avatar-veteran {
+    background-image: url("Images/lobby_avatar_veteran_knight.png");
+}
+
+.lobby-avatar-light-oracle {
+    background-image: url("Images/lobby_avatar_light_oracle.png");
+}
+
+.lobby-avatar-shadowblade {
+    background-image: url("Images/lobby_avatar_shadowblade.png");
+}
+
+.lobby-avatar-sentinel {
+    background-image: url("Images/lobby_avatar_sentinel.png");
+}
+
+.lobby-avatar-hooded-rogue {
+    background-image: url("Images/lobby_avatar_hooded_rogue.png");
+}
+
+.lobby-avatar-elder-monk {
+    background-image: url("Images/lobby_avatar_elder_monk.png");
+}
+
+.lobby-avatar-ranger {
+    background-image: url("Images/lobby_avatar_ranger.png");
+}
+
+.lobby-frame-spiked {
+    background-image: url("Images/lobby_frame_spiked.png");
+}
+
+.lobby-frame-radiant {
+    background-image: url("Images/lobby_frame_radiant.png");
+}
+
+.lobby-frame-infernal {
+    background-image: url("Images/lobby_frame_infernal.png");
+}
+
+.lobby-frame-runic {
+    background-image: url("Images/lobby_frame_runic.png");
+}
+
+.lobby-frame-classic {
+    background-image: url("Images/lobby_frame_classic.png");
+}
+
+.lobby-profile-name {
+    position: absolute;
+    left: 200px;
+    top: 34px;
+    width: 150px;
+    height: 38px;
+    color: #f5c35a;
+    font-size: 26px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/Cinzel-Bold.ttf");
+    -unity-text-align: middle-left;
+}
+
+.lobby-profile-crown {
+    position: absolute;
+    left: 347px;
+    top: 43px;
+    width: 28px;
+    height: 20px;
+    background-image: url("Images/lobby_crown.png");
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.lobby-profile-level,
+.lobby-profile-rank-label,
+.lobby-profile-mmr {
+    position: absolute;
+    left: 205px;
+    width: 160px;
+    height: 24px;
+    font-size: 18px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/Inter-Medium.ttf");
+    -unity-text-align: middle-left;
+}
+
+.lobby-profile-level {
+    top: 70px;
+    color: rgba(234, 209, 153, 0.95);
+}
+
+.lobby-profile-divider {
+    position: absolute;
+    left: 198px;
+    top: 107px;
+    width: 215px;
+    height: 1px;
+    background-color: rgba(196, 138, 43, 0.45);
+}
+
+.lobby-profile-rank-label {
+    top: 117px;
+    color: #ead199;
+    text-shadow: 0 1px 7px rgba(240, 106, 26, 0.45);
+}
+
+.lobby-profile-mmr {
+    top: 148px;
+    color: rgba(234, 209, 153, 0.95);
+}
+
+.lobby-online-dot {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: #5fd46a;
+    border-radius: 6px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgba(201, 255, 193, 0.58);
+    border-right-color: rgba(201, 255, 193, 0.58);
+    border-top-color: rgba(201, 255, 193, 0.58);
+    border-bottom-color: rgba(201, 255, 193, 0.58);
+}
+
+.lobby-profile-online-dot {
+    left: 205px;
+    top: 178px;
+}
+
+.lobby-profile-online {
+    position: absolute;
+    left: 225px;
+    top: 168px;
+    width: 110px;
+    height: 38px;
+    color: rgba(95, 212, 106, 0.95);
+    font-size: 20px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/CormorantGaramond-Medium.otf");
+    -unity-text-align: middle-left;
+}
+
+.lobby-profile-rank-icon {
+    position: absolute;
+    left: 362px;
+    top: 120px;
+    width: 68px;
+    height: 72px;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.lobby-rank-gold {
+    background-image: url("Images/lobby_rank_gold.png");
+}
+
+.lobby-rank-platinum {
+    background-image: url("Images/lobby_rank_platinum.png");
+}
+
+.lobby-rank-silver {
+    background-image: url("Images/lobby_rank_silver.png");
+}
+
+.lobby-rank-unranked {
+    background-image: url("Images/lobby_rank_unranked.png");
+}
+
+.lobby-tab-ornament {
+    position: absolute;
+    left: 15px;
+    top: 3px;
+    width: 430px;
+    height: 40px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-top-color: rgba(179, 111, 34, 0.24);
+    border-bottom-color: rgba(179, 111, 34, 0.24);
+}
+
+.lobby-tab {
+    position: absolute;
+    top: 4px;
+    height: 38px;
+    color: #a68d62;
+    font-size: 18px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/Inter-Medium.ttf");
+    -unity-text-align: middle-center;
+    background-color: rgba(18, 11, 6, 0.86);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgba(142, 91, 34, 0.72);
+    border-right-color: rgba(142, 91, 34, 0.72);
+    border-top-color: rgba(142, 91, 34, 0.72);
+    border-bottom-color: rgba(142, 91, 34, 0.72);
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.lobby-tab--active {
+    color: #ead199;
+    background-color: rgba(21, 12, 6, 0.90);
+    border-left-color: rgba(173, 110, 38, 0.90);
+    border-right-color: rgba(173, 110, 38, 0.90);
+    border-top-color: rgba(173, 110, 38, 0.90);
+    border-bottom-color: rgba(173, 110, 38, 0.90);
+}
+
+.lobby-friends-panel .lobby-tab--active {
+    left: 62px;
+    width: 116px;
+}
+
+.lobby-party-tab {
+    left: 178px;
+    width: 180px;
+}
+
+.lobby-add-friend-tab {
+    left: 358px;
+    width: 50px;
+    font-size: 24px;
+}
+
+.lobby-section-count {
+    position: absolute;
+    left: 26px;
+    width: 150px;
+    height: 28px;
+    color: #f5c35a;
+    font-size: 14px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/Cinzel-Bold.ttf");
+    -unity-text-align: middle-left;
+    letter-spacing: 0.84px;
+}
+
+.lobby-online-count {
+    top: 54px;
+}
+
+.lobby-offline-count {
+    top: 404px;
+}
+
+.lobby-friend-row {
+    position: absolute;
+    left: 18px;
+    width: 432px;
+    height: 58px;
+    border-bottom-width: 1px;
+    border-bottom-color: rgba(127, 90, 36, 0.24);
+}
+
+.friend-row-0 { top: 93px; }
+.friend-row-1 { top: 151px; }
+.friend-row-2 { top: 209px; }
+.friend-row-3 { top: 267px; }
+.friend-row-4 { top: 325px; }
+.friend-row-5 { top: 429px; }
+.friend-row-6 { top: 477px; }
+.friend-row-7 { top: 525px; }
+
+.lobby-friend-avatar,
+.lobby-chat-avatar {
+    left: 0;
+    top: 0;
+    width: 44px;
+    height: 44px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgba(127, 90, 36, 0.80);
+    border-right-color: rgba(127, 90, 36, 0.80);
+    border-top-color: rgba(127, 90, 36, 0.80);
+    border-bottom-color: rgba(127, 90, 36, 0.80);
+}
+
+.lobby-friend-status-dot {
+    left: 47px;
+    top: 15px;
+    width: 9px;
+    height: 9px;
+}
+
+.lobby-friend-name {
+    position: absolute;
+    left: 62px;
+    top: 0;
+    width: 155px;
+    height: 25px;
+    color: #95d468;
+    font-size: 16px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/CormorantGaramond-Medium.otf");
+    -unity-text-align: middle-left;
+}
+
+.lobby-friend-name--platinum {
+    color: #bda7ff;
+}
+
+.lobby-friend-name--silver {
+    color: #c6d0d5;
+}
+
+.lobby-friend-status {
+    position: absolute;
+    left: 62px;
+    top: 23px;
+    width: 115px;
+    height: 24px;
+    color: rgba(95, 212, 106, 0.86);
+    font-size: 13px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/CormorantGaramond-Medium.otf");
+}
+
+.lobby-friend-row--offline {
+    opacity: 0.58;
+}
+
+.lobby-friend-row--offline .lobby-friend-status {
+    color: rgba(167, 141, 98, 0.85);
+}
+
+.lobby-friend-rank-icon {
+    position: absolute;
+    left: 308px;
+    top: 2px;
+    width: 40px;
+    height: 40px;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.lobby-friend-rank {
+    position: absolute;
+    right: 0;
+    top: 10px;
+    width: 62px;
+    height: 28px;
+    color: rgba(234, 209, 153, 0.90);
+    font-size: 11px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/Cinzel-Regular.ttf");
+    -unity-text-align: middle-right;
+}
+
+.lobby-scroll-track,
+.lobby-scroll-thumb {
+    position: absolute;
+    border-radius: 2px;
+}
+
+.lobby-friends-scroll-track {
+    left: 447px;
+    top: 100px;
+    width: 2px;
+    height: 524px;
+    background-color: rgba(142, 91, 34, 0.26);
+}
+
+.lobby-friends-scroll-thumb {
+    left: 446px;
+    top: 110px;
+    width: 4px;
+    height: 178px;
+    background-color: rgba(180, 122, 42, 0.62);
+}
+
+.lobby-mode-card {
+    top: 22px;
+    width: 205px;
+    height: 318px;
+}
+
+.lobby-mode-card-quick { left: 35px; }
+.lobby-mode-card-ranked { left: 245px; }
+.lobby-mode-card-custom { left: 455px; }
+.lobby-mode-card-party { left: 665px; }
+
+.lobby-mode-card--selected {
+    background-color: rgba(28, 11, 5, 0.92);
+    border-left-color: rgba(255, 148, 36, 0.52);
+    border-right-color: rgba(255, 148, 36, 0.52);
+    border-top-color: rgba(255, 148, 36, 0.52);
+    border-bottom-color: rgba(255, 148, 36, 0.52);
+}
+
+.lobby-mode-title {
+    position: absolute;
+    left: 16px;
+    top: 18px;
+    width: 173px;
+    height: 48px;
+    color: #f5c35a;
+    font-size: 17px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/Cinzel-Bold.ttf");
+    -unity-text-align: middle-center;
+    letter-spacing: 0.68px;
+}
+
+.lobby-mode-icon {
+    position: absolute;
+    left: 46px;
+    top: 74px;
+    width: 112px;
+    height: 120px;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.lobby-mode-icon-quick { background-image: url("Images/lobby_mode_quick_match.png"); }
+.lobby-mode-icon-ranked { background-image: url("Images/lobby_mode_ranked.png"); }
+.lobby-mode-icon-custom { background-image: url("Images/lobby_mode_custom_game.png"); }
+.lobby-mode-icon-party { background-image: url("Images/lobby_mode_party.png"); }
+
+.lobby-mode-body {
+    position: absolute;
+    left: 27px;
+    top: 198px;
+    width: 151px;
+    height: 72px;
+    color: rgba(234, 209, 153, 0.94);
+    font-size: 13px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/CormorantGaramond-Medium.otf");
+    -unity-text-align: middle-center;
+}
+
+.lobby-mode-footer {
+    position: absolute;
+    left: 28px;
+    top: 275px;
+    width: 149px;
+    height: 30px;
+    color: #dbb87a;
+    font-size: 12px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/Cinzel-Regular.ttf");
+    -unity-text-align: middle-center;
+}
+
+.lobby-faction-panel {
+    left: 20px;
+    top: 370px;
+    width: 890px;
+    height: 124px;
+}
+
+.lobby-build-panel {
+    left: 20px;
+    top: 500px;
+    width: 890px;
+    height: 145px;
+}
+
+.lobby-step-title {
+    position: absolute;
+    left: 265px;
+    top: 2px;
+    width: 360px;
+    height: 28px;
+    color: #f5c35a;
+    font-size: 14px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/Cinzel-Bold.ttf");
+    -unity-text-align: middle-center;
+    letter-spacing: 0.7px;
+}
+
+.lobby-build-step-title {
+    left: 330px;
+    width: 240px;
+}
+
+.lobby-nav-button {
+    position: absolute;
+    width: 53px;
+    height: 66px;
+    background-color: rgba(0, 0, 0, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.lobby-nav-left {
+    left: 19px;
+    top: 37px;
+    background-image: url("Images/lobby_nav_left.png");
+}
+
+.lobby-nav-right {
+    left: 817px;
+    top: 37px;
+    background-image: url("Images/lobby_nav_right.png");
+}
+
+.lobby-build-nav-left {
+    left: 19px;
+    top: 40px;
+    background-image: url("Images/lobby_nav_left.png");
+}
+
+.lobby-build-nav-right {
+    left: 817px;
+    top: 40px;
+    background-image: url("Images/lobby_nav_right.png");
+}
+
+.lobby-choice-button {
+    position: absolute;
+    top: 37px;
+    width: 180px;
+    height: 50px;
+    background-color: rgba(14, 8, 4, 0.72);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgba(173, 110, 38, 0.64);
+    border-right-color: rgba(173, 110, 38, 0.64);
+    border-top-color: rgba(173, 110, 38, 0.64);
+    border-bottom-color: rgba(173, 110, 38, 0.64);
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.lobby-choice-button--selected {
+    background-color: rgba(31, 13, 4, 0.84);
+    border-left-color: rgba(245, 195, 90, 0.74);
+    border-right-color: rgba(245, 195, 90, 0.74);
+    border-top-color: rgba(245, 195, 90, 0.74);
+    border-bottom-color: rgba(245, 195, 90, 0.74);
+}
+
+.faction-choice-0 { left: 70px; }
+.faction-choice-1 { left: 260px; }
+.faction-choice-2 { left: 450px; }
+.faction-choice-3 { left: 640px; }
+
+.lobby-choice-icon {
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    width: 42px;
+    height: 42px;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.lobby-faction-humans { background-image: url("Images/lobby_faction_humans.png"); }
+.lobby-faction-demons { background-image: url("Images/lobby_faction_demons.png"); }
+.lobby-faction-elves { background-image: url("Images/lobby_faction_elves.png"); }
+.lobby-faction-dwarves { background-image: url("Images/lobby_faction_dwarves.png"); }
+
+.lobby-choice-label {
+    position: absolute;
+    left: 58px;
+    top: 2px;
+    width: 105px;
+    height: 45px;
+    color: #ead199;
+    font-size: 12px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/Cinzel-Bold.ttf");
+    -unity-text-align: middle-center;
+}
+
+.lobby-build-card,
+.lobby-new-build-button {
+    position: absolute;
+    top: 40px;
+    width: 112px;
+    height: 66px;
+    overflow: hidden;
+    background-color: rgba(10, 6, 3, 0.74);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgba(173, 110, 38, 0.64);
+    border-right-color: rgba(173, 110, 38, 0.64);
+    border-top-color: rgba(173, 110, 38, 0.64);
+    border-bottom-color: rgba(173, 110, 38, 0.64);
+}
+
+.build-card-0 { left: 82px; }
+.build-card-1 { left: 204px; }
+.build-card-2 { left: 326px; }
+.build-card-3 { left: 448px; }
+.build-card-4 { left: 570px; }
+
+.lobby-new-build-button {
+    left: 692px;
+    color: #ead199;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.lobby-build-card--selected {
+    border-left-color: rgba(245, 195, 90, 0.84);
+    border-right-color: rgba(245, 195, 90, 0.84);
+    border-top-color: rgba(245, 195, 90, 0.84);
+    border-bottom-color: rgba(245, 195, 90, 0.84);
+}
+
+.lobby-build-bg {
+    position: absolute;
+    left: 0;
+    top: -23px;
+    width: 112px;
+    height: 112px;
+    background-image: url("Images/lobby_hero_background_demons.png");
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.lobby-build-hero {
+    position: absolute;
+    left: 25px;
+    top: 0;
+    width: 62px;
+    height: 58px;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.lobby-hero-warlord { background-image: url("Images/lobby_hero_demon_warlord.png"); }
+.lobby-hero-sorceress { background-image: url("Images/lobby_hero_demon_sorceress.png"); }
+.lobby-hero-reaper { background-image: url("Images/lobby_hero_demon_reaper.png"); }
+.lobby-hero-ravager { background-image: url("Images/lobby_hero_demon_ravager.png"); }
+.lobby-hero-berserker { background-image: url("Images/lobby_hero_demon_berserker.png"); }
+
+.lobby-build-label,
+.lobby-new-build-label {
+    position: absolute;
+    left: 4px;
+    top: 40px;
+    width: 104px;
+    height: 24px;
+    color: #ead199;
+    font-size: 9px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/CormorantGaramond-Medium.otf");
+    -unity-text-align: middle-center;
+}
+
+.lobby-build-check {
+    position: absolute;
+    right: 5px;
+    top: 2px;
+    width: 20px;
+    height: 20px;
+    color: #f5c35a;
+    font-size: 18px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/Inter-Medium.ttf");
+    -unity-text-align: middle-center;
+}
+
+.lobby-new-build-plus {
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 112px;
+    height: 34px;
+    color: #f5c35a;
+    font-size: 24px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/Cinzel-Bold.ttf");
+    -unity-text-align: middle-center;
+}
+
+.lobby-start-button {
+    position: absolute;
+    left: 175px;
+    top: 635px;
+    width: 560px;
+    height: 110px;
+    background-image: url("Images/lobby_button_base.png");
+}
+
+.lobby-start-button .th-button__label-layer {
+    font-size: 28px;
+    letter-spacing: 2.52px;
+}
+
+.lobby-panel-title {
+    position: absolute;
+    left: 42px;
+    top: 25px;
+    width: 190px;
+    height: 36px;
+    color: #f5c35a;
+    font-size: 20px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/Cinzel-Bold.ttf");
+    -unity-text-align: middle-left;
+}
+
+.lobby-hourglass {
+    position: absolute;
+    left: 288px;
+    top: 22px;
+    width: 22px;
+    height: 32px;
+    background-image: url("Images/lobby_hourglass.png");
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.lobby-quest-timer {
+    position: absolute;
+    left: 319px;
+    top: 27px;
+    width: 78px;
+    height: 22px;
+    color: #f5c35a;
+    font-size: 14px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/Inter-Medium.ttf");
+}
+
+.lobby-panel-divider {
+    position: absolute;
+    height: 1px;
+    background-color: rgba(196, 138, 43, 0.45);
+}
+
+.lobby-quest-divider {
+    left: 30px;
+    top: 62px;
+    width: 410px;
+}
+
+.lobby-quest-row {
+    position: absolute;
+    left: 34px;
+    width: 430px;
+    height: 40px;
+}
+
+.quest-row-0 { top: 72px; }
+.quest-row-1 { top: 112px; }
+.quest-row-2 { top: 152px; }
+
+.lobby-quest-number {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 32px;
+    height: 32px;
+    color: #f5c35a;
+    font-size: 14px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/Cinzel-Bold.ttf");
+    -unity-text-align: middle-center;
+    background-color: rgba(8, 5, 3, 0.82);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgba(173, 110, 38, 0.7);
+    border-right-color: rgba(173, 110, 38, 0.7);
+    border-top-color: rgba(173, 110, 38, 0.7);
+    border-bottom-color: rgba(173, 110, 38, 0.7);
+}
+
+.lobby-quest-title {
+    position: absolute;
+    left: 40px;
+    top: -2px;
+    width: 190px;
+    height: 24px;
+    color: #ead199;
+    font-size: 13px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/Inter-Medium.ttf");
+}
+
+.lobby-progress-track {
+    position: absolute;
+    left: 40px;
+    top: 25px;
+    width: 270px;
+    height: 9px;
+    background-color: #080604;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgba(127, 90, 36, 0.55);
+    border-right-color: rgba(127, 90, 36, 0.55);
+    border-top-color: rgba(127, 90, 36, 0.55);
+    border-bottom-color: rgba(127, 90, 36, 0.55);
+    border-radius: 4px;
+}
+
+.lobby-progress-fill {
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    height: 5px;
+    background-color: #f06a1a;
+    border-radius: 3px;
+}
+
+.quest-progress-0 { width: 172px; }
+.quest-progress-1 { width: 154px; }
+.quest-progress-2 { width: 20px; }
+
+.lobby-quest-progress {
+    position: absolute;
+    left: 322px;
+    top: 12px;
+    width: 42px;
+    height: 24px;
+    color: #ead199;
+    font-size: 13px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/Inter-Medium.ttf");
+    -unity-text-align: middle-right;
+}
+
+.lobby-quest-xp {
+    position: absolute;
+    left: 374px;
+    top: 16px;
+    width: 56px;
+    height: 18px;
+    color: #dbb87a;
+    font-size: 10px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/Cinzel-Regular.ttf");
+    -unity-text-align: middle-center;
+}
+
+.lobby-view-quests {
+    position: absolute;
+    left: 140px;
+    bottom: 4px;
+    width: 190px;
+    height: 18px;
+    color: #dbb87a;
+    font-size: 10px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/Cinzel-Regular.ttf");
+    -unity-text-align: middle-center;
+}
+
+.lobby-chat-tab-global {
+    left: 62px;
+    width: 100px;
+}
+
+.lobby-chat-tab-clan {
+    left: 162px;
+    width: 77px;
+}
+
+.lobby-chat-tab-private {
+    left: 239px;
+    width: 119px;
+}
+
+.lobby-private-badge {
+    position: absolute;
+    left: 329px;
+    top: 12px;
+    width: 17px;
+    height: 17px;
+    color: #ffebd6;
+    font-size: 10px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/Inter-Medium.ttf");
+    -unity-text-align: middle-center;
+    background-color: #c71b09;
+    border-radius: 8px;
+}
+
+.lobby-chat-settings-button {
+    position: absolute;
+    left: 358px;
+    top: 4px;
+    width: 50px;
+    height: 38px;
+    background-color: rgba(18, 11, 6, 0.86);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgba(142, 91, 34, 0.72);
+    border-right-color: rgba(142, 91, 34, 0.72);
+    border-top-color: rgba(142, 91, 34, 0.72);
+    border-bottom-color: rgba(142, 91, 34, 0.72);
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.lobby-chat-settings-icon {
+    position: absolute;
+    left: 13px;
+    top: 7px;
+    width: 24px;
+    height: 24px;
+    background-image: url("Images/lobby_icon_settings.png");
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.lobby-chat-message {
+    position: absolute;
+    left: 18px;
+    width: 422px;
+    height: 54px;
+}
+
+.chat-message-0 { top: 68px; }
+.chat-message-1 { top: 122px; }
+.chat-message-2 { top: 176px; }
+.chat-message-3 { top: 230px; }
+.chat-message-4 { top: 392px; }
+.chat-message-5 { top: 500px; }
+.chat-message-6 { top: 554px; }
+
+.lobby-chat-name,
+.lobby-chat-rank,
+.lobby-chat-body,
+.lobby-chat-time {
+    position: absolute;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/CormorantGaramond-Medium.otf");
+}
+
+.lobby-chat-name {
+    left: 54px;
+    top: 0;
+    width: 90px;
+    height: 18px;
+    color: #f5c35a;
+    font-size: 16px;
+}
+
+.lobby-chat-name--platinum {
+    color: #bda7ff;
+}
+
+.lobby-chat-name--silver {
+    color: #c6d0d5;
+}
+
+.lobby-chat-rank-icon {
+    position: absolute;
+    left: 106px;
+    top: -1px;
+    width: 22px;
+    height: 22px;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.lobby-chat-rank {
+    left: 132px;
+    top: 0;
+    width: 100px;
+    height: 16px;
+    color: rgba(234, 209, 153, 0.86);
+    font-size: 13px;
+}
+
+.lobby-chat-body {
+    left: 54px;
+    top: 21px;
+    width: 270px;
+    height: 22px;
+    color: rgba(234, 209, 153, 0.95);
+    font-size: 15px;
+}
+
+.lobby-chat-time {
+    right: 0;
+    top: 5px;
+    width: 42px;
+    height: 22px;
+    color: rgba(167, 141, 98, 0.95);
+    font-size: 13px;
+    -unity-text-align: middle-right;
+}
+
+.lobby-system-message {
+    position: absolute;
+    left: 22px;
+    width: 360px;
+    height: 22px;
+    color: #dbb87a;
+    font-size: 13px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/CormorantGaramond-Medium.otf");
+}
+
+.system-message-0 { top: 340px; }
+.system-message-1 { top: 358px; }
+
+.lobby-chat-scroll-track {
+    left: 447px;
+    top: 62px;
+    width: 2px;
+    height: 538px;
+    background-color: rgba(142, 91, 34, 0.26);
+}
+
+.lobby-chat-scroll-thumb {
+    left: 446px;
+    top: 76px;
+    width: 4px;
+    height: 222px;
+    background-color: rgba(180, 122, 42, 0.62);
+}
+
+.lobby-chat-input {
+    position: absolute;
+    left: 18px;
+    bottom: 37px;
+    width: 382px;
+    height: 43px;
+    background-image: url("Images/lobby_input_base.png");
+    -unity-background-scale-mode: stretch-to-fill;
+}
+
+.lobby-chat-placeholder {
+    position: absolute;
+    left: 20px;
+    top: 0;
+    width: 270px;
+    height: 43px;
+    color: rgba(234, 209, 153, 0.58);
+    font-size: 14px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/CormorantGaramond-Medium.otf");
+    -unity-text-align: middle-left;
+}
+
+.lobby-chat-emoji-button,
+.lobby-chat-send-button {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.lobby-chat-emoji-button {
+    left: 344px;
+    top: 11px;
+    width: 18px;
+    height: 18px;
+    background-image: url("Images/lobby_icon_smile.png");
+}
+
+.lobby-chat-send-button {
+    left: 391px;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    background-image: url("Images/lobby_icon_send_message.png");
+}
+
+.lobby-footer-bar {
+    position: absolute;
+    left: 0;
+    top: 985px;
+    width: 1920px;
+    height: 95px;
+    background-color: rgba(3, 2, 1, 0.82);
+    border-top-width: 1px;
+    border-top-color: rgba(196, 138, 43, 0.75);
+}
+
+.lobby-footer-icon-button {
+    position: absolute;
+    top: 14px;
+    width: 68px;
+    height: 68px;
+    background-image: url("Images/lobby_icon_button_background.png");
+    -unity-background-scale-mode: stretch-to-fill;
+    background-color: rgba(0, 0, 0, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.lobby-footer-discord {
+    left: 34px;
+}
+
+.lobby-footer-support {
+    left: 126px;
+}
+
+.lobby-footer-settings {
+    left: 218px;
+}
+
+.lobby-footer-icon-button:hover,
+.lobby-footer-action-button:hover {
+    -unity-background-image-tint-color: #ffffff;
+}
+
+.lobby-footer-button-icon {
+    position: absolute;
+    left: 14px;
+    top: 14px;
+    width: 41px;
+    height: 41px;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.lobby-footer-icon-discord {
+    background-image: url("Images/lobby_icon_discord.png");
+}
+
+.lobby-footer-icon-support {
+    background-image: url("Images/lobby_icon_support.png");
+}
+
+.lobby-footer-icon-settings {
+    background-image: url("Images/lobby_icon_settings.png");
+}
+
+.lobby-footer-control {
+    position: absolute;
+    top: 27px;
+    height: 42px;
+    background-color: rgba(9, 6, 4, 0.86);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgba(127, 90, 36, 0.65);
+    border-right-color: rgba(127, 90, 36, 0.65);
+    border-top-color: rgba(127, 90, 36, 0.65);
+    border-bottom-color: rgba(127, 90, 36, 0.65);
+}
+
+.lobby-region-control {
+    left: 535px;
+    width: 235px;
+}
+
+.lobby-players-control {
+    left: 1080px;
+    width: 250px;
+}
+
+.lobby-region-icon,
+.lobby-arrow-down-icon,
+.lobby-players-icon {
+    position: absolute;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.lobby-region-icon {
+    left: 21px;
+    top: 10px;
+    width: 20px;
+    height: 20px;
+    background-image: url("Images/lobby_icon_region.png");
+}
+
+.lobby-arrow-down-icon {
+    right: 9px;
+    top: 14px;
+    width: 14px;
+    height: 10px;
+    background-image: url("Images/lobby_icon_arrow_down.png");
+}
+
+.lobby-players-icon {
+    left: 19px;
+    top: 7px;
+    width: 28px;
+    height: 28px;
+    background-image: url("Images/lobby_icon_players_online.png");
+}
+
+.lobby-footer-control-label,
+.lobby-ping-label {
+    position: absolute;
+    left: 50px;
+    top: 3px;
+    width: 150px;
+    height: 36px;
+    color: rgba(234, 209, 153, 0.96);
+    font-size: 17px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/CormorantGaramond-Medium.otf");
+    -unity-text-align: middle-left;
+}
+
+.lobby-players-label {
+    width: 170px;
+}
+
+.lobby-ping-control {
+    position: absolute;
+    left: 867px;
+    top: 27px;
+    width: 170px;
+    height: 42px;
+}
+
+.lobby-ping-bar {
+    position: absolute;
+    bottom: 12px;
+    width: 5px;
+    background-color: rgba(95, 212, 106, 0.95);
+    border-radius: 1px;
+}
+
+.ping-0 { left: 0; height: 6px; }
+.ping-1 { left: 8px; height: 12px; }
+.ping-2 { left: 16px; height: 18px; }
+.ping-3 { left: 24px; height: 24px; }
+
+.lobby-ping-label {
+    left: 45px;
+    width: 125px;
+}
+
+.lobby-footer-action-button {
+    position: absolute;
+    left: 1412px;
+    top: 20px;
+    width: 244px;
+    height: 58px;
+    background-image: url("Images/lobby_button_base.png");
+    -unity-background-scale-mode: stretch-to-fill;
+    background-color: rgba(0, 0, 0, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.lobby-match-history-button {
+    left: 1660px;
+    width: 228px;
+}
+
+.lobby-footer-action-icon {
+    position: absolute;
+    left: 24px;
+    top: 11px;
+    width: 40px;
+    height: 36px;
+    color: rgba(245, 195, 90, 0.90);
+    font-size: 22px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/Cinzel-Bold.ttf");
+    -unity-text-align: middle-center;
+}
+
+.lobby-footer-action-label {
+    position: absolute;
+    left: 68px;
+    top: 11px;
+    width: 150px;
+    height: 36px;
+    color: #ead199;
+    font-size: 13px;
+    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/Cinzel-Regular.ttf");
+    -unity-text-align: middle-center;
+    letter-spacing: 0.39px;
+}

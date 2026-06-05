@@ -34,15 +34,6 @@
     background-color: rgba(0, 0, 0, 0.10);
 }
 
-.auth-readability-panel {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 768px;
-    height: 1080px;
-    background-color: rgba(0, 0, 0, 0.34);
-}
-
 .auth-page {
     position: absolute;
     left: 0;
@@ -65,23 +56,6 @@
 .auth-create-account-panel {
     top: 18px;
     height: 1044px;
-}
-
-.auth-panel .th-panel-background {
-    background-color: rgba(8, 6, 4, 0.52);
-}
-
-.auth-panel .th-panel-shadow {
-    background-color: rgba(0, 0, 0, 0.18);
-}
-
-.auth-panel-vignette {
-    position: absolute;
-    left: 16px;
-    top: 16px;
-    right: 16px;
-    bottom: 16px;
-    background-color: rgba(0, 0, 0, 0.18);
 }
 
 .auth-logo {

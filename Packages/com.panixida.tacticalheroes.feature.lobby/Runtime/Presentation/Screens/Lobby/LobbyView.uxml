@@ -1,0 +1,284 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:foundation="Panixida.TacticalHeroes.Foundation.Presentation.Components" editor-extension-mode="False">
+    <Style src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Typography/Typography.uss" />
+    <Style src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Components/GameButton/GameButtonView.uss" />
+    <Style src="LobbyView.uss" />
+
+    <ui:VisualElement name="lobby-root" class="screen lobby-root screen-hidden">
+        <ui:VisualElement class="lobby-background" />
+        <ui:VisualElement class="lobby-dark-overlay" />
+        <ui:VisualElement class="lobby-bottom-shadow" />
+        <ui:VisualElement class="lobby-left-depth" />
+        <ui:VisualElement class="lobby-right-depth" />
+
+        <ui:VisualElement name="lobby-content" class="lobby-content">
+            <ui:VisualElement class="lobby-header">
+                <ui:VisualElement class="lobby-logo" />
+                <ui:Label class="lobby-title-shadow lobby-title" text="MULTIPLAYER LOBBY" />
+                <ui:Label class="lobby-title-glow lobby-title" text="MULTIPLAYER LOBBY" />
+                <ui:Label class="lobby-title-main lobby-title" text="MULTIPLAYER LOBBY" />
+                <ui:Label class="lobby-subtitle" text="Gather your allies and prepare for battle" />
+                <ui:VisualElement class="lobby-title-separator" />
+            </ui:VisualElement>
+
+            <ui:VisualElement class="lobby-left-column">
+                <ui:VisualElement class="lobby-panel lobby-profile-panel">
+                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--tl" />
+                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--tr" />
+                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--br" />
+                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--bl" />
+                    <ui:VisualElement class="lobby-profile-avatar">
+                        <ui:VisualElement class="lobby-avatar-image lobby-avatar-veteran" />
+                        <ui:VisualElement class="lobby-avatar-frame lobby-frame-spiked" />
+                    </ui:VisualElement>
+                    <ui:Label class="lobby-profile-name" text="Valorius" />
+                    <ui:VisualElement class="lobby-profile-crown" />
+                    <ui:Label class="lobby-profile-level" text="Level 47" />
+                    <ui:VisualElement class="lobby-profile-divider" />
+                    <ui:Label class="lobby-profile-rank-label" text="GOLD IV" />
+                    <ui:Label class="lobby-profile-mmr" text="MMR: 1,842" />
+                    <ui:VisualElement class="lobby-online-dot lobby-profile-online-dot" />
+                    <ui:Label class="lobby-profile-online" text="Online" />
+                    <ui:VisualElement class="lobby-profile-rank-icon lobby-rank-gold" />
+                </ui:VisualElement>
+
+                <ui:VisualElement class="lobby-panel lobby-friends-panel">
+                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--tl" />
+                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--tr" />
+                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--br" />
+                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--bl" />
+                    <ui:VisualElement class="lobby-tab-ornament lobby-tab-ornament-friends" />
+                    <ui:Button name="lobby-friends-tab-button" class="lobby-tab lobby-tab--active" text="FRIENDS" />
+                    <ui:Button name="lobby-party-tab-button" class="lobby-tab lobby-party-tab" text="PARTY (2)" />
+                    <ui:Button name="lobby-add-friend-button" class="lobby-tab lobby-add-friend-tab" text="+" />
+                    <ui:Label class="lobby-section-count lobby-online-count" text="ONLINE (5)" />
+
+                    <ui:VisualElement class="lobby-friend-row friend-row-0">
+                        <ui:VisualElement class="lobby-friend-avatar lobby-avatar-veteran" />
+                        <ui:VisualElement class="lobby-online-dot lobby-friend-status-dot" />
+                        <ui:Label class="lobby-friend-name" text="Aurelius" />
+                        <ui:Label class="lobby-friend-status" text="In Lobby" />
+                        <ui:VisualElement class="lobby-friend-rank-icon lobby-rank-gold" />
+                        <ui:Label class="lobby-friend-rank" text="GOLD IV" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="lobby-friend-row friend-row-1">
+                        <ui:VisualElement class="lobby-friend-avatar lobby-avatar-light-oracle" />
+                        <ui:VisualElement class="lobby-online-dot lobby-friend-status-dot" />
+                        <ui:Label class="lobby-friend-name lobby-friend-name--platinum" text="Seraphim" />
+                        <ui:Label class="lobby-friend-status" text="In Match" />
+                        <ui:VisualElement class="lobby-friend-rank-icon lobby-rank-platinum" />
+                        <ui:Label class="lobby-friend-rank" text="PLAT II" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="lobby-friend-row friend-row-2">
+                        <ui:VisualElement class="lobby-friend-avatar lobby-avatar-shadowblade" />
+                        <ui:VisualElement class="lobby-online-dot lobby-friend-status-dot" />
+                        <ui:Label class="lobby-friend-name" text="DreadLord" />
+                        <ui:Label class="lobby-friend-status" text="In Match" />
+                        <ui:VisualElement class="lobby-friend-rank-icon lobby-rank-gold" />
+                        <ui:Label class="lobby-friend-rank" text="GOLD III" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="lobby-friend-row friend-row-3">
+                        <ui:VisualElement class="lobby-friend-avatar lobby-avatar-sentinel" />
+                        <ui:VisualElement class="lobby-online-dot lobby-friend-status-dot" />
+                        <ui:Label class="lobby-friend-name lobby-friend-name--silver" text="IronWolf" />
+                        <ui:Label class="lobby-friend-status" text="In Lobby" />
+                        <ui:VisualElement class="lobby-friend-rank-icon lobby-rank-silver" />
+                        <ui:Label class="lobby-friend-rank" text="SILVER I" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="lobby-friend-row friend-row-4">
+                        <ui:VisualElement class="lobby-friend-avatar lobby-avatar-hooded-rogue" />
+                        <ui:VisualElement class="lobby-online-dot lobby-friend-status-dot" />
+                        <ui:Label class="lobby-friend-name lobby-friend-name--platinum" text="NyxShadow" />
+                        <ui:Label class="lobby-friend-status" text="In Lobby" />
+                        <ui:VisualElement class="lobby-friend-rank-icon lobby-rank-platinum" />
+                        <ui:Label class="lobby-friend-rank" text="PLAT III" />
+                    </ui:VisualElement>
+
+                    <ui:Label class="lobby-section-count lobby-offline-count" text="OFFLINE (6)" />
+                    <ui:VisualElement class="lobby-friend-row lobby-friend-row--offline friend-row-5">
+                        <ui:VisualElement class="lobby-friend-avatar lobby-avatar-elder-monk" />
+                        <ui:Label class="lobby-friend-name" text="ShadowReaper" />
+                        <ui:Label class="lobby-friend-status" text="Offline" />
+                        <ui:VisualElement class="lobby-friend-rank-icon lobby-rank-silver" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="lobby-friend-row lobby-friend-row--offline friend-row-6">
+                        <ui:VisualElement class="lobby-friend-avatar lobby-avatar-ranger" />
+                        <ui:Label class="lobby-friend-name" text="MysticSage" />
+                        <ui:Label class="lobby-friend-status" text="Offline" />
+                        <ui:VisualElement class="lobby-friend-rank-icon lobby-rank-unranked" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="lobby-friend-row lobby-friend-row--offline friend-row-7">
+                        <ui:VisualElement class="lobby-friend-avatar lobby-avatar-sentinel" />
+                        <ui:Label class="lobby-friend-name" text="StormBringer" />
+                        <ui:Label class="lobby-friend-status" text="Offline" />
+                        <ui:VisualElement class="lobby-friend-rank-icon lobby-rank-unranked" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="lobby-scroll-track lobby-friends-scroll-track" />
+                    <ui:VisualElement class="lobby-scroll-thumb lobby-friends-scroll-thumb" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+            <ui:VisualElement class="lobby-center-content">
+                <ui:VisualElement class="lobby-mode-card lobby-mode-card-quick">
+                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--tl" />
+                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--tr" />
+                    <ui:Label class="lobby-mode-title" text="QUICK MATCH" />
+                    <ui:VisualElement class="lobby-mode-icon lobby-mode-icon-quick" />
+                    <ui:Label class="lobby-mode-body" text="Jump into fast matches against players of similar skill." />
+                    <ui:Label class="lobby-mode-footer" text="UNRANKED" />
+                </ui:VisualElement>
+                <ui:VisualElement class="lobby-mode-card lobby-mode-card-ranked lobby-mode-card--selected">
+                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--tl" />
+                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--tr" />
+                    <ui:Label class="lobby-mode-title" text="RANKED" />
+                    <ui:VisualElement class="lobby-mode-icon lobby-mode-icon-ranked" />
+                    <ui:Label class="lobby-mode-body" text="Compete in ranked matches and climb the leaderboards." />
+                    <ui:Label class="lobby-mode-footer" text="GOLD IV - 1,842 MMR" />
+                </ui:VisualElement>
+                <ui:VisualElement class="lobby-mode-card lobby-mode-card-custom">
+                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--tl" />
+                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--tr" />
+                    <ui:Label class="lobby-mode-title" text="CUSTOM GAME" />
+                    <ui:VisualElement class="lobby-mode-icon lobby-mode-icon-custom" />
+                    <ui:Label class="lobby-mode-body" text="Create or join custom matches with your own rules." />
+                    <ui:Label class="lobby-mode-footer" text="PRIVATE RULES" />
+                </ui:VisualElement>
+                <ui:VisualElement class="lobby-mode-card lobby-mode-card-party">
+                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--tl" />
+                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--tr" />
+                    <ui:Label class="lobby-mode-title" text="PARTY" />
+                    <ui:VisualElement class="lobby-mode-icon lobby-mode-icon-party" />
+                    <ui:Label class="lobby-mode-body" text="Team up with friends and queue together as a party." />
+                    <ui:Label class="lobby-mode-footer" text="2 FRIENDS READY" />
+                </ui:VisualElement>
+
+                <ui:VisualElement class="lobby-panel lobby-faction-panel">
+                    <ui:Label class="lobby-step-title" text="1. CHOOSE YOUR FACTION" />
+                    <ui:Button name="lobby-faction-prev-button" class="lobby-nav-button lobby-nav-left" />
+                    <ui:Button name="lobby-faction-next-button" class="lobby-nav-button lobby-nav-right" />
+                    <ui:Button class="lobby-choice-button lobby-choice-button--selected faction-choice-0">
+                        <ui:VisualElement class="lobby-choice-icon lobby-faction-humans" />
+                        <ui:Label class="lobby-choice-label" text="HUMAN ALLIANCE" />
+                    </ui:Button>
+                    <ui:Button class="lobby-choice-button faction-choice-1">
+                        <ui:VisualElement class="lobby-choice-icon lobby-faction-demons" />
+                        <ui:Label class="lobby-choice-label" text="LEGION OF CHAOS" />
+                    </ui:Button>
+                    <ui:Button class="lobby-choice-button faction-choice-2">
+                        <ui:VisualElement class="lobby-choice-icon lobby-faction-elves" />
+                        <ui:Label class="lobby-choice-label" text="ELVEN COURTS" />
+                    </ui:Button>
+                    <ui:Button class="lobby-choice-button faction-choice-3">
+                        <ui:VisualElement class="lobby-choice-icon lobby-faction-dwarves" />
+                        <ui:Label class="lobby-choice-label" text="DWARVEN HOLDS" />
+                    </ui:Button>
+                </ui:VisualElement>
+
+                <ui:VisualElement class="lobby-panel lobby-build-panel">
+                    <ui:Label class="lobby-step-title lobby-build-step-title" text="2. SELECT YOUR BUILD" />
+                    <ui:Button name="lobby-build-prev-button" class="lobby-nav-button lobby-build-nav-left" />
+                    <ui:Button name="lobby-build-next-button" class="lobby-nav-button lobby-build-nav-right" />
+                    <ui:VisualElement class="lobby-build-card lobby-build-card--selected build-card-0">
+                        <ui:VisualElement class="lobby-build-bg" />
+                        <ui:VisualElement class="lobby-build-hero lobby-hero-warlord" />
+                        <ui:Label class="lobby-build-label" text="Demon Warlord" />
+                        <ui:Label class="lobby-build-check" text="✓" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="lobby-build-card build-card-1">
+                        <ui:VisualElement class="lobby-build-bg" />
+                        <ui:VisualElement class="lobby-build-hero lobby-hero-sorceress" />
+                        <ui:Label class="lobby-build-label" text="Infernal Sorceress" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="lobby-build-card build-card-2">
+                        <ui:VisualElement class="lobby-build-bg" />
+                        <ui:VisualElement class="lobby-build-hero lobby-hero-reaper" />
+                        <ui:Label class="lobby-build-label" text="Blight Reaver" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="lobby-build-card build-card-3">
+                        <ui:VisualElement class="lobby-build-bg" />
+                        <ui:VisualElement class="lobby-build-hero lobby-hero-ravager" />
+                        <ui:Label class="lobby-build-label" text="Fell Destroyer" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="lobby-build-card build-card-4">
+                        <ui:VisualElement class="lobby-build-bg" />
+                        <ui:VisualElement class="lobby-build-hero lobby-hero-berserker" />
+                        <ui:Label class="lobby-build-label" text="Demon Berserker" />
+                    </ui:VisualElement>
+                    <ui:Button name="lobby-new-build-button" class="lobby-new-build-button">
+                        <ui:Label class="lobby-new-build-plus" text="+" />
+                        <ui:Label class="lobby-new-build-label" text="New Build" />
+                    </ui:Button>
+                </ui:VisualElement>
+
+                <foundation:GameButtonView name="lobby-start-matchmaking-button" class="lobby-start-button" label="START MATCHMAKING" />
+            </ui:VisualElement>
+
+            <ui:VisualElement class="lobby-right-column">
+                <ui:VisualElement class="lobby-panel lobby-quests-panel">
+                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--tl" />
+                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--tr" />
+                    <ui:Label class="lobby-panel-title" text="DAILY QUESTS" />
+                    <ui:VisualElement class="lobby-hourglass" />
+                    <ui:Label class="lobby-quest-timer" text="23h 47m" />
+                    <ui:VisualElement class="lobby-panel-divider lobby-quest-divider" />
+                    <ui:VisualElement class="lobby-quest-row quest-row-0">
+                        <ui:Label class="lobby-quest-number" text="1" />
+                        <ui:Label class="lobby-quest-title" text="Win 3 matches" />
+                        <ui:VisualElement class="lobby-progress-track"><ui:VisualElement class="lobby-progress-fill quest-progress-0" /></ui:VisualElement>
+                        <ui:Label class="lobby-quest-progress" text="2 / 3" />
+                        <ui:Label class="lobby-quest-xp" text="500 XP" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="lobby-quest-row quest-row-1">
+                        <ui:Label class="lobby-quest-number" text="2" />
+                        <ui:Label class="lobby-quest-title" text="Play 5 matches" />
+                        <ui:VisualElement class="lobby-progress-track"><ui:VisualElement class="lobby-progress-fill quest-progress-1" /></ui:VisualElement>
+                        <ui:Label class="lobby-quest-progress" text="3 / 5" />
+                        <ui:Label class="lobby-quest-xp" text="750 XP" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="lobby-quest-row quest-row-2">
+                        <ui:Label class="lobby-quest-number" text="3" />
+                        <ui:Label class="lobby-quest-title" text="Win a Ranked match" />
+                        <ui:VisualElement class="lobby-progress-track"><ui:VisualElement class="lobby-progress-fill quest-progress-2" /></ui:VisualElement>
+                        <ui:Label class="lobby-quest-progress" text="0 / 1" />
+                        <ui:Label class="lobby-quest-xp" text="1000 XP" />
+                    </ui:VisualElement>
+                    <ui:Label class="lobby-view-quests" text="VIEW ALL QUESTS" />
+                </ui:VisualElement>
+
+                <ui:VisualElement class="lobby-panel lobby-chat-panel">
+                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--tl" />
+                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--tr" />
+                    <ui:VisualElement class="lobby-tab-ornament lobby-tab-ornament-chat" />
+                    <ui:Button name="lobby-chat-global-tab-button" class="lobby-tab lobby-tab--active lobby-chat-tab-global" text="GLOBAL" />
+                    <ui:Button name="lobby-chat-clan-tab-button" class="lobby-tab lobby-chat-tab-clan" text="CLAN" />
+                    <ui:Button name="lobby-chat-private-tab-button" class="lobby-tab lobby-chat-tab-private" text="PRIVATE" />
+                    <ui:Label class="lobby-private-badge" text="3" />
+                    <ui:Button name="lobby-chat-settings-button" class="lobby-chat-settings-button"><ui:VisualElement class="lobby-chat-settings-icon" /></ui:Button>
+
+                    <ui:VisualElement class="lobby-chat-message chat-message-0"><ui:VisualElement class="lobby-chat-avatar lobby-avatar-veteran" /><ui:Label class="lobby-chat-name" text="Valorius" /><ui:VisualElement class="lobby-chat-rank-icon lobby-rank-gold" /><ui:Label class="lobby-chat-rank" text="GOLD IV" /><ui:Label class="lobby-chat-body" text="Good evening, heroes!" /><ui:Label class="lobby-chat-time" text="18:42" /></ui:VisualElement>
+                    <ui:VisualElement class="lobby-chat-message chat-message-1"><ui:VisualElement class="lobby-chat-avatar lobby-avatar-light-oracle" /><ui:Label class="lobby-chat-name lobby-chat-name--platinum" text="Seraphim" /><ui:VisualElement class="lobby-chat-rank-icon lobby-rank-platinum" /><ui:Label class="lobby-chat-rank" text="PLATINUM II" /><ui:Label class="lobby-chat-body" text="Ready for some ranked." /><ui:Label class="lobby-chat-time" text="18:43" /></ui:VisualElement>
+                    <ui:VisualElement class="lobby-chat-message chat-message-2"><ui:VisualElement class="lobby-chat-avatar lobby-avatar-shadowblade" /><ui:Label class="lobby-chat-name" text="DreadLord" /><ui:VisualElement class="lobby-chat-rank-icon lobby-rank-gold" /><ui:Label class="lobby-chat-rank" text="GOLD III" /><ui:Label class="lobby-chat-body" text="Let's dominate the battlefield." /><ui:Label class="lobby-chat-time" text="18:44" /></ui:VisualElement>
+                    <ui:VisualElement class="lobby-chat-message chat-message-3"><ui:VisualElement class="lobby-chat-avatar lobby-avatar-sentinel" /><ui:Label class="lobby-chat-name lobby-chat-name--silver" text="IronWolf" /><ui:VisualElement class="lobby-chat-rank-icon lobby-rank-silver" /><ui:Label class="lobby-chat-rank" text="SILVER I" /><ui:Label class="lobby-chat-body" text="@SILVER anyone up for custom?" /><ui:Label class="lobby-chat-time" text="18:45" /></ui:VisualElement>
+                    <ui:Label class="lobby-system-message system-message-0" text="System    Seraphim has joined the lobby." />
+                    <ui:Label class="lobby-system-message system-message-1" text="System    IronWolf has joined the lobby." />
+                    <ui:VisualElement class="lobby-chat-message chat-message-4"><ui:VisualElement class="lobby-chat-avatar lobby-avatar-veteran" /><ui:Label class="lobby-chat-name" text="Valorius" /><ui:VisualElement class="lobby-chat-rank-icon lobby-rank-gold" /><ui:Label class="lobby-chat-rank" text="GOLD IV" /><ui:Label class="lobby-chat-body" text="Let's go!" /><ui:Label class="lobby-chat-time" text="18:46" /></ui:VisualElement>
+                    <ui:VisualElement class="lobby-chat-message chat-message-5"><ui:VisualElement class="lobby-chat-avatar lobby-avatar-light-oracle" /><ui:Label class="lobby-chat-name lobby-chat-name--platinum" text="Seraphim" /><ui:VisualElement class="lobby-chat-rank-icon lobby-rank-platinum" /><ui:Label class="lobby-chat-rank" text="PLATINUM II" /><ui:Label class="lobby-chat-body" text="I can fill support." /><ui:Label class="lobby-chat-time" text="18:47" /></ui:VisualElement>
+                    <ui:VisualElement class="lobby-chat-message chat-message-6"><ui:VisualElement class="lobby-chat-avatar lobby-avatar-sentinel" /><ui:Label class="lobby-chat-name lobby-chat-name--silver" text="IronWolf" /><ui:VisualElement class="lobby-chat-rank-icon lobby-rank-silver" /><ui:Label class="lobby-chat-rank" text="SILVER I" /><ui:Label class="lobby-chat-body" text="I can tank this round." /><ui:Label class="lobby-chat-time" text="18:48" /></ui:VisualElement>
+                    <ui:VisualElement class="lobby-scroll-track lobby-chat-scroll-track" />
+                    <ui:VisualElement class="lobby-scroll-thumb lobby-chat-scroll-thumb" />
+                    <ui:VisualElement class="lobby-chat-input"><ui:Label class="lobby-chat-placeholder" text="Type a message..." /><ui:Button name="lobby-chat-emoji-button" class="lobby-chat-emoji-button" /><ui:Button name="lobby-chat-send-button" class="lobby-chat-send-button" /></ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+            <ui:VisualElement class="lobby-footer-bar">
+                <ui:Button name="lobby-discord-button" class="lobby-footer-icon-button lobby-footer-discord"><ui:VisualElement class="lobby-footer-button-icon lobby-footer-icon-discord" /></ui:Button>
+                <ui:Button name="lobby-support-button" class="lobby-footer-icon-button lobby-footer-support"><ui:VisualElement class="lobby-footer-button-icon lobby-footer-icon-support" /></ui:Button>
+                <ui:Button name="lobby-settings-button" class="lobby-footer-icon-button lobby-footer-settings"><ui:VisualElement class="lobby-footer-button-icon lobby-footer-icon-settings" /></ui:Button>
+                <ui:VisualElement class="lobby-footer-control lobby-region-control"><ui:VisualElement class="lobby-region-icon" /><ui:Label class="lobby-footer-control-label" text="Region: Europe" /><ui:VisualElement class="lobby-arrow-down-icon" /></ui:VisualElement>
+                <ui:VisualElement class="lobby-ping-control"><ui:VisualElement class="lobby-ping-bar ping-0" /><ui:VisualElement class="lobby-ping-bar ping-1" /><ui:VisualElement class="lobby-ping-bar ping-2" /><ui:VisualElement class="lobby-ping-bar ping-3" /><ui:Label class="lobby-ping-label" text="Ping:  38 ms" /></ui:VisualElement>
+                <ui:VisualElement class="lobby-footer-control lobby-players-control"><ui:VisualElement class="lobby-players-icon" /><ui:Label class="lobby-footer-control-label lobby-players-label" text="Players Online: 2,531" /></ui:VisualElement>
+                <ui:Button name="lobby-leaderboards-button" class="lobby-footer-action-button"><ui:Label class="lobby-footer-action-icon" text="II" /><ui:Label class="lobby-footer-action-label" text="LEADERBOARDS" /></ui:Button>
+                <ui:Button name="lobby-match-history-button" class="lobby-footer-action-button lobby-match-history-button"><ui:Label class="lobby-footer-action-icon" text="+" /><ui:Label class="lobby-footer-action-label" text="MATCH HISTORY" /></ui:Button>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

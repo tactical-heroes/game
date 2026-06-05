@@ -4,6 +4,7 @@
     <Style src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Components/GameButton/GameButtonView.uss" />
     <Style src="MainMenuView.uss" />
     <ui:Template name="DecorativePanelChrome" src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Components/DecorativePanel/DecorativePanelChrome.uxml" />
+    <ui:Template name="LobbyView" src="../../../../../com.panixida.tacticalheroes.feature.lobby/Runtime/Presentation/Screens/Lobby/LobbyView.uxml" />
     <ui:VisualElement name="menu-root" class="screen menu-root">
         <ui:VisualElement class="menu-dark-overlay" />
 
@@ -53,4 +54,5 @@
             </ui:Button>
         </ui:VisualElement>
     </ui:VisualElement>
+    <ui:Instance name="lobby-container" template="LobbyView" />
 </ui:UXML>
