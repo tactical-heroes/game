@@ -27,13 +27,13 @@
     top: 0;
     right: 0;
     height: 55px;
-    background-image: url("../../Images/auth_input_base.png");
+    background-image: url("../../Images/Inputs/text_field_frame.png");
     -unity-background-scale-mode: stretch-to-fill;
     background-color: rgba(0, 0, 0, 0);
 }
 
 .th-input.th-input--error .th-input__frame {
-    background-image: url("../../Images/ui_input_error.png");
+    background-image: url("../../Images/Inputs/text_field_error_frame.png");
 }
 
 .th-input .unity-base-field__input {

@@ -21,7 +21,7 @@
     width: 100%;
     height: 100%;
     background-color: #050403;
-    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/menu_background.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Backgrounds/realm_battlefield.png");
     -unity-background-scale-mode: scale-and-crop;
 }
 
@@ -40,7 +40,7 @@
     top: 12px;
     width: 100px;
     height: 100px;
-    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/menu_logo_emblem.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Brand/tactical_heroes_emblem.png");
     -unity-background-scale-mode: scale-to-fit;
 }
 
@@ -73,7 +73,7 @@
     top: 157px;
     width: 494px;
     height: 50px;
-    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/menu_title_separator.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Ornaments/title_separator.png");
     -unity-background-scale-mode: stretch-to-fill;
 }
 
@@ -309,49 +309,49 @@
 }
 
 .icon-resolution {
-    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/settings_icon_resolution.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Icons/Settings/resolution.png");
 }
 
 .icon-display-mode {
     left: 2px;
     width: 24px;
-    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/settings_icon_display_mode.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Icons/Settings/display_mode.png");
 }
 
 .icon-frame-rate {
     left: 1px;
     width: 26px;
-    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/settings_icon_frame_rate.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Icons/Settings/frame_rate.png");
 }
 
 .icon-brightness {
     top: 5px;
     height: 27px;
-    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/settings_icon_brightness.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Icons/Settings/brightness.png");
 }
 
 .icon-quality {
     left: 1px;
     width: 25px;
-    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/settings_icon_quality.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Icons/Settings/visual_quality.png");
 }
 
 .icon-textures {
     width: 28px;
-    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/settings_icon_textures.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Icons/Settings/textures.png");
 }
 
 .icon-effects {
     top: 6px;
     height: 27px;
-    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/settings_icon_effects_quality.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Icons/Settings/effects_quality.png");
 }
 
 .icon-music {
     left: 1px;
     top: 5px;
     width: 25px;
-    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/settings_icon_music_volume.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Icons/Settings/music_volume.png");
 }
 
 .icon-effects-volume {
@@ -359,19 +359,19 @@
     top: 6px;
     width: 33px;
     height: 27px;
-    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/settings_icon_effects_volume.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Icons/Settings/effects_volume.png");
 }
 
 .icon-language {
     width: 27px;
-    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/settings_icon_language.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Icons/Settings/language.png");
 }
 
 .icon-damage {
     left: 1px;
     top: 4px;
     width: 27px;
-    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/settings_icon_damage_numbers.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Icons/Settings/damage_numbers.png");
 }
 
 .settings-row-label {

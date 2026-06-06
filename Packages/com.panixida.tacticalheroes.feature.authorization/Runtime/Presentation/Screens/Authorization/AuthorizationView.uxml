@@ -2,6 +2,7 @@
     <Style src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Typography/Typography.uss" />
     <Style src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Components/DecorativePanel/DecorativePanel.uss" />
     <Style src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Components/GameButton/GameButtonView.uss" />
+    <Style src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Components/IconButton/IconButtonView.uss" />
     <Style src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Components/Input/InputView.uss" />
     <Style src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Components/Checkbox/CheckboxView.uss" />
     <Style src="AuthorizationView.uss" />
@@ -51,24 +52,9 @@
             </ui:VisualElement>
 
             <ui:VisualElement class="auth-footer-links">
-                <ui:Button name="auth-sign-in-discord-button" class="auth-icon-button auth-icon-button-discord">
-                    <ui:VisualElement class="auth-icon-button-overlay auth-icon-button-hover-glow" />
-                    <ui:VisualElement class="auth-icon-button-overlay auth-icon-button-selected-glow" />
-                    <ui:VisualElement class="auth-icon-button-overlay auth-icon-button-active-tint" />
-                    <ui:VisualElement class="auth-icon-button-overlay auth-icon-button-disabled-tint" />
-                </ui:Button>
-                <ui:Button name="auth-sign-in-support-button" class="auth-icon-button auth-icon-button-support">
-                    <ui:VisualElement class="auth-icon-button-overlay auth-icon-button-hover-glow" />
-                    <ui:VisualElement class="auth-icon-button-overlay auth-icon-button-selected-glow" />
-                    <ui:VisualElement class="auth-icon-button-overlay auth-icon-button-active-tint" />
-                    <ui:VisualElement class="auth-icon-button-overlay auth-icon-button-disabled-tint" />
-                </ui:Button>
-                <ui:Button name="auth-sign-in-settings-button" class="auth-icon-button auth-icon-button-settings">
-                    <ui:VisualElement class="auth-icon-button-overlay auth-icon-button-hover-glow" />
-                    <ui:VisualElement class="auth-icon-button-overlay auth-icon-button-selected-glow" />
-                    <ui:VisualElement class="auth-icon-button-overlay auth-icon-button-active-tint" />
-                    <ui:VisualElement class="auth-icon-button-overlay auth-icon-button-disabled-tint" />
-                </ui:Button>
+                <foundation:IconButtonView name="auth-sign-in-discord-button" class="auth-icon-button auth-icon-button-discord" icon-class="th-icon-button__icon--discord" />
+                <foundation:IconButtonView name="auth-sign-in-support-button" class="auth-icon-button auth-icon-button-support" icon-class="th-icon-button__icon--support" />
+                <foundation:IconButtonView name="auth-sign-in-settings-button" class="auth-icon-button auth-icon-button-settings" icon-class="th-icon-button__icon--settings" />
             </ui:VisualElement>
         </ui:VisualElement>
 
@@ -127,24 +113,9 @@
             </ui:VisualElement>
 
             <ui:VisualElement class="auth-footer-links auth-create-footer-links">
-                <ui:Button name="auth-create-discord-button" class="auth-icon-button auth-icon-button-discord">
-                    <ui:VisualElement class="auth-icon-button-overlay auth-icon-button-hover-glow" />
-                    <ui:VisualElement class="auth-icon-button-overlay auth-icon-button-selected-glow" />
-                    <ui:VisualElement class="auth-icon-button-overlay auth-icon-button-active-tint" />
-                    <ui:VisualElement class="auth-icon-button-overlay auth-icon-button-disabled-tint" />
-                </ui:Button>
-                <ui:Button name="auth-create-support-button" class="auth-icon-button auth-icon-button-support">
-                    <ui:VisualElement class="auth-icon-button-overlay auth-icon-button-hover-glow" />
-                    <ui:VisualElement class="auth-icon-button-overlay auth-icon-button-selected-glow" />
-                    <ui:VisualElement class="auth-icon-button-overlay auth-icon-button-active-tint" />
-                    <ui:VisualElement class="auth-icon-button-overlay auth-icon-button-disabled-tint" />
-                </ui:Button>
-                <ui:Button name="auth-create-settings-button" class="auth-icon-button auth-icon-button-settings">
-                    <ui:VisualElement class="auth-icon-button-overlay auth-icon-button-hover-glow" />
-                    <ui:VisualElement class="auth-icon-button-overlay auth-icon-button-selected-glow" />
-                    <ui:VisualElement class="auth-icon-button-overlay auth-icon-button-active-tint" />
-                    <ui:VisualElement class="auth-icon-button-overlay auth-icon-button-disabled-tint" />
-                </ui:Button>
+                <foundation:IconButtonView name="auth-create-discord-button" class="auth-icon-button auth-icon-button-discord" icon-class="th-icon-button__icon--discord" />
+                <foundation:IconButtonView name="auth-create-support-button" class="auth-icon-button auth-icon-button-support" icon-class="th-icon-button__icon--support" />
+                <foundation:IconButtonView name="auth-create-settings-button" class="auth-icon-button auth-icon-button-settings" icon-class="th-icon-button__icon--settings" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

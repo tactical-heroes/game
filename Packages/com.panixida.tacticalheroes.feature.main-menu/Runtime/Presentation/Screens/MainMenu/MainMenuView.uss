@@ -21,7 +21,7 @@
     width: 100%;
     height: 100%;
     background-color: #080705;
-    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/menu_background.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Backgrounds/realm_battlefield.png");
     -unity-background-scale-mode: scale-and-crop;
 }
 
@@ -48,7 +48,7 @@
     top: 56px;
     width: 200px;
     height: 200px;
-    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/menu_logo_emblem.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Brand/tactical_heroes_emblem.png");
     -unity-background-scale-mode: scale-to-fit;
 }
 
@@ -105,7 +105,7 @@
     top: 350px;
     width: 494px;
     height: 50px;
-    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/menu_title_separator.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Ornaments/title_separator.png");
     -unity-background-scale-mode: stretch-to-fill;
 }
 
@@ -161,8 +161,8 @@
     position: absolute;
     bottom: 18px;
     width: 150px;
-    height: 36px;
-    background-image: url("Images/menu_footer_ornament.png");
+    height: 18px;
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Ornaments/footer_ornament.png");
     -unity-background-scale-mode: stretch-to-fill;
     -unity-background-image-tint-color: #ffffff;
 }
@@ -204,138 +204,16 @@
     top: 0;
     width: 54px;
     height: 54px;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    border-left-width: 0;
-    border-right-width: 0;
-    border-top-width: 0;
-    border-bottom-width: 0;
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    background-color: rgba(0, 0, 0, 0);
-    -unity-background-scale-mode: scale-to-fit;
-    -unity-background-image-tint-color: #ffffff;
-    border-radius: 2px;
-    overflow: hidden;
-}
-
-.icon-button:hover,
-.icon-button:active,
-.icon-button:focus,
-.icon-button:disabled {
-    border-left-width: 0;
-    border-right-width: 0;
-    border-top-width: 0;
-    border-bottom-width: 0;
-    background-color: rgba(0, 0, 0, 0);
-}
-
-.icon-button:hover {
-    -unity-background-image-tint-color: #ffffff;
-}
-
-.icon-button:active {
-    -unity-background-image-tint-color: rgba(255, 255, 255, 0.82);
-}
-
-.icon-button:disabled {
-    -unity-background-image-tint-color: rgba(255, 255, 255, 0.62);
-}
-
-.icon-button-overlay {
-    display: none;
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 2px;
-    background-color: rgba(0, 0, 0, 0);
-}
-
-.icon-button-hover-glow {
-    left: 8px;
-    top: 8px;
-    right: 8px;
-    bottom: 8px;
-    border-radius: 3px;
-    background-color: rgba(255, 184, 46, 0.11);
-    border-left-width: 1px;
-    border-right-width: 1px;
-    border-top-width: 1px;
-    border-bottom-width: 1px;
-    border-left-color: rgba(255, 184, 56, 0.42);
-    border-right-color: rgba(255, 184, 56, 0.42);
-    border-top-color: rgba(255, 184, 56, 0.42);
-    border-bottom-color: rgba(255, 184, 56, 0.42);
-}
-
-.icon-button-selected-glow {
-    left: 6px;
-    top: 6px;
-    right: 6px;
-    bottom: 6px;
-    border-radius: 3px;
-    background-color: rgba(255, 173, 41, 0.18);
-    border-left-width: 1px;
-    border-right-width: 1px;
-    border-top-width: 1px;
-    border-bottom-width: 1px;
-    border-left-color: rgba(255, 199, 64, 0.64);
-    border-right-color: rgba(255, 199, 64, 0.64);
-    border-top-color: rgba(255, 199, 64, 0.64);
-    border-bottom-color: rgba(255, 199, 64, 0.64);
-}
-
-.icon-button-active-tint {
-    background-color: rgba(0, 0, 0, 0.24);
-}
-
-.icon-button-disabled-tint {
-    background-color: rgba(0, 0, 0, 0.42);
-}
-
-.icon-button:hover .icon-button-hover-glow {
-    display: flex;
-}
-
-.icon-button:active .icon-button-hover-glow {
-    display: none;
-}
-
-.icon-button:active .icon-button-active-tint {
-    display: flex;
-}
-
-.icon-button.icon-button--selected .icon-button-selected-glow {
-    display: flex;
-}
-
-.icon-button:disabled .icon-button-hover-glow,
-.icon-button:disabled .icon-button-selected-glow,
-.icon-button:disabled .icon-button-active-tint {
-    display: none;
-}
-
-.icon-button:disabled .icon-button-disabled-tint {
-    display: flex;
 }
 
 .icon-button-discord {
     left: 0;
-    background-image: url("Images/menu_icon_discord.png");
 }
 
 .icon-button-support {
     left: 68px;
-    background-image: url("Images/menu_icon_support.png");
 }
 
 .icon-button-settings {
     left: 136px;
-    background-image: url("Images/menu_icon_settings.png");
 }

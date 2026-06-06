@@ -1,14 +1,14 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:foundation="Panixida.TacticalHeroes.Foundation.Presentation.Components" editor-extension-mode="False">
     <Style src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Typography/Typography.uss" />
+    <Style src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Components/DecorativePanel/DecorativePanel.uss" />
     <Style src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Components/GameButton/GameButtonView.uss" />
+    <Style src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Components/IconButton/IconButtonView.uss" />
     <Style src="LobbyView.uss" />
+    <ui:Template name="DecorativePanelChrome" src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Components/DecorativePanel/DecorativePanelChrome.uxml" />
 
     <ui:VisualElement name="lobby-root" class="screen lobby-root screen-hidden">
         <ui:VisualElement class="lobby-background" />
         <ui:VisualElement class="lobby-dark-overlay" />
-        <ui:VisualElement class="lobby-bottom-shadow" />
-        <ui:VisualElement class="lobby-left-depth" />
-        <ui:VisualElement class="lobby-right-depth" />
 
         <ui:VisualElement name="lobby-content" class="lobby-content">
             <ui:VisualElement class="lobby-header">
@@ -21,11 +21,8 @@
             </ui:VisualElement>
 
             <ui:VisualElement class="lobby-left-column">
-                <ui:VisualElement class="lobby-panel lobby-profile-panel">
-                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--tl" />
-                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--tr" />
-                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--br" />
-                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--bl" />
+                <ui:VisualElement class="lobby-panel lobby-profile-panel th-panel">
+                    <ui:Instance template="DecorativePanelChrome" class="th-panel-chrome" />
                     <ui:VisualElement class="lobby-profile-avatar">
                         <ui:VisualElement class="lobby-avatar-image lobby-avatar-veteran" />
                         <ui:VisualElement class="lobby-avatar-frame lobby-frame-spiked" />
@@ -41,11 +38,8 @@
                     <ui:VisualElement class="lobby-profile-rank-icon lobby-rank-gold" />
                 </ui:VisualElement>
 
-                <ui:VisualElement class="lobby-panel lobby-friends-panel">
-                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--tl" />
-                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--tr" />
-                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--br" />
-                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--bl" />
+                <ui:VisualElement class="lobby-panel lobby-friends-panel th-panel">
+                    <ui:Instance template="DecorativePanelChrome" class="th-panel-chrome" />
                     <ui:VisualElement class="lobby-tab-ornament lobby-tab-ornament-friends" />
                     <ui:Button name="lobby-friends-tab-button" class="lobby-tab lobby-tab--active" text="FRIENDS" />
                     <ui:Button name="lobby-party-tab-button" class="lobby-tab lobby-party-tab" text="PARTY (2)" />
@@ -118,40 +112,37 @@
             </ui:VisualElement>
 
             <ui:VisualElement class="lobby-center-content">
-                <ui:VisualElement class="lobby-mode-card lobby-mode-card-quick">
-                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--tl" />
-                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--tr" />
+                <ui:VisualElement class="lobby-mode-card lobby-mode-card-quick th-panel">
+                    <ui:Instance template="DecorativePanelChrome" class="th-panel-chrome" />
                     <ui:Label class="lobby-mode-title" text="QUICK MATCH" />
                     <ui:VisualElement class="lobby-mode-icon lobby-mode-icon-quick" />
                     <ui:Label class="lobby-mode-body" text="Jump into fast matches against players of similar skill." />
                     <ui:Label class="lobby-mode-footer" text="UNRANKED" />
                 </ui:VisualElement>
-                <ui:VisualElement class="lobby-mode-card lobby-mode-card-ranked lobby-mode-card--selected">
-                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--tl" />
-                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--tr" />
+                <ui:VisualElement class="lobby-mode-card lobby-mode-card-ranked lobby-mode-card--selected th-panel">
+                    <ui:Instance template="DecorativePanelChrome" class="th-panel-chrome" />
                     <ui:Label class="lobby-mode-title" text="RANKED" />
                     <ui:VisualElement class="lobby-mode-icon lobby-mode-icon-ranked" />
                     <ui:Label class="lobby-mode-body" text="Compete in ranked matches and climb the leaderboards." />
                     <ui:Label class="lobby-mode-footer" text="GOLD IV - 1,842 MMR" />
                 </ui:VisualElement>
-                <ui:VisualElement class="lobby-mode-card lobby-mode-card-custom">
-                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--tl" />
-                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--tr" />
+                <ui:VisualElement class="lobby-mode-card lobby-mode-card-custom th-panel">
+                    <ui:Instance template="DecorativePanelChrome" class="th-panel-chrome" />
                     <ui:Label class="lobby-mode-title" text="CUSTOM GAME" />
                     <ui:VisualElement class="lobby-mode-icon lobby-mode-icon-custom" />
                     <ui:Label class="lobby-mode-body" text="Create or join custom matches with your own rules." />
                     <ui:Label class="lobby-mode-footer" text="PRIVATE RULES" />
                 </ui:VisualElement>
-                <ui:VisualElement class="lobby-mode-card lobby-mode-card-party">
-                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--tl" />
-                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--tr" />
+                <ui:VisualElement class="lobby-mode-card lobby-mode-card-party th-panel">
+                    <ui:Instance template="DecorativePanelChrome" class="th-panel-chrome" />
                     <ui:Label class="lobby-mode-title" text="PARTY" />
                     <ui:VisualElement class="lobby-mode-icon lobby-mode-icon-party" />
                     <ui:Label class="lobby-mode-body" text="Team up with friends and queue together as a party." />
                     <ui:Label class="lobby-mode-footer" text="2 FRIENDS READY" />
                 </ui:VisualElement>
 
-                <ui:VisualElement class="lobby-panel lobby-faction-panel">
+                <ui:VisualElement class="lobby-panel lobby-faction-panel th-panel">
+                    <ui:Instance template="DecorativePanelChrome" class="th-panel-chrome" />
                     <ui:Label class="lobby-step-title" text="1. CHOOSE YOUR FACTION" />
                     <ui:Button name="lobby-faction-prev-button" class="lobby-nav-button lobby-nav-left" />
                     <ui:Button name="lobby-faction-next-button" class="lobby-nav-button lobby-nav-right" />
@@ -173,7 +164,8 @@
                     </ui:Button>
                 </ui:VisualElement>
 
-                <ui:VisualElement class="lobby-panel lobby-build-panel">
+                <ui:VisualElement class="lobby-panel lobby-build-panel th-panel">
+                    <ui:Instance template="DecorativePanelChrome" class="th-panel-chrome" />
                     <ui:Label class="lobby-step-title lobby-build-step-title" text="2. SELECT YOUR BUILD" />
                     <ui:Button name="lobby-build-prev-button" class="lobby-nav-button lobby-build-nav-left" />
                     <ui:Button name="lobby-build-next-button" class="lobby-nav-button lobby-build-nav-right" />
@@ -213,9 +205,8 @@
             </ui:VisualElement>
 
             <ui:VisualElement class="lobby-right-column">
-                <ui:VisualElement class="lobby-panel lobby-quests-panel">
-                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--tl" />
-                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--tr" />
+                <ui:VisualElement class="lobby-panel lobby-quests-panel th-panel">
+                    <ui:Instance template="DecorativePanelChrome" class="th-panel-chrome" />
                     <ui:Label class="lobby-panel-title" text="DAILY QUESTS" />
                     <ui:VisualElement class="lobby-hourglass" />
                     <ui:Label class="lobby-quest-timer" text="23h 47m" />
@@ -244,15 +235,14 @@
                     <ui:Label class="lobby-view-quests" text="VIEW ALL QUESTS" />
                 </ui:VisualElement>
 
-                <ui:VisualElement class="lobby-panel lobby-chat-panel">
-                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--tl" />
-                    <ui:VisualElement class="lobby-panel-corner lobby-panel-corner--tr" />
+                <ui:VisualElement class="lobby-panel lobby-chat-panel th-panel">
+                    <ui:Instance template="DecorativePanelChrome" class="th-panel-chrome" />
                     <ui:VisualElement class="lobby-tab-ornament lobby-tab-ornament-chat" />
                     <ui:Button name="lobby-chat-global-tab-button" class="lobby-tab lobby-tab--active lobby-chat-tab-global" text="GLOBAL" />
                     <ui:Button name="lobby-chat-clan-tab-button" class="lobby-tab lobby-chat-tab-clan" text="CLAN" />
                     <ui:Button name="lobby-chat-private-tab-button" class="lobby-tab lobby-chat-tab-private" text="PRIVATE" />
                     <ui:Label class="lobby-private-badge" text="3" />
-                    <ui:Button name="lobby-chat-settings-button" class="lobby-chat-settings-button"><ui:VisualElement class="lobby-chat-settings-icon" /></ui:Button>
+                    <foundation:IconButtonView name="lobby-chat-settings-button" class="lobby-chat-settings-button" icon-class="th-icon-button__icon--settings" />
 
                     <ui:VisualElement class="lobby-chat-message chat-message-0"><ui:VisualElement class="lobby-chat-avatar lobby-avatar-veteran" /><ui:Label class="lobby-chat-name" text="Valorius" /><ui:VisualElement class="lobby-chat-rank-icon lobby-rank-gold" /><ui:Label class="lobby-chat-rank" text="GOLD IV" /><ui:Label class="lobby-chat-body" text="Good evening, heroes!" /><ui:Label class="lobby-chat-time" text="18:42" /></ui:VisualElement>
                     <ui:VisualElement class="lobby-chat-message chat-message-1"><ui:VisualElement class="lobby-chat-avatar lobby-avatar-light-oracle" /><ui:Label class="lobby-chat-name lobby-chat-name--platinum" text="Seraphim" /><ui:VisualElement class="lobby-chat-rank-icon lobby-rank-platinum" /><ui:Label class="lobby-chat-rank" text="PLATINUM II" /><ui:Label class="lobby-chat-body" text="Ready for some ranked." /><ui:Label class="lobby-chat-time" text="18:43" /></ui:VisualElement>
@@ -265,19 +255,20 @@
                     <ui:VisualElement class="lobby-chat-message chat-message-6"><ui:VisualElement class="lobby-chat-avatar lobby-avatar-sentinel" /><ui:Label class="lobby-chat-name lobby-chat-name--silver" text="IronWolf" /><ui:VisualElement class="lobby-chat-rank-icon lobby-rank-silver" /><ui:Label class="lobby-chat-rank" text="SILVER I" /><ui:Label class="lobby-chat-body" text="I can tank this round." /><ui:Label class="lobby-chat-time" text="18:48" /></ui:VisualElement>
                     <ui:VisualElement class="lobby-scroll-track lobby-chat-scroll-track" />
                     <ui:VisualElement class="lobby-scroll-thumb lobby-chat-scroll-thumb" />
-                    <ui:VisualElement class="lobby-chat-input"><ui:Label class="lobby-chat-placeholder" text="Type a message..." /><ui:Button name="lobby-chat-emoji-button" class="lobby-chat-emoji-button" /><ui:Button name="lobby-chat-send-button" class="lobby-chat-send-button" /></ui:VisualElement>
+                    <ui:VisualElement class="lobby-chat-input"><ui:Label class="lobby-chat-placeholder" text="Type a message..." /><ui:Button name="lobby-chat-emoji-button" class="lobby-chat-emoji-button" /><foundation:IconButtonView name="lobby-chat-send-button" class="lobby-chat-send-button" icon-class="th-icon-button__icon--send-message" /></ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
 
             <ui:VisualElement class="lobby-footer-bar">
-                <ui:Button name="lobby-discord-button" class="lobby-footer-icon-button lobby-footer-discord"><ui:VisualElement class="lobby-footer-button-icon lobby-footer-icon-discord" /></ui:Button>
-                <ui:Button name="lobby-support-button" class="lobby-footer-icon-button lobby-footer-support"><ui:VisualElement class="lobby-footer-button-icon lobby-footer-icon-support" /></ui:Button>
-                <ui:Button name="lobby-settings-button" class="lobby-footer-icon-button lobby-footer-settings"><ui:VisualElement class="lobby-footer-button-icon lobby-footer-icon-settings" /></ui:Button>
+                <foundation:IconButtonView name="lobby-discord-button" class="lobby-footer-icon-button lobby-footer-discord" icon-class="th-icon-button__icon--discord" />
+                <foundation:IconButtonView name="lobby-support-button" class="lobby-footer-icon-button lobby-footer-support" icon-class="th-icon-button__icon--support" />
+                <foundation:IconButtonView name="lobby-settings-button" class="lobby-footer-icon-button lobby-footer-settings" icon-class="th-icon-button__icon--settings" />
                 <ui:VisualElement class="lobby-footer-control lobby-region-control"><ui:VisualElement class="lobby-region-icon" /><ui:Label class="lobby-footer-control-label" text="Region: Europe" /><ui:VisualElement class="lobby-arrow-down-icon" /></ui:VisualElement>
                 <ui:VisualElement class="lobby-ping-control"><ui:VisualElement class="lobby-ping-bar ping-0" /><ui:VisualElement class="lobby-ping-bar ping-1" /><ui:VisualElement class="lobby-ping-bar ping-2" /><ui:VisualElement class="lobby-ping-bar ping-3" /><ui:Label class="lobby-ping-label" text="Ping:  38 ms" /></ui:VisualElement>
                 <ui:VisualElement class="lobby-footer-control lobby-players-control"><ui:VisualElement class="lobby-players-icon" /><ui:Label class="lobby-footer-control-label lobby-players-label" text="Players Online: 2,531" /></ui:VisualElement>
-                <ui:Button name="lobby-leaderboards-button" class="lobby-footer-action-button"><ui:Label class="lobby-footer-action-icon" text="II" /><ui:Label class="lobby-footer-action-label" text="LEADERBOARDS" /></ui:Button>
-                <ui:Button name="lobby-match-history-button" class="lobby-footer-action-button lobby-match-history-button"><ui:Label class="lobby-footer-action-icon" text="+" /><ui:Label class="lobby-footer-action-label" text="MATCH HISTORY" /></ui:Button>
+                <foundation:IconButtonView name="lobby-leaderboards-button" class="lobby-footer-icon-button lobby-footer-leaderboards" icon-class="th-icon-button__icon--leaderboards" />
+                <foundation:IconButtonView name="lobby-match-history-button" class="lobby-footer-icon-button lobby-footer-match-history" icon-class="th-icon-button__icon--match-history" />
+                <foundation:IconButtonView name="lobby-back-button" class="lobby-footer-icon-button lobby-footer-back" icon-class="th-icon-button__icon--back" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

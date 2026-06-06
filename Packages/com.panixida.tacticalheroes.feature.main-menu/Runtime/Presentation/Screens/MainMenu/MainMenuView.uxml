@@ -2,6 +2,7 @@
     <Style src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Typography/Typography.uss" />
     <Style src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Components/DecorativePanel/DecorativePanel.uss" />
     <Style src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Components/GameButton/GameButtonView.uss" />
+    <Style src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Components/IconButton/IconButtonView.uss" />
     <Style src="MainMenuView.uss" />
     <ui:Template name="DecorativePanelChrome" src="../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Components/DecorativePanel/DecorativePanelChrome.uxml" />
     <ui:Template name="LobbyView" src="../../../../../com.panixida.tacticalheroes.feature.lobby/Runtime/Presentation/Screens/Lobby/LobbyView.uxml" />
@@ -34,24 +35,9 @@
         </ui:VisualElement>
 
         <ui:VisualElement class="footer-links">
-            <ui:Button name="discord-button" class="icon-button icon-button-discord">
-                <ui:VisualElement class="icon-button-overlay icon-button-hover-glow" />
-                <ui:VisualElement class="icon-button-overlay icon-button-selected-glow" />
-                <ui:VisualElement class="icon-button-overlay icon-button-active-tint" />
-                <ui:VisualElement class="icon-button-overlay icon-button-disabled-tint" />
-            </ui:Button>
-            <ui:Button name="support-button" class="icon-button icon-button-support">
-                <ui:VisualElement class="icon-button-overlay icon-button-hover-glow" />
-                <ui:VisualElement class="icon-button-overlay icon-button-selected-glow" />
-                <ui:VisualElement class="icon-button-overlay icon-button-active-tint" />
-                <ui:VisualElement class="icon-button-overlay icon-button-disabled-tint" />
-            </ui:Button>
-            <ui:Button name="footer-settings-button" class="icon-button icon-button-settings">
-                <ui:VisualElement class="icon-button-overlay icon-button-hover-glow" />
-                <ui:VisualElement class="icon-button-overlay icon-button-selected-glow" />
-                <ui:VisualElement class="icon-button-overlay icon-button-active-tint" />
-                <ui:VisualElement class="icon-button-overlay icon-button-disabled-tint" />
-            </ui:Button>
+            <foundation:IconButtonView name="discord-button" class="icon-button icon-button-discord" icon-class="th-icon-button__icon--discord" />
+            <foundation:IconButtonView name="support-button" class="icon-button icon-button-support" icon-class="th-icon-button__icon--support" />
+            <foundation:IconButtonView name="footer-settings-button" class="icon-button icon-button-settings" icon-class="th-icon-button__icon--settings" />
         </ui:VisualElement>
     </ui:VisualElement>
     <ui:Instance name="lobby-container" template="LobbyView" />

@@ -30,42 +30,18 @@
     top: 0;
     right: 0;
     bottom: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .lobby-background {
-    background-image: url("Images/lobby_background.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Backgrounds/realm_battlefield.png");
     -unity-background-scale-mode: scale-and-crop;
+    -unity-background-image-tint-color: #ffffff;
 }
 
 .lobby-dark-overlay {
     background-color: rgba(0, 0, 0, 0.18);
-}
-
-.lobby-bottom-shadow {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 140px;
-    background-color: rgba(0, 0, 0, 0.70);
-}
-
-.lobby-left-depth {
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 530px;
-    background-color: rgba(0, 0, 0, 0.24);
-}
-
-.lobby-right-depth {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 540px;
-    background-color: rgba(0, 0, 0, 0.34);
 }
 
 .lobby-content {
@@ -90,7 +66,7 @@
     top: 12px;
     width: 100px;
     height: 100px;
-    background-image: url("Images/lobby_logo_emblem.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Brand/tactical_heroes_emblem.png");
     -unity-background-scale-mode: scale-to-fit;
 }
 
@@ -148,7 +124,7 @@
     top: 157px;
     width: 494px;
     height: 50px;
-    background-image: url("Images/lobby_title_separator.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Ornaments/title_separator.png");
     -unity-background-scale-mode: stretch-to-fill;
 }
 
@@ -182,58 +158,19 @@
 .lobby-panel,
 .lobby-mode-card {
     position: absolute;
+}
+
+.lobby-panel .th-panel-background,
+.lobby-mode-card .th-panel-background {
     background-color: rgba(7, 5, 3, 0.84);
-    border-left-width: 1.2px;
-    border-right-width: 1.2px;
-    border-top-width: 1.2px;
-    border-bottom-width: 1.2px;
+}
+
+.lobby-panel .th-panel-border,
+.lobby-mode-card .th-panel-border {
     border-left-color: rgba(127, 82, 32, 0.74);
     border-right-color: rgba(127, 82, 32, 0.74);
     border-top-color: rgba(127, 82, 32, 0.74);
     border-bottom-color: rgba(127, 82, 32, 0.74);
-}
-
-.lobby-panel-corner {
-    position: absolute;
-    width: 62px;
-    height: 62px;
-    opacity: 0.72;
-    border-left-width: 0;
-    border-right-width: 0;
-    border-top-width: 0;
-    border-bottom-width: 0;
-    border-left-color: rgba(142, 91, 34, 0.88);
-    border-right-color: rgba(142, 91, 34, 0.88);
-    border-top-color: rgba(142, 91, 34, 0.88);
-    border-bottom-color: rgba(142, 91, 34, 0.88);
-}
-
-.lobby-panel-corner--tl {
-    left: 0;
-    top: 0;
-    border-left-width: 2px;
-    border-top-width: 2px;
-}
-
-.lobby-panel-corner--tr {
-    right: 0;
-    top: 0;
-    border-right-width: 2px;
-    border-top-width: 2px;
-}
-
-.lobby-panel-corner--br {
-    right: 0;
-    bottom: 0;
-    border-right-width: 2px;
-    border-bottom-width: 2px;
-}
-
-.lobby-panel-corner--bl {
-    left: 0;
-    bottom: 0;
-    border-left-width: 2px;
-    border-bottom-width: 2px;
 }
 
 .lobby-profile-panel {
@@ -295,51 +232,51 @@
 }
 
 .lobby-avatar-veteran {
-    background-image: url("Images/lobby_avatar_veteran_knight.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Characters/Avatars/veteran_knight.png");
 }
 
 .lobby-avatar-light-oracle {
-    background-image: url("Images/lobby_avatar_light_oracle.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Characters/Avatars/light_oracle.png");
 }
 
 .lobby-avatar-shadowblade {
-    background-image: url("Images/lobby_avatar_shadowblade.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Characters/Avatars/shadowblade.png");
 }
 
 .lobby-avatar-sentinel {
-    background-image: url("Images/lobby_avatar_sentinel.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Characters/Avatars/sentinel.png");
 }
 
 .lobby-avatar-hooded-rogue {
-    background-image: url("Images/lobby_avatar_hooded_rogue.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Characters/Avatars/hooded_rogue.png");
 }
 
 .lobby-avatar-elder-monk {
-    background-image: url("Images/lobby_avatar_elder_monk.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Characters/Avatars/elder_monk.png");
 }
 
 .lobby-avatar-ranger {
-    background-image: url("Images/lobby_avatar_ranger.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Characters/Avatars/ranger.png");
 }
 
 .lobby-frame-spiked {
-    background-image: url("Images/lobby_frame_spiked.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Frames/avatar_spiked.png");
 }
 
 .lobby-frame-radiant {
-    background-image: url("Images/lobby_frame_radiant.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Frames/avatar_radiant.png");
 }
 
 .lobby-frame-infernal {
-    background-image: url("Images/lobby_frame_infernal.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Frames/avatar_infernal.png");
 }
 
 .lobby-frame-runic {
-    background-image: url("Images/lobby_frame_runic.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Frames/avatar_runic.png");
 }
 
 .lobby-frame-classic {
-    background-image: url("Images/lobby_frame_classic.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Frames/avatar_classic.png");
 }
 
 .lobby-profile-name {
@@ -360,7 +297,7 @@
     top: 43px;
     width: 28px;
     height: 20px;
-    background-image: url("Images/lobby_crown.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Icons/Profile/royal_crown.png");
     -unity-background-scale-mode: scale-to-fit;
 }
 
@@ -444,19 +381,19 @@
 }
 
 .lobby-rank-gold {
-    background-image: url("Images/lobby_rank_gold.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Ranks/gold_division.png");
 }
 
 .lobby-rank-platinum {
-    background-image: url("Images/lobby_rank_platinum.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Ranks/platinum_division.png");
 }
 
 .lobby-rank-silver {
-    background-image: url("Images/lobby_rank_silver.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Ranks/silver_division.png");
 }
 
 .lobby-rank-unranked {
-    background-image: url("Images/lobby_rank_unranked.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Ranks/unranked_division.png");
 }
 
 .lobby-tab-ornament {
@@ -677,8 +614,11 @@
 .lobby-mode-card-custom { left: 455px; }
 .lobby-mode-card-party { left: 665px; }
 
-.lobby-mode-card--selected {
+.lobby-mode-card--selected .th-panel-background {
     background-color: rgba(28, 11, 5, 0.92);
+}
+
+.lobby-mode-card--selected .th-panel-border {
     border-left-color: rgba(255, 148, 36, 0.52);
     border-right-color: rgba(255, 148, 36, 0.52);
     border-top-color: rgba(255, 148, 36, 0.52);
@@ -707,10 +647,10 @@
     -unity-background-scale-mode: scale-to-fit;
 }
 
-.lobby-mode-icon-quick { background-image: url("Images/lobby_mode_quick_match.png"); }
-.lobby-mode-icon-ranked { background-image: url("Images/lobby_mode_ranked.png"); }
-.lobby-mode-icon-custom { background-image: url("Images/lobby_mode_custom_game.png"); }
-.lobby-mode-icon-party { background-image: url("Images/lobby_mode_party.png"); }
+.lobby-mode-icon-quick { background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Game Modes/quick_match.png"); }
+.lobby-mode-icon-ranked { background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Game Modes/ranked_match.png"); }
+.lobby-mode-icon-custom { background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Game Modes/custom_game.png"); }
+.lobby-mode-icon-party { background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Game Modes/party_queue.png"); }
 
 .lobby-mode-body {
     position: absolute;
@@ -783,25 +723,25 @@
 .lobby-nav-left {
     left: 19px;
     top: 37px;
-    background-image: url("Images/lobby_nav_left.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Navigation/scroll_arrow_left.png");
 }
 
 .lobby-nav-right {
     left: 817px;
     top: 37px;
-    background-image: url("Images/lobby_nav_right.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Navigation/scroll_arrow_right.png");
 }
 
 .lobby-build-nav-left {
     left: 19px;
     top: 40px;
-    background-image: url("Images/lobby_nav_left.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Navigation/scroll_arrow_left.png");
 }
 
 .lobby-build-nav-right {
     left: 817px;
     top: 40px;
-    background-image: url("Images/lobby_nav_right.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Navigation/scroll_arrow_right.png");
 }
 
 .lobby-choice-button {
@@ -850,10 +790,10 @@
     -unity-background-scale-mode: scale-to-fit;
 }
 
-.lobby-faction-humans { background-image: url("Images/lobby_faction_humans.png"); }
-.lobby-faction-demons { background-image: url("Images/lobby_faction_demons.png"); }
-.lobby-faction-elves { background-image: url("Images/lobby_faction_elves.png"); }
-.lobby-faction-dwarves { background-image: url("Images/lobby_faction_dwarves.png"); }
+.lobby-faction-humans { background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Factions/human_alliance.png"); }
+.lobby-faction-demons { background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Factions/legion_of_chaos.png"); }
+.lobby-faction-elves { background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Factions/elven_courts.png"); }
+.lobby-faction-dwarves { background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Factions/dwarven_holds.png"); }
 
 .lobby-choice-label {
     position: absolute;
@@ -917,7 +857,7 @@
     top: -23px;
     width: 112px;
     height: 112px;
-    background-image: url("Images/lobby_hero_background_demons.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Characters/Heroes/demon_build_background.png");
     -unity-background-scale-mode: scale-to-fit;
 }
 
@@ -930,11 +870,11 @@
     -unity-background-scale-mode: scale-to-fit;
 }
 
-.lobby-hero-warlord { background-image: url("Images/lobby_hero_demon_warlord.png"); }
-.lobby-hero-sorceress { background-image: url("Images/lobby_hero_demon_sorceress.png"); }
-.lobby-hero-reaper { background-image: url("Images/lobby_hero_demon_reaper.png"); }
-.lobby-hero-ravager { background-image: url("Images/lobby_hero_demon_ravager.png"); }
-.lobby-hero-berserker { background-image: url("Images/lobby_hero_demon_berserker.png"); }
+.lobby-hero-warlord { background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Characters/Heroes/demon_warlord.png"); }
+.lobby-hero-sorceress { background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Characters/Heroes/infernal_sorceress.png"); }
+.lobby-hero-reaper { background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Characters/Heroes/blight_reaver.png"); }
+.lobby-hero-ravager { background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Characters/Heroes/fell_destroyer.png"); }
+.lobby-hero-berserker { background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Characters/Heroes/demon_berserker.png"); }
 
 .lobby-build-label,
 .lobby-new-build-label {
@@ -979,7 +919,7 @@
     top: 635px;
     width: 560px;
     height: 110px;
-    background-image: url("Images/lobby_button_base.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Buttons/primary_command_frame.png");
 }
 
 .lobby-start-button .th-button__label-layer {
@@ -1005,7 +945,7 @@
     top: 22px;
     width: 22px;
     height: 32px;
-    background-image: url("Images/lobby_hourglass.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Icons/Status/hourglass.png");
     -unity-background-scale-mode: scale-to-fit;
 }
 
@@ -1177,29 +1117,6 @@
     top: 4px;
     width: 50px;
     height: 38px;
-    background-color: rgba(18, 11, 6, 0.86);
-    border-left-width: 1px;
-    border-right-width: 1px;
-    border-top-width: 1px;
-    border-bottom-width: 1px;
-    border-left-color: rgba(142, 91, 34, 0.72);
-    border-right-color: rgba(142, 91, 34, 0.72);
-    border-top-color: rgba(142, 91, 34, 0.72);
-    border-bottom-color: rgba(142, 91, 34, 0.72);
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-}
-
-.lobby-chat-settings-icon {
-    position: absolute;
-    left: 13px;
-    top: 7px;
-    width: 24px;
-    height: 24px;
-    background-image: url("Images/lobby_icon_settings.png");
-    -unity-background-scale-mode: scale-to-fit;
 }
 
 .lobby-chat-message {
@@ -1314,7 +1231,7 @@
     bottom: 37px;
     width: 382px;
     height: 43px;
-    background-image: url("Images/lobby_input_base.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Inputs/text_field_frame.png");
     -unity-background-scale-mode: stretch-to-fill;
 }
 
@@ -1330,8 +1247,7 @@
     -unity-text-align: middle-left;
 }
 
-.lobby-chat-emoji-button,
-.lobby-chat-send-button {
+.lobby-chat-emoji-button {
     position: absolute;
     background-color: rgba(0, 0, 0, 0);
     border-left-width: 0;
@@ -1350,15 +1266,15 @@
     top: 11px;
     width: 18px;
     height: 18px;
-    background-image: url("Images/lobby_icon_smile.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Icons/Communication/emoji_smile.png");
 }
 
 .lobby-chat-send-button {
-    left: 391px;
+    position: absolute;
+    left: 386px;
     top: 0;
     width: 40px;
     height: 40px;
-    background-image: url("Images/lobby_icon_send_message.png");
 }
 
 .lobby-footer-bar {
@@ -1377,17 +1293,6 @@
     top: 14px;
     width: 68px;
     height: 68px;
-    background-image: url("Images/lobby_icon_button_background.png");
-    -unity-background-scale-mode: stretch-to-fill;
-    background-color: rgba(0, 0, 0, 0);
-    border-left-width: 0;
-    border-right-width: 0;
-    border-top-width: 0;
-    border-bottom-width: 0;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
-    padding-bottom: 0;
 }
 
 .lobby-footer-discord {
@@ -1400,32 +1305,6 @@
 
 .lobby-footer-settings {
     left: 218px;
-}
-
-.lobby-footer-icon-button:hover,
-.lobby-footer-action-button:hover {
-    -unity-background-image-tint-color: #ffffff;
-}
-
-.lobby-footer-button-icon {
-    position: absolute;
-    left: 14px;
-    top: 14px;
-    width: 41px;
-    height: 41px;
-    -unity-background-scale-mode: scale-to-fit;
-}
-
-.lobby-footer-icon-discord {
-    background-image: url("Images/lobby_icon_discord.png");
-}
-
-.lobby-footer-icon-support {
-    background-image: url("Images/lobby_icon_support.png");
-}
-
-.lobby-footer-icon-settings {
-    background-image: url("Images/lobby_icon_settings.png");
 }
 
 .lobby-footer-control {
@@ -1465,7 +1344,7 @@
     top: 10px;
     width: 20px;
     height: 20px;
-    background-image: url("Images/lobby_icon_region.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Icons/Status/region_globe.png");
 }
 
 .lobby-arrow-down-icon {
@@ -1473,7 +1352,7 @@
     top: 14px;
     width: 14px;
     height: 10px;
-    background-image: url("Images/lobby_icon_arrow_down.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Navigation/chevron_down.png");
 }
 
 .lobby-players-icon {
@@ -1481,7 +1360,7 @@
     top: 7px;
     width: 28px;
     height: 28px;
-    background-image: url("Images/lobby_icon_players_online.png");
+    background-image: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Images/Icons/Status/players_online.png");
 }
 
 .lobby-footer-control-label,
@@ -1527,51 +1406,14 @@
     width: 125px;
 }
 
-.lobby-footer-action-button {
-    position: absolute;
-    left: 1412px;
-    top: 20px;
-    width: 244px;
-    height: 58px;
-    background-image: url("Images/lobby_button_base.png");
-    -unity-background-scale-mode: stretch-to-fill;
-    background-color: rgba(0, 0, 0, 0);
-    border-left-width: 0;
-    border-right-width: 0;
-    border-top-width: 0;
-    border-bottom-width: 0;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
-    padding-bottom: 0;
+.lobby-footer-leaderboards {
+    left: 1636px;
 }
 
-.lobby-match-history-button {
-    left: 1660px;
-    width: 228px;
+.lobby-footer-match-history {
+    left: 1728px;
 }
 
-.lobby-footer-action-icon {
-    position: absolute;
-    left: 24px;
-    top: 11px;
-    width: 40px;
-    height: 36px;
-    color: rgba(245, 195, 90, 0.90);
-    font-size: 22px;
-    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/Cinzel-Bold.ttf");
-    -unity-text-align: middle-center;
-}
-
-.lobby-footer-action-label {
-    position: absolute;
-    left: 68px;
-    top: 11px;
-    width: 150px;
-    height: 36px;
-    color: #ead199;
-    font-size: 13px;
-    -unity-font-definition: url("../../../../../com.panixida.tacticalheroes.foundation/Runtime/Presentation/Fonts/Cinzel-Regular.ttf");
-    -unity-text-align: middle-center;
-    letter-spacing: 0.39px;
+.lobby-footer-back {
+    left: 1820px;
 }

@@ -13,6 +13,7 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
     {
         const string ScreenHiddenClass = "screen-hidden";
         const string AuthSubtitleErrorClass = "auth-subtitle--error";
+        const string AuthPasswordVisibleClass = "auth-eye-button--visible";
         const float ReferenceWidth = 1920f;
         const float ReferenceHeight = 1080f;
         const float MinimumSidePadding = 20f;
@@ -66,7 +67,6 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
             "auth-option-label",
             "auth-footer-ornament",
             "auth-version-label",
-            "auth-icon-button-overlay",
             "menu-logo",
             "menu-title-stack",
             "menu-title-layer",
@@ -74,7 +74,6 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
             "menu-subtitle",
             "footer-ornament",
             "version-label",
-            "icon-button-overlay",
             "th-panel-chrome",
             "th-panel-shadow",
             "th-panel-background",
@@ -270,6 +269,7 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
             root.Q<Button>("lobby-start-matchmaking-button")?.RegisterCallback<ClickEvent>(OnLobbyStartMatchmakingClicked);
             root.Q<Button>("lobby-leaderboards-button")?.RegisterCallback<ClickEvent>(OnLobbyLeaderboardsClicked);
             root.Q<Button>("lobby-match-history-button")?.RegisterCallback<ClickEvent>(OnLobbyMatchHistoryClicked);
+            root.Q<Button>("lobby-back-button")?.RegisterCallback<ClickEvent>(OnLobbyBackClicked);
             BindAuthTextFields(root);
             CacheSettingsControls(root);
             ApplySettingsToControls(_appliedSettings);
@@ -329,6 +329,7 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
                 root.Q<Button>("lobby-start-matchmaking-button")?.UnregisterCallback<ClickEvent>(OnLobbyStartMatchmakingClicked);
                 root.Q<Button>("lobby-leaderboards-button")?.UnregisterCallback<ClickEvent>(OnLobbyLeaderboardsClicked);
                 root.Q<Button>("lobby-match-history-button")?.UnregisterCallback<ClickEvent>(OnLobbyMatchHistoryClicked);
+                root.Q<Button>("lobby-back-button")?.UnregisterCallback<ClickEvent>(OnLobbyBackClicked);
             }
 
             UnbindAuthControls();
@@ -392,16 +393,13 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
             {
                 _settingsRoot = existingSettingsRoot;
                 _settingsContainer = root.Q<VisualElement>("settings-container") ?? _settingsRoot;
+                StretchScreenContainer(_settingsContainer);
                 return;
             }
 
             var settingsContainer = _settingsViewAsset.CloneTree();
             settingsContainer.name = "settings-container";
-            settingsContainer.style.position = Position.Absolute;
-            settingsContainer.style.left = 0;
-            settingsContainer.style.top = 0;
-            settingsContainer.style.right = 0;
-            settingsContainer.style.bottom = 0;
+            StretchScreenContainer(settingsContainer);
             root.Add(settingsContainer);
 
             _settingsContainer = settingsContainer;
@@ -415,17 +413,14 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
             {
                 _authorizationRoot = existingAuthorizationRoot;
                 _authorizationContainer = root.Q<VisualElement>("authorization-container") ?? _authorizationRoot;
+                StretchScreenContainer(_authorizationContainer);
                 CacheAuthorizationPages();
                 return;
             }
 
             var authorizationContainer = _authorizationViewAsset.CloneTree();
             authorizationContainer.name = "authorization-container";
-            authorizationContainer.style.position = Position.Absolute;
-            authorizationContainer.style.left = 0;
-            authorizationContainer.style.top = 0;
-            authorizationContainer.style.right = 0;
-            authorizationContainer.style.bottom = 0;
+            StretchScreenContainer(authorizationContainer);
             root.Add(authorizationContainer);
 
             _authorizationContainer = authorizationContainer;
@@ -440,22 +435,35 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
             {
                 _lobbyRoot = existingLobbyRoot;
                 _lobbyContainer = root.Q<VisualElement>("lobby-container") ?? _lobbyRoot;
+                StretchScreenContainer(_lobbyContainer);
                 _lobbyContent = _lobbyRoot?.Q<VisualElement>("lobby-content");
                 return;
             }
 
             var lobbyContainer = _lobbyViewAsset.CloneTree();
             lobbyContainer.name = "lobby-container";
-            lobbyContainer.style.position = Position.Absolute;
-            lobbyContainer.style.left = 0;
-            lobbyContainer.style.top = 0;
-            lobbyContainer.style.right = 0;
-            lobbyContainer.style.bottom = 0;
+            StretchScreenContainer(lobbyContainer);
             root.Add(lobbyContainer);
 
             _lobbyContainer = lobbyContainer;
             _lobbyRoot = root.Q<VisualElement>("lobby-root");
             _lobbyContent = _lobbyRoot?.Q<VisualElement>("lobby-content");
+        }
+
+        static void StretchScreenContainer(VisualElement container)
+        {
+            if (container == null)
+            {
+                return;
+            }
+
+            container.style.position = Position.Absolute;
+            container.style.left = 0;
+            container.style.top = 0;
+            container.style.right = 0;
+            container.style.bottom = 0;
+            container.style.width = Length.Percent(100);
+            container.style.height = Length.Percent(100);
         }
 
         void CacheAuthorizationPages()
@@ -559,6 +567,8 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
             _authSignInSubtitle = authRoot.Q<Label>("auth-sign-in-subtitle");
             _authCreateSubtitle = authRoot.Q<Label>("auth-create-subtitle");
             _authTermsValidationMessage = authRoot.Q<Label>("auth-terms-validation-message");
+
+            SyncAuthPasswordVisibilityButtons(authRoot);
 
             _authSignInEmailInput?.RegisterValueChangedCallback(OnSignInInputChanged);
             _authSignInPasswordInput?.RegisterValueChangedCallback(OnSignInInputChanged);
@@ -1258,6 +1268,11 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
             Debug.Log("Lobby action: Match History");
         }
 
+        void OnLobbyBackClicked(ClickEvent evt)
+        {
+            ShowMenu();
+        }
+
         static void OnAuthPasswordVisibilityClicked(ClickEvent evt)
         {
             if (evt.currentTarget is not Button button)
@@ -1272,7 +1287,30 @@ namespace Panixida.TacticalHeroes.Features.MainMenu.Presentation
             }
 
             input.Password = !input.Password;
+            SyncAuthPasswordVisibilityButton(button);
             input.Focus();
+        }
+
+        static void SyncAuthPasswordVisibilityButtons(VisualElement root)
+        {
+            if (root == null)
+            {
+                return;
+            }
+
+            root.Query<Button>(className: "auth-eye-button").ForEach(SyncAuthPasswordVisibilityButton);
+        }
+
+        static void SyncAuthPasswordVisibilityButton(Button button)
+        {
+            if (button == null)
+            {
+                return;
+            }
+
+            var input = button.parent?.Q<InputView>(className: "auth-password-input");
+            var passwordVisible = input != null && !input.Password;
+            button.EnableInClassList(AuthPasswordVisibleClass, passwordVisible);
         }
 
         void HandleMenuAction(string buttonName)
